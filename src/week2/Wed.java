@@ -8,7 +8,9 @@ public class Wed {
         while(true){
             System.out.println("##################################");
             System.out.println("##################################");
+            System.out.println("##################################");
             System.out.println("1. 더하기 \n2. 빼기 \n3. 곱하기 \n4. 나누기 \n5. 나머지 \nq. 종료");
+            System.out.println("##################################");
             System.out.println("##################################");
             System.out.print("##################################\n>> ");
             String op = sc.nextLine();
