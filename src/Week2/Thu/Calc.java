@@ -12,9 +12,6 @@ public class Calc {
         return result;
     }
 
-    public void setResult(int result) {
-        this.result = result;
-    }
 
     public void plus(int a, int b){
         this.result = a + b;
