@@ -1,4 +1,4 @@
-package Week2.Thu;
+package week2.thu;
 
 public class Calc {
     static final double PI = 3.14159;

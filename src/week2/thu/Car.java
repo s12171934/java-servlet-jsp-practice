@@ -1,4 +1,4 @@
-package Week2.Thu;
+package week2.thu;
 
 public class Car {
     String model;

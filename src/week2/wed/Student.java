@@ -1,4 +1,4 @@
-package Week2.Wed;
+package week2.wed;
 
 public class Student {
     private String name;
