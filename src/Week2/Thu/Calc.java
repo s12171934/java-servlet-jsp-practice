@@ -1,17 +1,21 @@
 package Week2.Thu;
 
 public class Calc {
-    private static final double PI = 3.14159;
+    static final double PI = 3.14159;
     private int result;
 
-    public static double getPI(){
-        return PI;
+    private static Calc instance = new Calc();
+
+    private Calc(){
+    }
+
+    public static Calc getInstance(){
+        return instance;
     }
 
     public int getResult() {
         return result;
     }
-
 
     public void plus(int a, int b){
         this.result = a + b;
