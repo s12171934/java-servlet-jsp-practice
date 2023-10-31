@@ -1,16 +1,17 @@
 package week3.tue;
 
-public class SmartTelevision implements RemoteControl, Searchable{
+import week3.mon.SmartPhone;
+
+public class SmartTelevision extends Television implements Searchable{
     private int volume;
     @Override
     public void turnOn() {
-        System.out.println("TV를 켭니다.");
+        super.turnOn();
     }
 
     @Override
     public void turnOff() {
-        System.out.println("TV를 끕니다.");
-
+        super.turnOff();
     }
 
     @Override
@@ -23,7 +24,7 @@ public class SmartTelevision implements RemoteControl, Searchable{
         } else {
             this.volume = volume;
         }
-        System.out.println("TV의 볼륨은 : " + this.volume + "입니다.");
+        System.out.println("TV의 볼륨은 : " + this.volume + " 입니다.");
     }
 
     @Override

@@ -1,5 +1,5 @@
 package week3.tue;
 
-public interface Searchable {
+public interface Searchable extends RemoteControl{
     void search(String url);
 }
