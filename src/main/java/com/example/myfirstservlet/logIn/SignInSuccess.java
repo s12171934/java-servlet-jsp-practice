@@ -16,7 +16,11 @@ public class SignInSuccess extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<h1>로그인 성공!<br>환영합니다! " + req.getAttribute("id") + "님!</h1>");
         out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
+                "<input type=\"submit\" value=\"로그인 화면 돌아가기\">" +
+                "</form>");
+        out.println("<form action=\"/logIn/logOut\" method=\"get\">" +
                 "<input type=\"submit\" value=\"로그아웃\">" +
                 "</form>");
+
     }
 }
