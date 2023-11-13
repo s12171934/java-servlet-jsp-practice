@@ -14,8 +14,8 @@ public class SignUpSuccess extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.println("<h1>회원가입이 성공적으로 완료되었습니다.</h1>");
-        out.println("<form action=\"/logIn/signUp.html\" method=\"get\">" +
+        out.println("<h1>" + req.getAttribute("id") + "님의 회원가입이 성공적으로 완료되었습니다.</h1>");
+        out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
                 "<input type=\"submit\" value=\"로그인 하러 가기\">" +
                 "</form>");
     }
