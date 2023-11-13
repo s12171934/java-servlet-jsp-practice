@@ -31,5 +31,14 @@
         <a href="state/dispatcher1">Forward</a>
     </div>
 </div>
+<br>
+<div style="border: thick solid white; width: 800px; margin: 0 auto">
+    <h1 style="color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;"><span style="background-color: white">실습</span></h1>
+    <div style="background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px">
+        <a href="practice/signIn.html">로그인</a>
+        <br>
+        <a href="state/dispatcher1">ToDo - List</a>
+    </div>
+</div>
 </body>
 </html>
