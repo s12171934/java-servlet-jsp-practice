@@ -1,0 +1,765 @@
+Index: src/main/webapp/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\" %>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>JSP - Hello World</title>\r\n</head>\r\n<body style=\"background-color: #1e1f22\">\r\n<h1 style=\"text-align: center\"><span style=\"color: #1e1f22; background-color: white; font-size: 70pt\">ServletPractice</span></h1>\r\n<div style=\"border: thick solid white; width: 800px; margin: 0 auto\">\r\n    <h1 style=\"color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;\"><span style=\"background-color: white\">BASIC</span></h1>\r\n    <div style=\"background-color: white; text-align: left; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px\">\r\n        <a href=\"basic/hello-servlet\">Hello Servlet</a>\r\n        <br>\r\n        <a href=\"basic/calc.html\">Calculation</a>\r\n        <br>\r\n        <a href=\"state/store\">StateStore</a>\r\n    </div>\r\n</div>\r\n<br>\r\n<div style=\"border: thick solid white; width: 800px; margin: 0 auto\">\r\n    <h1 style=\"color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;\"><span style=\"background-color: white\">상태정보 유지 기술</span></h1>\r\n    <div style=\"background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px\">\r\n        <a href=\"state/userVisit.html\">UserVisit</a>\r\n        <br>\r\n        <a href=\"state/cookie\">CreateCookie</a>\r\n        <br>\r\n        <a href=\"state/cookieRead\">ReadCookie</a>\r\n        <br>\r\n        <a href=\"state/request.html\">Request</a>\r\n        <br>\r\n        <a href=\"state/dispatcher1\">Forward</a>\r\n    </div>\r\n</div>\r\n<br>\r\n<div style=\"border: thick solid white; width: 800px; margin: 0 auto\">\r\n    <h1 style=\"color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;\"><span style=\"background-color: white\">실습</span></h1>\r\n    <div style=\"background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px\">\r\n        <a href=\"practice/signIn.html\">로그인</a>\r\n        <br>\r\n        <a href=\"state/dispatcher1\">ToDo - List</a>\r\n    </div>\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/index.jsp b/src/main/webapp/index.jsp
+--- a/src/main/webapp/index.jsp	
++++ b/src/main/webapp/index.jsp	
+@@ -2,43 +2,11 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+-    <title>JSP - Hello World</title>
++  <title>JSP - Hello World</title>
+ </head>
+-<body style="background-color: #1e1f22">
+-<h1 style="text-align: center"><span style="color: #1e1f22; background-color: white; font-size: 70pt">ServletPractice</span></h1>
+-<div style="border: thick solid white; width: 800px; margin: 0 auto">
+-    <h1 style="color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;"><span style="background-color: white">BASIC</span></h1>
+-    <div style="background-color: white; text-align: left; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px">
+-        <a href="basic/hello-servlet">Hello Servlet</a>
+-        <br>
+-        <a href="basic/calc.html">Calculation</a>
+-        <br>
+-        <a href="state/store">StateStore</a>
+-    </div>
+-</div>
+-<br>
+-<div style="border: thick solid white; width: 800px; margin: 0 auto">
+-    <h1 style="color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;"><span style="background-color: white">상태정보 유지 기술</span></h1>
+-    <div style="background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px">
+-        <a href="state/userVisit.html">UserVisit</a>
+-        <br>
+-        <a href="state/cookie">CreateCookie</a>
+-        <br>
+-        <a href="state/cookieRead">ReadCookie</a>
+-        <br>
+-        <a href="state/request.html">Request</a>
+-        <br>
+-        <a href="state/dispatcher1">Forward</a>
+-    </div>
+-</div>
+-<br>
+-<div style="border: thick solid white; width: 800px; margin: 0 auto">
+-    <h1 style="color: #1e1f22; font-size: 30pt; text-align: center; margin: 10px;"><span style="background-color: white">실습</span></h1>
+-    <div style="background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px">
+-        <a href="practice/signIn.html">로그인</a>
+-        <br>
+-        <a href="state/dispatcher1">ToDo - List</a>
+-    </div>
+-</div>
++<body>
++<h1><%= "Hello World!" %></h1>
++<br/>
++<a href="hello-servlet">Hello Servlet</a>
+ </body>
+ </html>
+\ No newline at end of file
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+--- a/.idea/workspace.xml	
++++ /dev/null	
+@@ -1,222 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ArtifactsWorkspaceSettings">
+-    <artifacts-to-build>
+-      <artifact name="myfirst-servlet:war exploded" />
+-    </artifacts-to-build>
+-  </component>
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+-  <component name="ChangeListManager">
+-    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="서블릿 실습">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+-    </list>
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Class" />
+-        <option value="HTML File" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-      <map>
+-        <entry key="$PROJECT_DIR$" value="c428897b6d9df57382fdbae80d3185805b5f7c30" />
+-      </map>
+-    </option>
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="LogFilters">
+-    <option name="FILTER_ERRORS" value="false" />
+-    <option name="FILTER_WARNINGS" value="false" />
+-    <option name="FILTER_INFO" value="true" />
+-    <option name="FILTER_DEBUG" value="true" />
+-    <option name="CUSTOM_FILTER" />
+-  </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 0
+-}]]></component>
+-  <component name="ProjectId" id="2Y66WLqalfbZhkjmloaL2WUPEBf" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+-    <ConfirmationsSetting value="2" id="Add" />
+-  </component>
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "master",
+-    "last_opened_file_path": "C:/Users/kitri/IdeaProjects/myfirst-servlet/src/main/webapp/state",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\state" />
+-    </key>
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp" />
+-      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\basic" />
+-    </key>
+-  </component>
+-  <component name="RunManager">
+-    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false">
+-      <deployment>
+-        <artifact name="myfirst-servlet:war exploded">
+-          <settings>
+-            <option name="CONTEXT_PATH" value="/" />
+-          </settings>
+-        </artifact>
+-      </deployment>
+-      <server-settings>
+-        <option name="BASE_DIRECTORY_NAME" value="fdaa7ad8-a653-49a1-bc48-2e4ec32d279d" />
+-      </server-settings>
+-      <predefined_log_file enabled="true" id="Tomcat" />
+-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+-      <predefined_log_file id="Tomcat Manager" />
+-      <predefined_log_file id="Tomcat Host Manager" />
+-      <predefined_log_file id="Tomcat Localhost Access" />
+-      <RunnerSettings RunnerId="Debug">
+-        <option name="DEBUG_PORT" value="52702" />
+-      </RunnerSettings>
+-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+-        <option name="USE_ENV_VARIABLES" value="true" />
+-        <STARTUP>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </STARTUP>
+-        <SHUTDOWN>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </SHUTDOWN>
+-      </ConfigurationWrapper>
+-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+-        <option name="USE_ENV_VARIABLES" value="true" />
+-        <STARTUP>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </STARTUP>
+-        <SHUTDOWN>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </SHUTDOWN>
+-      </ConfigurationWrapper>
+-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+-        <option name="USE_ENV_VARIABLES" value="true" />
+-        <STARTUP>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </STARTUP>
+-        <SHUTDOWN>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </SHUTDOWN>
+-      </ConfigurationWrapper>
+-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+-        <option name="USE_ENV_VARIABLES" value="true" />
+-        <STARTUP>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </STARTUP>
+-        <SHUTDOWN>
+-          <option name="USE_DEFAULT" value="true" />
+-          <option name="SCRIPT" value="" />
+-          <option name="VM_PARAMETERS" value="" />
+-          <option name="PROGRAM_PARAMETERS" value="" />
+-        </SHUTDOWN>
+-      </ConfigurationWrapper>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-        <option name="BuildArtifacts" enabled="true">
+-          <artifact name="myfirst-servlet:war exploded" />
+-        </option>
+-      </method>
+-    </configuration>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="" />
+-      <created>1699833712866</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1699833712866</updated>
+-      <workItem from="1699833713878" duration="27660000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="서블릿 실습">
+-      <option name="closed" value="true" />
+-      <created>1699863648254</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1699863648254</updated>
+-    </task>
+-    <option name="localTasksCounter" value="2" />
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State>
+-              <option name="FILTERS">
+-                <map>
+-                  <entry key="branch">
+-                    <value>
+-                      <list>
+-                        <option value="origin/master" />
+-                      </list>
+-                    </value>
+-                  </entry>
+-                </map>
+-              </option>
+-            </State>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="서블릿 실습" />
+-    <option name="LAST_COMMIT_MESSAGE" value="서블릿 실습" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+--- a/.idea/misc.xml	
++++ /dev/null	
+@@ -1,14 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="MavenProjectsManager">
+-    <option name="originalFiles">
+-      <list>
+-        <option value="$PROJECT_DIR$/pom.xml" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+deleted file mode 100644
+--- a/.idea/encodings.xml	
++++ /dev/null	
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Encoding">
+-    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+-    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+deleted file mode 100644
+--- a/.idea/uiDesigner.xml	
++++ /dev/null	
+@@ -1,124 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Palette2">
+-    <group name="Swing">
+-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+-      </item>
+-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+-        <initial-values>
+-          <property name="text" value="Button" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="RadioButton" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="CheckBox" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="Label" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+-          <preferred-size width="-1" height="20" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+-      </item>
+-    </group>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+--- a/.idea/vcs.xml	
++++ /dev/null	
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: src/main/webapp/web/WEB-INF/web.xml
+===================================================================
+diff --git a/src/main/webapp/web/WEB-INF/web.xml b/src/main/webapp/web/WEB-INF/web.xml
+new file mode 100644
+--- /dev/null	
++++ b/src/main/webapp/web/WEB-INF/web.xml	
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
++         version="4.0">
++</web-app>
+\ No newline at end of file
+Index: src/main/java/com/example/myfirstservlet/state/CookieServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.Cookie;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\n\r\n@WebServlet(name = \"cookieServlet\", value = \"/state/cookie\")\r\npublic class CookieServlet extends HttpServlet {\r\n    @Override\r\n    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        resp.setContentType(\"text/plain;charset=UTF-8\");\r\n        PrintWriter out = resp.getWriter();\r\n        Cookie cookie1 = new Cookie(\"id\",\"guest\");\r\n        cookie1.setMaxAge(600);\r\n        cookie1.setPath(\"/\");\r\n        resp.addCookie(cookie1);\r\n        Cookie cookie2 = new Cookie(\"code\",\"007\");\r\n        cookie2.setPath(\"/state/\");\r\n        resp.addCookie(cookie2);\r\n        out.println(\"쿠키전송완료\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/CookieServlet.java b/src/main/java/com/example/myfirstservlet/state/CookieServlet.java
+--- a/src/main/java/com/example/myfirstservlet/state/CookieServlet.java	
++++ b/src/main/java/com/example/myfirstservlet/state/CookieServlet.java	
+@@ -15,11 +15,11 @@
+     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         resp.setContentType("text/plain;charset=UTF-8");
+         PrintWriter out = resp.getWriter();
+-        Cookie cookie1 = new Cookie("id","guest");
++        Cookie cookie1 = new Cookie("id", "guest");
+         cookie1.setMaxAge(600);
+         cookie1.setPath("/");
+         resp.addCookie(cookie1);
+-        Cookie cookie2 = new Cookie("code","007");
++        Cookie cookie2 = new Cookie("code", "007");
+         cookie2.setPath("/state/");
+         resp.addCookie(cookie2);
+         out.println("쿠키전송완료");
+Index: src/main/java/com/example/myfirstservlet/state/CookieReadServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.Cookie;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\nimport java.util.Arrays;\r\n\r\n@WebServlet(name = \"cookieReadServlet\", value = \"/state/cookieRead\")\r\npublic class CookieReadServlet extends HttpServlet {\r\n    @Override\r\n    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        resp.setContentType(\"text/plain;charset=UTF-8\");\r\n        PrintWriter out = resp.getWriter();\r\n        Cookie[] cookies = req.getCookies();\r\n        for(Cookie cookie : cookies){\r\n            out.println(cookie.getName() + \":\" + cookie.getValue());\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/CookieReadServlet.java b/src/main/java/com/example/myfirstservlet/state/CookieReadServlet.java
+--- a/src/main/java/com/example/myfirstservlet/state/CookieReadServlet.java	
++++ b/src/main/java/com/example/myfirstservlet/state/CookieReadServlet.java	
+@@ -17,7 +17,7 @@
+         resp.setContentType("text/plain;charset=UTF-8");
+         PrintWriter out = resp.getWriter();
+         Cookie[] cookies = req.getCookies();
+-        for(Cookie cookie : cookies){
++        for (Cookie cookie : cookies) {
+             out.println(cookie.getName() + ":" + cookie.getValue());
+         }
+     }
+Index: src/main/webapp/META-INF/context.xml
+===================================================================
+diff --git a/src/main/webapp/META-INF/context.xml b/src/main/webapp/META-INF/context.xml
+new file mode 100644
+--- /dev/null	
++++ b/src/main/webapp/META-INF/context.xml	
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Context path="/">
++</Context>
+Index: src/main/java/com/example/myfirstservlet/state/DispatcherServlet1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.RequestDispatcher;\r\nimport javax.servlet.ServletContext;\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\n\r\n@WebServlet(name = \"dispatcherServlet1\", value = \"/state/dispatcher1\")\r\npublic class DispatcherServlet1 extends HttpServlet {\r\n    @Override\r\n    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        resp.setContentType(\"text/html;charset=UTF-8\");\r\n        PrintWriter out = resp.getWriter();\r\n        out.println(\"<h3> Dispatcher1 수행결과 </h3>\");\r\n        req.setAttribute(\"name\",\"KITRI\");\r\n\r\n        ServletContext sc = this.getServletContext();\r\n        RequestDispatcher rd = sc.getRequestDispatcher(\"/state/dispatcher2\");\r\n        //rd.forward(req,resp);\r\n        rd.include(req,resp);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/DispatcherServlet1.java b/src/main/java/com/example/myfirstservlet/state/DispatcherServlet1.java
+--- a/src/main/java/com/example/myfirstservlet/state/DispatcherServlet1.java	
++++ b/src/main/java/com/example/myfirstservlet/state/DispatcherServlet1.java	
+@@ -17,11 +17,11 @@
+         resp.setContentType("text/html;charset=UTF-8");
+         PrintWriter out = resp.getWriter();
+         out.println("<h3> Dispatcher1 수행결과 </h3>");
+-        req.setAttribute("name","KITRI");
++        req.setAttribute("name", "KITRI");
+ 
+         ServletContext sc = this.getServletContext();
+         RequestDispatcher rd = sc.getRequestDispatcher("/state/dispatcher2");
+         //rd.forward(req,resp);
+-        rd.include(req,resp);
++        rd.include(req, resp);
+     }
+ }
+Index: src/main/java/com/example/myfirstservlet/state/StateStoreServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.ServletConfig;\r\nimport javax.servlet.ServletContext;\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport javax.servlet.http.HttpSession;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\nimport java.util.HashMap;\r\n\r\n@WebServlet(name = \"stateStoreServlet\", value = \"/state/store\")\r\npublic class StateStoreServlet extends HttpServlet {\r\n    int memberCount = 0;\r\n    ServletContext servletContext = null;\r\n    @Override\r\n    public void init(ServletConfig config) throws ServletException {\r\n        servletContext = config.getServletContext();\r\n        servletContext.setAttribute(\"count\",0);\r\n\r\n    }\r\n\r\n    @Override\r\n    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        int localCount = 0;\r\n        resp.setContentType(\"text/plain;charset=UTF-8\");\r\n        PrintWriter out = resp.getWriter();\r\n        HttpSession session = req.getSession();\r\n\r\n        int applicationCount = (int)servletContext.getAttribute(\"count\");\r\n        out.println(\"전역 변수 카운트: \" + ++memberCount);\r\n        out.println(\"지역 변수 카운트: \" + ++localCount);\r\n        out.println(\"ServletContext 카운트: \" + ++applicationCount);\r\n\r\n        servletContext.setAttribute(\"count\",applicationCount);\r\n        Integer count = (Integer) session.getAttribute(\"count\");\r\n        if(count == null){\r\n            count = 0;\r\n            session.setAttribute(\"count\",count);\r\n        }\r\n        session.setAttribute(\"count\",++count);\r\n        out.println(\"세션 카운트 :\"+ count);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/StateStoreServlet.java b/src/main/java/com/example/myfirstservlet/state/StateStoreServlet.java
+--- a/src/main/java/com/example/myfirstservlet/state/StateStoreServlet.java	
++++ b/src/main/java/com/example/myfirstservlet/state/StateStoreServlet.java	
+@@ -16,10 +16,11 @@
+ public class StateStoreServlet extends HttpServlet {
+     int memberCount = 0;
+     ServletContext servletContext = null;
++
+     @Override
+     public void init(ServletConfig config) throws ServletException {
+         servletContext = config.getServletContext();
+-        servletContext.setAttribute("count",0);
++        servletContext.setAttribute("count", 0);
+ 
+     }
+ 
+@@ -30,18 +31,18 @@
+         PrintWriter out = resp.getWriter();
+         HttpSession session = req.getSession();
+ 
+-        int applicationCount = (int)servletContext.getAttribute("count");
++        int applicationCount = (int) servletContext.getAttribute("count");
+         out.println("전역 변수 카운트: " + ++memberCount);
+         out.println("지역 변수 카운트: " + ++localCount);
+         out.println("ServletContext 카운트: " + ++applicationCount);
+ 
+-        servletContext.setAttribute("count",applicationCount);
++        servletContext.setAttribute("count", applicationCount);
+         Integer count = (Integer) session.getAttribute("count");
+-        if(count == null){
++        if (count == null) {
+             count = 0;
+-            session.setAttribute("count",count);
++            session.setAttribute("count", count);
+         }
+-        session.setAttribute("count",++count);
+-        out.println("세션 카운트 :"+ count);
++        session.setAttribute("count", ++count);
++        out.println("세션 카운트 :" + count);
+     }
+ }
+Index: src/main/java/com/example/myfirstservlet/state/RequestServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\n@WebServlet(name = \"requestServlet\", value = \"/state/request\")\r\npublic class RequestServlet extends HttpServlet {\r\n    @Override\r\n    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        String site = req.getParameter(\"site\");\r\n        if(site.equals(\"naver\")){\r\n            resp.sendRedirect(\"https://www.naver.com\");\r\n        } else if(site.equals(\"google\")){\r\n            resp.sendRedirect(\"https://www.google.com\");\r\n        } else if(site.equals(\"daum\")){\r\n            resp.sendRedirect(\"https://www.daum.net\");\r\n\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/RequestServlet.java b/src/main/java/com/example/myfirstservlet/state/RequestServlet.java
+--- a/src/main/java/com/example/myfirstservlet/state/RequestServlet.java	
++++ b/src/main/java/com/example/myfirstservlet/state/RequestServlet.java	
+@@ -12,11 +12,11 @@
+     @Override
+     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         String site = req.getParameter("site");
+-        if(site.equals("naver")){
++        if (site.equals("naver")) {
+             resp.sendRedirect("https://www.naver.com");
+-        } else if(site.equals("google")){
++        } else if (site.equals("google")) {
+             resp.sendRedirect("https://www.google.com");
+-        } else if(site.equals("daum")){
++        } else if (site.equals("daum")) {
+             resp.sendRedirect("https://www.daum.net");
+ 
+         }
+Index: src/main/java/com/example/myfirstservlet/HelloServlet.java
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/HelloServlet.java b/src/main/java/com/example/myfirstservlet/HelloServlet.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/example/myfirstservlet/HelloServlet.java	
+@@ -0,0 +1,27 @@
++package com.example.myfirstservlet;
++
++import java.io.*;
++import javax.servlet.http.*;
++import javax.servlet.annotation.*;
++
++@WebServlet(name = "helloServlet", value = "/hello-servlet")
++public class HelloServlet extends HttpServlet {
++    private String message;
++
++    public void init() {
++        message = "Hello World!";
++    }
++
++    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
++        response.setContentType("text/html");
++
++        // Hello
++        PrintWriter out = response.getWriter();
++        out.println("<html><body>");
++        out.println("<h1>" + message + "</h1>");
++        out.println("</body></html>");
++    }
++
++    public void destroy() {
++    }
++}
+\ No newline at end of file
+Index: src/main/java/com/example/myfirstservlet/state/UserVisitServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.state;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport javax.servlet.http.HttpSession;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\nimport java.util.HashMap;\r\n\r\n@WebServlet(name = \"userVisit\",value =\"/state/userVisit\")\r\npublic class UserVisitServlet extends HttpServlet {\r\n    HashMap<HttpSession,User> users = new HashMap<>();\r\n    @Override\r\n    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\r\n        req.setCharacterEncoding(\"UTF-8\");\r\n        resp.setContentType(\"text/plain;charset=UTF-8\");\r\n        PrintWriter out = resp.getWriter();\r\n        HttpSession session = req.getSession();\r\n        if(!users.containsKey(session)){\r\n            User user = new User();\r\n            user.setName(req.getParameter(\"name\"));\r\n            user.setCity(req.getParameter(\"city\"));\r\n            user.setCount(0);\r\n            users.put(session,user);\r\n        }\r\n\r\n        users.get(session).setCount(users.get(session).getCount() + 1);\r\n\r\n        users.forEach((key,value) -> {\r\n            out.println(value);\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/state/UserVisitServlet.java b/src/main/java/com/example/myfirstservlet/state/UserVisitServlet.java
+--- a/src/main/java/com/example/myfirstservlet/state/UserVisitServlet.java	
++++ b/src/main/java/com/example/myfirstservlet/state/UserVisitServlet.java	
+@@ -10,26 +10,27 @@
+ import java.io.PrintWriter;
+ import java.util.HashMap;
+ 
+-@WebServlet(name = "userVisit",value ="/state/userVisit")
++@WebServlet(name = "userVisit", value = "/state/userVisit")
+ public class UserVisitServlet extends HttpServlet {
+-    HashMap<HttpSession,User> users = new HashMap<>();
++    HashMap<HttpSession, User> users = new HashMap<>();
++
+     @Override
+     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         req.setCharacterEncoding("UTF-8");
+         resp.setContentType("text/plain;charset=UTF-8");
+         PrintWriter out = resp.getWriter();
+         HttpSession session = req.getSession();
+-        if(!users.containsKey(session)){
++        if (!users.containsKey(session)) {
+             User user = new User();
+             user.setName(req.getParameter("name"));
+             user.setCity(req.getParameter("city"));
+             user.setCount(0);
+-            users.put(session,user);
++            users.put(session, user);
+         }
+ 
+         users.get(session).setCount(users.get(session).getCount() + 1);
+ 
+-        users.forEach((key,value) -> {
++        users.forEach((key, value) -> {
+             out.println(value);
+         });
+     }
+Index: src/main/webapp/state/userVisit.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>User Visit</title>\r\n</head>\r\n<body>\r\n<form action=\"/state/userVisit\" method=\"get\">\r\n    <label for=\"name\">이름:</label>\r\n    <input type=\"text\" name=\"name\" id=\"name\">\r\n    <br>\r\n    <label for=\"city\">도시:</label>\r\n    <input type=\"text\" name=\"city\" id= \"city\">\r\n    <br>\r\n    <input type=\"submit\" value=\"전송하기\">\r\n</form>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/state/userVisit.html b/src/main/webapp/state/userVisit.html
+--- a/src/main/webapp/state/userVisit.html	
++++ b/src/main/webapp/state/userVisit.html	
+@@ -10,7 +10,7 @@
+     <input type="text" name="name" id="name">
+     <br>
+     <label for="city">도시:</label>
+-    <input type="text" name="city" id= "city">
++    <input type="text" name="city" id="city">
+     <br>
+     <input type="submit" value="전송하기">
+ </form>
+Index: src/main/java/com/example/myfirstservlet/basic/Calc.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myfirstservlet.basic;\r\n\r\nimport javax.servlet.RequestDispatcher;\r\nimport javax.servlet.ServletContext;\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.io.PrintWriter;\r\n\r\n@WebServlet(name = \"Calc\", value = \"/basic/calc\")\r\npublic class Calc extends HttpServlet {\r\n\r\n    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {\r\n        response.setContentType(\"text/html; charset = UTF-8\");\r\n\r\n        // Hello\r\n        PrintWriter out = response.getWriter();\r\n        out.println(\"<html><body\");\r\n        int val1 = Integer.parseInt(request.getParameter(\"val1\"));\r\n        int val2 = Integer.parseInt(request.getParameter(\"val2\"));\r\n        String op = request.getParameter(\"op\");\r\n\r\n        out.print(\"<h1>\" + val1 + \" \" + op + \" \" + val2 + \" = \");\r\n\r\n        switch (op) {\r\n            case \"+\":\r\n                out.print(val1 + val2);\r\n                break;\r\n            case \"-\":\r\n                out.print(val1 - val2);\r\n                break;\r\n            case \"*\":\r\n                out.print(val1 * val2);\r\n                break;\r\n            case \"/\":\r\n                out.print(val1 / (double) val2);\r\n                break;\r\n            case \"%\":\r\n                out.print(val1 % val2);\r\n                break;\r\n            default:\r\n                out.print(\"Error\");\r\n                break;\r\n        }\r\n\r\n        out.println(\"</h1>\");\r\n\r\n        out.println(\"</body></html>\");\r\n\r\n    }\r\n    public void destroy() {\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/myfirstservlet/basic/Calc.java b/src/main/java/com/example/myfirstservlet/basic/Calc.java
+--- a/src/main/java/com/example/myfirstservlet/basic/Calc.java	
++++ b/src/main/java/com/example/myfirstservlet/basic/Calc.java	
+@@ -51,6 +51,7 @@
+         out.println("</body></html>");
+ 
+     }
++
+     public void destroy() {
+     }
+ }

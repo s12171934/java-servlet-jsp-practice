@@ -1,0 +1,12 @@
+label{
+    display: inline-block;
+    text-align: right;
+    font-size: 30px;
+    width: 130px;
+}
+input{
+    font-size: 30px;
+}
+form{
+    text-align: center;
+}

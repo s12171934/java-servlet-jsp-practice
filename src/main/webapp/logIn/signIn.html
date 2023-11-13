@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="logIn.css">
     <title>Title</title>
 </head>
 <body>
-<form style="text-align: center" action="/practice/signIn" method="get">
-    <label style="display: inline-block; text-align: right; width: 40px" for="id">ID:</label>
+<form  action="/logIn/signIn" method="get">
+    <label for="id">ID:</label>
     <input type="text" name="id" id="id">
     <br>
-    <label style="display: inline-block; text-align: right; width: 40px" for="password">PW:</label>
+    <label for="password">PW:</label>
     <input type="text" name="password" id= "password">
     <br><br>
-    <input style="font-size: 20px" type="submit" value="로그인">
+    <input type="submit" value="로그인">
     <br>
-    <a href="/practice/signUp.html">회원가입</a>
+    <br>
+    <a href="/logIn/signUp.html">회원가입</a>
 </form>
 
 </body>

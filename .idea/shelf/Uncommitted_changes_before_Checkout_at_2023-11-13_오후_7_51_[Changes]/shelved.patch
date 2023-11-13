@@ -1,0 +1,17 @@
+Index: src/main/webapp/logIn/signIn.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Title</title>\r\n</head>\r\n<body>\r\n<form style=\"text-align: center\" action=\"/practice/signIn\" method=\"get\">\r\n    <label style=\"display: inline-block; text-align: right; width: 40px\" for=\"id\">ID:</label>\r\n    <input type=\"text\" name=\"id\" id=\"id\">\r\n    <br>\r\n    <label style=\"display: inline-block; text-align: right; width: 40px\" for=\"password\">PW:</label>\r\n    <input type=\"text\" name=\"password\" id= \"password\">\r\n    <br><br>\r\n    <input style=\"font-size: 20px\" type=\"submit\" value=\"로그인\">\r\n    <br>\r\n    <a href=\"/practice/signUp.html\">회원가입</a>\r\n</form>\r\n\r\n</body>\r\n</html>
+===================================================================
+diff --git a/src/main/webapp/logIn/signIn.html b/src/main/webapp/logIn/signIn.html
+--- a/src/main/webapp/logIn/signIn.html	
++++ b/src/main/webapp/logIn/signIn.html	
+@@ -10,7 +10,7 @@
+     <input type="text" name="id" id="id">
+     <br>
+     <label style="display: inline-block; text-align: right; width: 40px" for="password">PW:</label>
+-    <input type="text" name="password" id= "password">
++    <input type="text" name="password" id="password">
+     <br><br>
+     <input style="font-size: 20px" type="submit" value="로그인">
+     <br>
