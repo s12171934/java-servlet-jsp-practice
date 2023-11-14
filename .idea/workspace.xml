@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList css">
+    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList css + 다중삭제">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Select.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -197,7 +194,7 @@
       <workItem from="1699833713878" duration="27660000" />
       <workItem from="1699922096071" duration="11539000" />
       <workItem from="1699935417525" duration="704000" />
-      <workItem from="1699936186323" duration="13709000" />
+      <workItem from="1699936186323" duration="14645000" />
     </task>
     <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
@@ -247,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699949394708</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ToDoList css + 다중삭제">
+      <option name="closed" value="true" />
+      <created>1699950018833</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699950018833</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +288,7 @@
     <MESSAGE value="ToDoList fin`" />
     <MESSAGE value="로그인 Css End" />
     <MESSAGE value="ToDoList css" />
-    <option name="LAST_COMMIT_MESSAGE" value="ToDoList css" />
+    <MESSAGE value="ToDoList css + 다중삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="ToDoList css + 다중삭제" />
   </component>
 </project>
