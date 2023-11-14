@@ -26,10 +26,12 @@ public class logOut extends HttpServlet {
         sessions.remove(session);
         sc.setAttribute("sessions",sessions);
 
-
+        out.println("<head><link rel=\"stylesheet\" href=\"logIn.css\"></head>");
+        out.println("<body><div class=\"wrapper\" style=\"display: flex\"><div class=\"item\">");
         out.println("<h1>로그아웃 완료!</h1>");
         out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
-                "<input type=\"submit\" value=\"로그인 화면 돌아가기\">" +
+                "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"로그인 화면 돌아가기\">" +
                 "</form>");
+        out.println("</div></div></body>");
     }
 }

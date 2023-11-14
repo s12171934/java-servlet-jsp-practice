@@ -15,9 +15,12 @@ public class SignUpError extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
+        out.println("<head><link rel=\"stylesheet\" href=\"logIn.css\"></head>");
+        out.println("<body><div class=\"wrapper\" style=\"display: flex\"><div class=\"item\">");
         out.println("<h1>" + req.getAttribute("error") + "</h1>");
         out.println("<form action=\"/logIn/signUp.html\" method=\"get\">" +
-                "<input type=\"submit\" value=\"돌아가기\">" +
+                "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"돌아가기\">" +
                 "</form>");
+        out.println("</div></div></body>");
     }
 }

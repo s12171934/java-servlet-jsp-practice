@@ -37,24 +37,27 @@ public class SignIn extends HttpServlet {
         sessions = (HashSet<HttpSession>) obj2;
         HttpSession session = req.getSession();
 
-        if(sessions.contains(session)){
-            req.setAttribute("fail","이미 로그인 한 세션입니다. 로그아웃 후 재 로그인 가능합니다.");
-            req.setAttribute("sessionError",1);
-            url = "/logIn/signInFail";
-        } else if(users==null || !users.containsKey(id)){
-
-            req.setAttribute("fail","해당 ID가 존재하지 않습니다.");
-            url = "/logIn/signInFail";
-        } else if(!users.get(id).getPw().equals(pw)){
-            req.setAttribute("fail","올바르지 않은 PW입니다.");
-            url = "/logIn/signInFail";
-        } else{
-            req.setAttribute("id",id);
-            sessions.add(session);
-            sc.setAttribute("sessions",sessions);
-            url = "/logIn/signInSuccess";
+        if(req.getParameter("id").isEmpty() || req.getParameter("pw").isEmpty()){
+            resp.sendRedirect("/logIn/signIn.html");
+        } else {
+            if (sessions.contains(session)) {
+                req.setAttribute("fail", "이미 로그인 한 세션입니다.<br>로그아웃 후 재 로그인 가능합니다.");
+                req.setAttribute("sessionError", 1);
+                url = "/logIn/signInFail";
+            } else if (users == null || !users.containsKey(id)) {
+                req.setAttribute("fail", "해당 ID가 존재하지 않습니다.");
+                url = "/logIn/signInFail";
+            } else if (!users.get(id).getPw().equals(pw)) {
+                req.setAttribute("fail", "비밀번호가 틀렸습니다.");
+                url = "/logIn/signInFail";
+            } else {
+                req.setAttribute("id", id);
+                sessions.add(session);
+                sc.setAttribute("sessions", sessions);
+                url = "/logIn/signInSuccess";
+            }
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(req, resp);
         }
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(req,resp);
     }
 }

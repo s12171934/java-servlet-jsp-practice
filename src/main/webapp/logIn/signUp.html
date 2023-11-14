@@ -6,18 +6,27 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/logIn/signUp" method="get">
-    <label for="id">ID:</label>
-    <input type="text" name="id" id="id">
-    <br>
-    <label for="pw">PW:</label>
-    <input type="password" name="pw" id= "pw">
-    <br>
-    <label for="pwCheck">PW 확인:</label>
-    <input type="password" name="pwCheck" id= "pwCheck">
-    <br><br>
-    <input type="submit" value="회원가입">
-</form>
+<div class="wrapper" style="min-height: 30vh; display: flex">
+    <div class="item">
+        <h1>회원가입 시스템</h1>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="item" style="padding: 50px">
+    <form action="/logIn/signUp" method="get">
+        <label for="id">I D:</label>
+        <input type="text" name="id" id="id">
+        <br><br>
+        <label for="pw">P W:</label>
+        <input type="password" name="pw" id= "pw">
+        <br><br>
+        <label style="width: 120px; word-spacing: -30px" for="pwCheck">P W 확 인:</label>
+        <input style="width: 345px" type="password" name="pwCheck" id= "pwCheck">
+        <br><br><br><br>
+        <input type="submit" style="background-color: #29303f; color: #edeff5" value="회원가입">
+    </form>
+    </div>
+</div>
 
 </body>
 </html>

@@ -20,19 +20,23 @@ public class SignUp extends HttpServlet {
         String pw = req.getParameter("pw");
         String url;
         ServletContext sc = this.getServletContext();
-        if(users.containsKey(id)){
-            req.setAttribute("error","이미 존재하는 ID 입니다.");
-            url = "/logIn/signUpError";
-        } else if(!pw.equals(req.getParameter("pwCheck"))) {
-            req.setAttribute("error","PW확인에 실패했습니다. 같은 PW을 올바르게 입력하십시오.");
-            url = "/logIn/signUpError";
-        } else{
-            req.setAttribute("id",id);
-            url = "/logIn/signUpSuccess";
-            users.put(id,new User(id,pw));
-            sc.setAttribute("users",users);
+        if(req.getParameter("id").isEmpty() || req.getParameter("pw").isEmpty() || req.getParameter("pwCheck").isEmpty()){
+            resp.sendRedirect("/logIn/signUp.html");
+        } else {
+            if (users.containsKey(id)) {
+                req.setAttribute("error", "이미 존재하는 회원입니다.");
+                url = "/logIn/signUpError";
+            } else if (!pw.equals(req.getParameter("pwCheck"))) {
+                req.setAttribute("error", "비밀번호가 일치하지 않습니다");
+                url = "/logIn/signUpError";
+            } else {
+                req.setAttribute("id", id);
+                url = "/logIn/signUpSuccess";
+                users.put(id, new User(id, pw));
+                sc.setAttribute("users", users);
+            }
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(req, resp);
         }
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(req,resp);
     }
 }

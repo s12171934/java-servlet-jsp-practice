@@ -10,6 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList fin`">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpSuccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/logIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/logIn.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" afterDir="false" />
     </list>
@@ -21,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -61,6 +71,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -73,6 +84,9 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,6 +101,8 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
         <artifact name="myfirst-servlet:war exploded">
           <settings>
@@ -182,7 +198,9 @@
       <option name="presentableId" value="Default" />
       <updated>1699833712866</updated>
       <workItem from="1699833713878" duration="27660000" />
-      <workItem from="1699922096071" duration="11252000" />
+      <workItem from="1699922096071" duration="11539000" />
+      <workItem from="1699935417525" duration="704000" />
+      <workItem from="1699936186323" duration="5730000" />
     </task>
     <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
@@ -208,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699934842640</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ToDoList fin`">
+      <option name="closed" value="true" />
+      <created>1699935328008</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699935328008</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +264,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="서블릿 실습" />
     <MESSAGE value="login fin3" />
     <MESSAGE value="ToDoList fin`" />
