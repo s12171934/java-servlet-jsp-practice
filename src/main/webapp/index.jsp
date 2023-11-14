@@ -37,7 +37,7 @@
     <div style="background-color: white; text-align: left ; font-size: 20pt; font-weight: bolder; margin: 10px auto; width: 500px">
         <a href="logIn/signIn.html">로그인</a>
         <br>
-        <a href="state/dispatcher1">ToDo - List</a>
+        <a href="toDoList/main">ToDo - List</a>
     </div>
 </div>
 </body>
