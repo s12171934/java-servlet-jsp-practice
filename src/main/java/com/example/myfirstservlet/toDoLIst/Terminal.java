@@ -30,7 +30,6 @@ public class Terminal extends HttpServlet {
                 url = "/toDoList/select";
             }
         }
-
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(req,resp);
     }

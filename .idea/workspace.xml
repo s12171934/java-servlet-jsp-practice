@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList css + 다중삭제">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
-    </list>
+    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="실습 2개 종료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +190,7 @@
       <workItem from="1699833713878" duration="27660000" />
       <workItem from="1699922096071" duration="11539000" />
       <workItem from="1699935417525" duration="704000" />
-      <workItem from="1699936186323" duration="14645000" />
+      <workItem from="1699936186323" duration="15227000" />
     </task>
     <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
@@ -252,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699950018833</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="실습 2개 종료">
+      <option name="closed" value="true" />
+      <created>1699950950174</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699950950174</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +293,7 @@
     <MESSAGE value="로그인 Css End" />
     <MESSAGE value="ToDoList css" />
     <MESSAGE value="ToDoList css + 다중삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="ToDoList css + 다중삭제" />
+    <MESSAGE value="실습 2개 종료" />
+    <option name="LAST_COMMIT_MESSAGE" value="실습 2개 종료" />
   </component>
 </project>

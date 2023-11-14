@@ -21,11 +21,18 @@ public class Input extends HttpServlet {
         ArrayList<String> toDo = (ArrayList<String>)sc.getAttribute("toDo");
         ArrayList<String> toDoDate = (ArrayList<String>)sc.getAttribute("toDoDate");
 
+
         out.println("<head><link rel=\"stylesheet\" href=\"toDoList.css\"></head>");
         out.println("<body><div style=\"margin-top: 20px; margin-bottom: 10px\">");
+
+
         out.print("<h1>To-Do List</h1><br>");
+
+
         out.print("</div><div class=\"wrapper\">");
         out.println("<div class=\"item\" style=\"background-color: white; padding: 15px\"><p>");
+
+
         if(toDo.isEmpty()){
             out.println("등록된 To-Do List가 없습니다.<br>");
         } else {
@@ -35,8 +42,11 @@ public class Input extends HttpServlet {
                 out.print("<br>");
             }
         }
+
+
         out.println("</p>");
         out.println("</div><div class=\"item\" style=\"max-width: 600px\">");
+
 
         if(sc.getAttribute("mode").equals("수정")) {
             out.print("<h2>수정할 To-Do List : ");
@@ -44,6 +54,7 @@ public class Input extends HttpServlet {
         } else{
             out.println("<h2>등록할 To-Do List를 입력해주세요.</h2><br>");
         }
+
 
         out.print("<form style=\"text-align: center\" action=\"/toDoList/add\" method=\"get\">" +
                 "<input style=\"font-size: 20px; width: 500px\" type=\"text\" name =\"addList\"><br><br>" +
@@ -54,6 +65,8 @@ public class Input extends HttpServlet {
             out.print("등록");
         }
         out.println("\">" + "</form>");
+
+
         out.println("</div></div></body>");
     }
 }

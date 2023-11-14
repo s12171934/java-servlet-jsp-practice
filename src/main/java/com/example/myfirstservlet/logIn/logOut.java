@@ -20,12 +20,13 @@ public class logOut extends HttpServlet {
         PrintWriter out = resp.getWriter();
         HttpSession session = req.getSession();
         ServletContext sc = this.getServletContext();
-
         Object obj = sc.getAttribute("sessions");
         HashSet<HttpSession> sessions = (HashSet<HttpSession>) obj;
 
         out.println("<head><link rel=\"stylesheet\" href=\"logIn.css\"></head>");
         out.println("<body><div class=\"wrapper\" style=\"display: flex\"><div class=\"item\">");
+
+
         if(sessions == null || sessions.isEmpty()){
             out.println("<h1>로그인 상태가 아닙니다.</h1>");
         } else{
@@ -33,6 +34,8 @@ public class logOut extends HttpServlet {
             sc.setAttribute("sessions",sessions);
             out.println("<h1>로그아웃 완료!</h1>");
         }
+
+
         out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
                 "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"로그인 화면 돌아가기\">" +
                 "</form>");
