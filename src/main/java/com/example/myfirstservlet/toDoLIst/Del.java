@@ -24,12 +24,17 @@ public class Del extends HttpServlet {
         if(sc.getAttribute("mode").equals("수정")){
             String list = req.getParameter("toDoList");
             sc.setAttribute("ch",list);
+            toDoDate.remove(toDo.indexOf(req.getParameter("toDoList")));
+            toDo.remove(req.getParameter("toDoList"));
             url = "/toDoList/input";
         } else{
+            for(String list : req.getParameterValues("toDoList")){
+                toDoDate.remove(toDo.indexOf(list));
+                toDo.remove(list);
+            }
             url = "/toDoList/main";
         }
-        toDoDate.remove(toDo.indexOf(req.getParameter("toDoList")));
-        toDo.remove(req.getParameter("toDoList"));
+
         sc.setAttribute("toDo",toDo);
         sc.setAttribute("toDODate",toDoDate);
 

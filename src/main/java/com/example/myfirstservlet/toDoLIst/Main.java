@@ -39,7 +39,7 @@ public class Main extends HttpServlet {
             out.println("등록된 To-Do List가 없습니다.<br>");
         } else {
             for (String list : toDo) {
-                out.print(list);
+                out.print(list + "\t");
                 out.print("<span>"+ toDoDate.get(toDo.indexOf(list)) +"</span>");
                 out.print("<br>");
             }

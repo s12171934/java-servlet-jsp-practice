@@ -9,8 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="로그인 Css End">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/toDoList/toDoList.css" afterDir="false" />
+    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" afterDir="false" />
@@ -198,7 +197,7 @@
       <workItem from="1699833713878" duration="27660000" />
       <workItem from="1699922096071" duration="11539000" />
       <workItem from="1699935417525" duration="704000" />
-      <workItem from="1699936186323" duration="13029000" />
+      <workItem from="1699936186323" duration="13709000" />
     </task>
     <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
@@ -240,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699942116085</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ToDoList css">
+      <option name="closed" value="true" />
+      <created>1699949394708</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699949394708</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +282,7 @@
     <MESSAGE value="login fin3" />
     <MESSAGE value="ToDoList fin`" />
     <MESSAGE value="로그인 Css End" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인 Css End" />
+    <MESSAGE value="ToDoList css" />
+    <option name="LAST_COMMIT_MESSAGE" value="ToDoList css" />
   </component>
 </project>

@@ -31,8 +31,12 @@ public class Select extends HttpServlet {
             out.println("등록된 To-Do List가 없습니다.<br>");
         } else {
             for (String list : toDo) {
-                out.print("<input type=\"radio\" name=\"toDoList\" value=\"" + list + "\">");
-                out.print(list);
+                if(sc.getAttribute("mode").equals("수정")) {
+                    out.print("<input type=\"radio\" name=\"toDoList\" value=\"" + list + "\">");
+                } else{
+                    out.print("<input type=\"checkbox\" name=\"toDoList\" value=\"" + list + "\">");
+                }
+                out.print(list + "\t");
                 out.print("<span style=\"text-align: right\">"+ toDoDate.get(toDo.indexOf(list)) +"</span>");
                 out.print("<br>");
             }

@@ -27,7 +27,7 @@ public class Add extends HttpServlet {
             rd.forward(req,resp);
         } else{
             toDo.add(req.getParameter("addList"));
-            toDoDate.add(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/M/d H:mm:ss")));
+            toDoDate.add(LocalDateTime.now().format(DateTimeFormatter.ofPattern("(yy/M/d H:mm:ss)")));
             sc.setAttribute("toDo",toDo);
             sc.setAttribute("toDoDate",toDoDate);
 
