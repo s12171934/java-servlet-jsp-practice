@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4623239e-b750-44e5-8b8b-281374d52ba9" name="Changes" comment="login fin">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" afterDir="false" />
+    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="서블릿 실습">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,19 +24,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="f5c3233da43f3beb042a053afb56e8274dce9b05" />
+        <entry key="$PROJECT_DIR$" value="c428897b6d9df57382fdbae80d3185805b5f7c30" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -45,6 +44,10 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2Y66WLqalfbZhkjmloaL2WUPEBf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -54,27 +57,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/User/IdeaProjects/myfirst-servlet",
-    "list.type.of.created.stylesheet": "CSS",
+    "last_opened_file_path": "C:/Users/kitri/IdeaProjects/myfirst-servlet/src/main/webapp/state",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\state" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp" />
+      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\basic" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
+    <configuration name="Tomcat 9.0.821" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.821" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="myfirst-servlet:war exploded">
           <settings>
@@ -83,8 +90,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="f0d4ca41-7938-4f78-816c-e4aec6db6fc8" />
-        <option name="JNDI_PORT" value="1100" />
+        <option name="BASE_DIRECTORY_NAME" value="fdaa7ad8-a653-49a1-bc48-2e4ec32d279d" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -92,7 +98,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="58751" />
+        <option name="DEBUG_PORT" value="52702" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -165,38 +171,22 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4623239e-b750-44e5-8b8b-281374d52ba9" name="Changes" comment="" />
-      <created>1699872622756</created>
+      <changelist id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="" />
+      <created>1699833712866</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1699872622756</updated>
-      <workItem from="1699872623793" duration="10379000" />
+      <updated>1699833712866</updated>
+      <workItem from="1699833713878" duration="27660000" />
     </task>
-    <task id="LOCAL-00001" summary="login system">
+    <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
-      <created>1699875707543</created>
+      <created>1699863648254</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1699875707543</updated>
+      <updated>1699863648254</updated>
     </task>
-    <task id="LOCAL-00002" summary="login system 2">
-      <option name="closed" value="true" />
-      <created>1699878627145</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1699878627145</updated>
-    </task>
-    <task id="LOCAL-00003" summary="login fin">
-      <option name="closed" value="true" />
-      <created>1699882323884</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1699882323884</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,16 +197,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="login system" />
-    <MESSAGE value="login system 2" />
-    <MESSAGE value="login fin" />
-    <option name="LAST_COMMIT_MESSAGE" value="login fin" />
+    <MESSAGE value="서블릿 실습" />
+    <option name="LAST_COMMIT_MESSAGE" value="서블릿 실습" />
   </component>
 </project>
