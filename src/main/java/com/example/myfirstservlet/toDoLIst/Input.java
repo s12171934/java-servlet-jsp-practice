@@ -19,32 +19,41 @@ public class Input extends HttpServlet {
         PrintWriter out = resp.getWriter();
         ServletContext sc = this.getServletContext();
         ArrayList<String> toDo = (ArrayList<String>)sc.getAttribute("toDo");
+        ArrayList<String> toDoDate = (ArrayList<String>)sc.getAttribute("toDoDate");
 
+        out.println("<head><link rel=\"stylesheet\" href=\"toDoList.css\"></head>");
+        out.println("<body><div style=\"margin-top: 20px; margin-bottom: 10px\">");
+        out.print("<h1>To-Do List</h1><br>");
+        out.print("</div><div class=\"wrapper\">");
+        out.println("<div class=\"item\" style=\"background-color: white; padding: 15px\"><p>");
         if(toDo.isEmpty()){
-            out.println("<h1>등록된 To-Do List가 없습니다.</h1><br>");
+            out.println("등록된 To-Do List가 없습니다.<br>");
         } else {
-            out.print("<h1>To-Do List (등록 순)</h1><br><p>");
             for (String list : toDo) {
-                out.print(list + "<br>");
+                out.print(list);
+                out.print("<span style=\"text-align: right\">"+ toDoDate.get(toDo.indexOf(list)) +"</span>");
+                out.print("<br>");
             }
-            out.println("</p>");
         }
+        out.println("</p>");
+        out.println("</div><div class=\"item\" style=\"max-width: 600px\">");
 
         if(sc.getAttribute("mode").equals("수정")) {
-            out.print("<h4>수정할 To-Do List : ");
-            out.println(sc.getAttribute("ch") + "</h4><br>");
+            out.print("<h2>수정할 To-Do List : ");
+            out.println(sc.getAttribute("ch") + "</h2><br>");
         } else{
-            out.println("<h4>등록할 To-Do List를 입력해주세요.</h4><br>");
+            out.println("<h2>등록할 To-Do List를 입력해주세요.</h2><br>");
         }
 
-        out.print("<form action=\"/toDoList/add\" method=\"get\">" +
-                "<input type=\"text\" name =\"addList\">" +
-                "<input type=\"submit\" value=\"");
+        out.print("<form style=\"text-align: center\" action=\"/toDoList/add\" method=\"get\">" +
+                "<input style=\"font-size: 20px; width: 500px\" type=\"text\" name =\"addList\"><br><br>" +
+                "<input class=\"submit\" type=\"submit\" value=\"");
         if(sc.getAttribute("mode").equals("수정")){
             out.print("수정");
         } else {
             out.print("등록");
         }
         out.println("\">" + "</form>");
+        out.println("</div></div></body>");
     }
 }

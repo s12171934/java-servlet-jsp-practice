@@ -9,19 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="ToDoList fin`">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="2b3b0932-3847-43f0-9426-17d34d7d0c6a" name="Changes" comment="로그인 Css End">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/toDoList/toDoList.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInFail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignInSuccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/SignUpSuccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/logIn/logOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/logIn.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/logIn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/logIn/signUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Del.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myfirstservlet/toDoLIst/Select.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +28,7 @@
       <list>
         <option value="Class" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -80,6 +76,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/kitri/IdeaProjects/myfirst-servlet/src/main/webapp/state",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,6 +92,7 @@
       <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\state" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\toDoList" />
       <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp" />
       <recent name="C:\Users\kitri\IdeaProjects\myfirst-servlet\src\main\webapp\basic" />
     </key>
@@ -200,7 +198,7 @@
       <workItem from="1699833713878" duration="27660000" />
       <workItem from="1699922096071" duration="11539000" />
       <workItem from="1699935417525" duration="704000" />
-      <workItem from="1699936186323" duration="5730000" />
+      <workItem from="1699936186323" duration="13029000" />
     </task>
     <task id="LOCAL-00001" summary="서블릿 실습">
       <option name="closed" value="true" />
@@ -234,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699935328008</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="로그인 Css End">
+      <option name="closed" value="true" />
+      <created>1699942116085</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699942116085</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +274,7 @@
     <MESSAGE value="서블릿 실습" />
     <MESSAGE value="login fin3" />
     <MESSAGE value="ToDoList fin`" />
-    <option name="LAST_COMMIT_MESSAGE" value="ToDoList fin`" />
+    <MESSAGE value="로그인 Css End" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 Css End" />
   </component>
 </project>

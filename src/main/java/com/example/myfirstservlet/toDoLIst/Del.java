@@ -18,6 +18,7 @@ public class Del extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         ServletContext sc = this.getServletContext();
         ArrayList<String> toDo = (ArrayList<String>)sc.getAttribute("toDo");
+        ArrayList<String> toDoDate = (ArrayList<String>)sc.getAttribute("toDoDate");
         String url;
 
         if(sc.getAttribute("mode").equals("수정")){
@@ -27,9 +28,10 @@ public class Del extends HttpServlet {
         } else{
             url = "/toDoList/main";
         }
-
+        toDoDate.remove(toDo.indexOf(req.getParameter("toDoList")));
         toDo.remove(req.getParameter("toDoList"));
         sc.setAttribute("toDo",toDo);
+        sc.setAttribute("toDODate",toDoDate);
 
 
         RequestDispatcher rd = sc.getRequestDispatcher(url);
