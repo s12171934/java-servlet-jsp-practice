@@ -23,12 +23,12 @@ public class SignInSuccess extends HttpServlet {
         out.println("<h1>로그인 성공!<br>환영합니다! " + req.getAttribute("id") + "님!</h1>");
 
 
-        out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
+        out.println("<form action=\"/logIn/signIn.html\" method=\"post\">" +
                 "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"로그인 화면 돌아가기\">" +
                 "</form>");
 
 
-        out.println("<form action=\"/logIn/logOut\" method=\"get\">" +
+        out.println("<form action=\"/logIn/logOut\" method=\"post\">" +
                 "<input type=\"submit\" value=\"로그아웃\">" +
                 "</form>");
 

@@ -56,7 +56,7 @@ public class Input extends HttpServlet {
         }
 
 
-        out.print("<form style=\"text-align: center\" action=\"/toDoList/add\" method=\"get\">" +
+        out.print("<form style=\"text-align: center\" action=\"/toDoList/add\" method=\"post\">" +
                 "<input style=\"font-size: 20px; width: 500px\" type=\"text\" name =\"addList\"><br><br>" +
                 "<input class=\"submit\" type=\"submit\" value=\"");
         if(sc.getAttribute("mode").equals("수정")){

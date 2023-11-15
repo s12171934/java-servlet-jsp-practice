@@ -22,7 +22,7 @@ public class SignUpError extends HttpServlet {
 
 
         out.println("<h1>" + req.getAttribute("error") + "</h1>");
-        out.println("<form action=\"/logIn/signUp.html\" method=\"get\">" +
+        out.println("<form action=\"/logIn/signUp.html\" method=\"post\">" +
                 "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"돌아가기\">" +
                 "</form>");
 

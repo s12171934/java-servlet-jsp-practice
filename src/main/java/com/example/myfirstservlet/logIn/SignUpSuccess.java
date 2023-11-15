@@ -21,7 +21,7 @@ public class SignUpSuccess extends HttpServlet {
 
 
         out.println("<h1>" + req.getAttribute("id") + "님의 회원가입이<br>성공적으로 완료되었습니다.</h1>");
-        out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
+        out.println("<form action=\"/logIn/signIn.html\" method=\"post\">" +
                 "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"로그인 하러 가기\">" +
                 "</form>");
 

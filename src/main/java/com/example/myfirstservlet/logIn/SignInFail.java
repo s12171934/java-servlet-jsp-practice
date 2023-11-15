@@ -22,11 +22,11 @@ public class SignInFail extends HttpServlet {
 
 
         out.println("<h1>" + req.getAttribute("fail") + "</h1>");
-        out.println("<form action=\"/logIn/signIn.html\" method=\"get\">" +
+        out.println("<form action=\"/logIn/signIn.html\" method=\"post\">" +
                 "<input style=\"background-color: #29303f; color: #edeff5\" type=\"submit\" value=\"로그인 화면 돌아가기\">" +
                 "</form>");
         if(req.getAttribute("sessionError").equals(1)){
-            out.println("<form action=\"/logIn/logOut\" method=\"get\">" +
+            out.println("<form action=\"/logIn/logOut\" method=\"post\">" +
                     "<input type=\"submit\" value=\"로그아웃\">" +
                     "</form>");
         }

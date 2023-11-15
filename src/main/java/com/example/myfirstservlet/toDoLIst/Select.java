@@ -31,7 +31,7 @@ public class Select extends HttpServlet {
 
         out.print("</div><div class=\"wrapper\">");
         out.println("<div class=\"item\" style=\"background-color: white; padding: 15px\"><p>");
-        out.print("<form style=\"font-weight: 900; font-size: 40px; margin: 0;\" action=\"/toDoList/del\" method=\"get\">");
+        out.print("<form style=\"font-weight: 900; font-size: 40px; margin: 0;\" action=\"/toDoList/del\" method=\"post\">");
 
 
         if(toDo.isEmpty()){

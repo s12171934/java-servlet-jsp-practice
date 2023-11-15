@@ -57,13 +57,13 @@ public class Main extends HttpServlet {
         out.println("</div><div class=\"item\" style=\"max-width: 600px\">");
 
 
-        out.println("<form action=\"/toDoList/terminal\" method=\"get\">" +
+        out.println("<form action=\"/toDoList/terminal\" method=\"post\">" +
                 "<input class=\"submit\" type=\"submit\" name=\"mode\" value=\"추가\">" +
                 "</form>");
-        out.println("<form action=\"/toDoList/terminal\" method=\"get\">" +
+        out.println("<form action=\"/toDoList/terminal\" method=\"post\">" +
                 "<input class=\"submit\" type=\"submit\" name=\"mode\" value=\"수정\">" +
                 "</form>");
-        out.println("<form action=\"/toDoList/terminal\" method=\"get\">" +
+        out.println("<form action=\"/toDoList/terminal\" method=\"post\">" +
                 "<input class=\"submit\" type=\"submit\" name=\"mode\" value=\"삭제\">" +
                 "</form>");
 
