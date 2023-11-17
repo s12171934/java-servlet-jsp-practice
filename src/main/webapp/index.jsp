@@ -15,17 +15,17 @@
 </div>
 <div class="container" style="height: 40vh">
     <div class="container" style="width: 20vw">
-        <form>
+        <form action="service/main">
             <input type="submit" value="도서대여">
         </form>
     </div>
     <div class="container" style="width: 20vw">
-        <form>
+        <form action="book/main">
             <input type="submit" value="도서관리">
         </form>
     </div>
     <div class="container" style="width: 20vw">
-        <form>
+        <form action="user/main">
             <input type="submit" value="회원관리">
         </form>
     </div>
