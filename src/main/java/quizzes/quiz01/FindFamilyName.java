@@ -31,7 +31,7 @@ public class FindFamilyName extends HttpServlet {
             familyName.put(name, familyName.getOrDefault(name,0)+1);
         }
 
-        // 나온 성의 최대 횟수 찾기
+        // 나온 성의 최대 횟수 찾기 finalMax
         int max = 0;
         for(int n : familyName.values()){
             if(max < n)max = n;
