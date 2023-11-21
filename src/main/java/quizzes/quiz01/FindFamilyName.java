@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 
 @WebServlet(value = "/quizzes/quiz01/find-family-name")
@@ -38,8 +37,12 @@ public class FindFamilyName extends HttpServlet {
             if(max < n)max = n;
         }
         int finalMax = max;
+
         // 최대 횟수 성을 Array 저장 후 정렬, 0번 인덱스가 출력값
-        String result = String.valueOf(Arrays.stream(familyName.keySet().toArray(new String[0])).filter(s -> familyName.get(s) == finalMax).sorted().toArray()[0]);
+        String result = String.valueOf(Arrays.stream(familyName.keySet()
+                .toArray(new String[0]))
+                .filter(s -> familyName.get(s) == finalMax)
+                .sorted().toArray()[0]);
         out.println(result + "씨가 가장 많습니다.");
     }
 }
