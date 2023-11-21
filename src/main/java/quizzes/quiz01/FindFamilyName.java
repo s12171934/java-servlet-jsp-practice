@@ -38,7 +38,7 @@ public class FindFamilyName extends HttpServlet {
         }
         int finalMax = max;
 
-        // 최대 횟수 성을 Array 저장 후 정렬, 0번 인덱스가 출력값
+        // 최대 횟수 성을 Array 저장 후 사전순 정렬, 0번 인덱스가 출력값으로 양식에 맞춰 출력함
         String result = String.valueOf(Arrays.stream(familyName.keySet()
                 .toArray(new String[0]))
                 .filter(s -> familyName.get(s) == finalMax)
