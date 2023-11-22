@@ -15,8 +15,13 @@ public class BMServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain;charset = UTF-8");
         req.setCharacterEncoding("UTF-8");
-        if(req.getParameter("feature").equals("addBook"))bm.addBook(req,resp);
-
-
+        String feature = req.getParameter("feature");
+        switch (feature){
+            case "addBook": bm.addBook(req);
+            case "editBook": bm.editBook(req);
+            case "removeBook": bm.removeBook(req);
+            case "sort" : bm.sortBook(req);
+            case "search" : bm.searchBook(req);
+        }
     }
 }

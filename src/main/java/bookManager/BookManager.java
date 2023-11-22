@@ -5,13 +5,12 @@ import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 
 public class BookManager implements BM{
     BookRepo bookList = new BookArrayList();
     @Override
-    public void addBook(HttpServletRequest req, HttpServletResponse resp) {
+    public void addBook(HttpServletRequest req) {
         String classType = req.getParameter("classType");
         String id = req.getParameter("id");
         String name = req.getParameter("name");
@@ -35,23 +34,53 @@ public class BookManager implements BM{
     }
 
     @Override
-    public void sortBook() {
+    public void sortBook(HttpServletRequest req) {
+        String type = req.getParameter("type");
+        boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
+        bookList.sortBookList(type,asc);
+    }
+
+    @Override
+    public void searchBook(HttpServletRequest req) {
+        String type = req.getParameter("type");
+        String search = req.getParameter("search");
 
     }
 
     @Override
-    public void searchBook() {
+    public void editBook(HttpServletRequest req) {
+        String classType = req.getParameter("classType");
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String author = req.getParameter("author");
+        long isbn = Long.parseLong(req.getParameter("isbn"));
+        LocalDate publishDate = LocalDate.parse(req.getParameter("publishDate"));
+        Book book = bookList.getBook(id);
 
+        book.setId(id);
+        book.setName(name);
+        book.setAuthor(author);
+        book.setIsbn(isbn);
+        book.setPublishDate(publishDate);
+        if(classType.equals("Ebook")){
+            int size = Integer.parseInt(req.getParameter("size"));
+            ((Ebook)book).setSize(size);
+        } else {
+            int size = Integer.parseInt(req.getParameter("size"));
+            String lang = req.getParameter("lang");
+            int len = Integer.parseInt(req.getParameter("len"));
+            ((AudioBook)book).setSize(size);
+            ((AudioBook)book).setLang(lang);
+            ((AudioBook)book).setLen(len);
+        }
     }
 
     @Override
-    public void editBook() {
-
-    }
-
-    @Override
-    public void removeBook() {
-
+    public void removeBook(HttpServletRequest req) {
+        String[] ids = req.getParameterValues("ids");
+        for(String id : ids) {
+            bookList.removeBook(id);
+        }
     }
 
     @Override
