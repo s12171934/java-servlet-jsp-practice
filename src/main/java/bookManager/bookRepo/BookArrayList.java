@@ -11,6 +11,10 @@ import java.util.List;
 public class BookArrayList implements BookRepo{
     private ArrayList<Book> bookList = new ArrayList<>();
     @Override
+    public List<Book> getBookList(){
+        return bookList;
+    }
+    @Override
     public void addBook(Book book) {
         bookList.add(book);
     }

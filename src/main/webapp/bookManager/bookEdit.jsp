@@ -28,12 +28,12 @@
     <input type="text" name="isbn" id="isbn"><br>
     <label for="publishDate">PUBLISH DATE</label>
     <input type="date" name="publishDate" id="publishDate"><br>
-    <label for="size">PUBLISH DATE</label>
-    <input type="date" name="size" id="size"><br>
-    <label for="lang">PUBLISH DATE</label>
-    <input type="date" name="lang" id="lang"><br>
-    <label for="len">PUBLISH DATE</label>
-    <input type="date" name="len" id="len"><br>
+    <label for="size">SIZE</label>
+    <input type="text" name="size" id="size"><br>
+    <label for="lang">LANGUAGE</label>
+    <input type="text" name="lang" id="lang"><br>
+    <label for="len">LENGTH</label>
+    <input type="text" name="len" id="len"><br>
     <input type="submit" name="feature" value="addBook">
 </form>
 </body>

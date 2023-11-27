@@ -6,6 +6,7 @@ import java.util.List;
 
 
 public interface BookRepo {
+    public List<Book> getBookList();
     public void addBook(Book book);
     public Book getBook(String id);
     public void removeBook(String id);

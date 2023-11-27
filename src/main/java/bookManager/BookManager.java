@@ -5,6 +5,9 @@ import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -69,7 +72,7 @@ public class BookManager implements BM{
         if(classType.equals("Ebook")){
             int size = Integer.parseInt(req.getParameter("size"));
             ((Ebook)book).setSize(size);
-        } else {
+        } else if(classType.equals("AudioBook")){
             int size = Integer.parseInt(req.getParameter("size"));
             String lang = req.getParameter("lang");
             int len = Integer.parseInt(req.getParameter("len"));
@@ -85,6 +88,16 @@ public class BookManager implements BM{
         for(String id : ids) {
             bookList.removeBook(id);
         }
+    }
+
+    public void printBook(HttpServletResponse resp){
+        try {
+            PrintWriter out = resp.getWriter();
+            List<Book> booklist = bookList.getBookList();
+            for(Book book : booklist){
+                out.println("<a>" + book.getId() + " / " + book.getName() + "</a><br>");
+            }
+        } catch (Exception e){}
     }
 
     @Override
