@@ -4,6 +4,7 @@ import bookManager.book.AudioBook;
 import bookManager.book.Book;
 import bookManager.book.Ebook;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +71,9 @@ public class BookArrayList implements BookRepo{
                 bookList2 = new ArrayList<>(List.of(bookList.stream().filter(book -> book.getIsbn() == Long.parseLong(search)).toArray(Book[]::new)));
                 return bookList2;
             case "publishDate":
-                //해결요망
-                bookList2 = new ArrayList<>(List.of(bookList.stream().filter(book -> book.getPublishDate().equals(search)).toArray(Book[]::new)));
+                LocalDate start = LocalDate.parse(search.split(":")[0]);
+                LocalDate end = LocalDate.parse(search.split(":")[1]);
+                bookList2 = new ArrayList<>(List.of(bookList.stream().filter(book -> book.getPublishDate().isAfter(start)&&book.getPublishDate().isBefore(end)).toArray(Book[]::new)));
                 return bookList2;
             case "lang":
                 bookList2 = new ArrayList<>(List.of(bookList.stream().filter(book -> ((AudioBook)book).getLang().equals(search)).toArray(Book[]::new)));

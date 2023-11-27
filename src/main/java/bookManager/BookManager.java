@@ -6,6 +6,7 @@ import bookManager.bookRepo.BookRepo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
+import java.util.List;
 
 public class BookManager implements BM{
     BookRepo bookList = new BookArrayList();
@@ -41,10 +42,13 @@ public class BookManager implements BM{
     }
 
     @Override
-    public void searchBook(HttpServletRequest req) {
+    public List<Book> searchBook(HttpServletRequest req) {
         String type = req.getParameter("type");
         String search = req.getParameter("search");
-
+        if(search == null){
+            search = req.getParameter("searchStartTime") + ":" + req.getParameter("searchEndTime");
+        }
+        return bookList.searchBook(type,search);
     }
 
     @Override
