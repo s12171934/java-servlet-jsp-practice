@@ -3,7 +3,7 @@ package bookManager.book;
 import java.time.LocalDate;
 
 public class Book {
-    private final String classType = "Book";
+    private String classType;
     private String id;
     private String name;
     private String author;
@@ -13,14 +13,17 @@ public class Book {
     private LocalDate checkOutStart;
     private LocalDate checkOutEnd;
 
-    public Book(String id,String name,String author,long isbn,LocalDate publishDate){
+    public Book(String classType, String id,String name,String author,long isbn,LocalDate publishDate){
+        this.classType = classType;
         this.id = id;
         this.name = name;
         this.author = author;
         this.isbn = isbn;
         this.publishDate = publishDate;
     }
-
+    public String getClassType() {
+        return classType;
+    }
     public String getId() {
         return id;
     }

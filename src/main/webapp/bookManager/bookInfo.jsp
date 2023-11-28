@@ -1,16 +1,43 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ast08
-  Date: 2023-11-21
-  Time: 오후 5:34
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bookManager.BM" %>
+<%@ page import="bookManager.BookManager" %>
+<%@ page import="bookManager.book.Book" %>
+<%@ page import="bookManager.book.Ebook" %>
+<%@ page import="bookManager.book.AudioBook" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    BM bm = (BookManager)application.getAttribute("BM");
+    Book book = bm.getBook(request.getParameter("id"));
+    application.setAttribute("Book",book);
+%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-
+<p>
+    ID: <%=book.getId()%><br>
+    NAME: <%=book.getName()%><br>
+    AUTHOR: <%=book.getAuthor()%><br>
+    ISBN: <%=book.getIsbn()%><br>
+    PUBLISH DATE: <%=book.getPublishDate()%><br>
+</p>
+<p>
+    <%
+        if(!book.getClassType().equals("Book")){
+            response.getWriter().println("SIZE: " + ((Ebook)book).getSize() + "<br>");
+            if(book.getClassType().equals("AudioBook")){
+                response.getWriter().println("LANGUAGE: " + ((AudioBook)book).getLang() + "<br>");
+                response.getWriter().println("LENGTH: " + ((AudioBook)book).getLen() + "<br>");
+            }
+        }
+    %>
+</p>
+<form action="/bookManager/bookMain.jsp">
+    <input type="submit" value="목록으로">
+</form>
+<form action="/bookManager/bookEdit.jsp">
+    <input type="submit" name="sel" value="editBook">
+</form>
 </body>
 </html>

@@ -16,4 +16,5 @@ public interface BM {
     public void printBook(HttpServletResponse resp);
     public void checkOutBook();
     public void checkInBook();
+    public Book getBook(String id);
 }

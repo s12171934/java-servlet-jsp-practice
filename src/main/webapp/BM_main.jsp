@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="main.css">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,18 +14,14 @@
 </div>
 <div class="container" style="height: 40vh">
     <div class="container" style="width: 20vw">
-        <form action="checkOut/checkOutMain.jsp">
-            <input type="submit" value="도서반납">
-        </form>
+        <form action="/main">
+            <input type="submit" name="page" value="CheckOut">
     </div>
     <div class="container" style="width: 20vw">
-        <form action="bookManager/bookMain.jsp">
-            <input type="submit" value="도서관리">
-        </form>
+            <input type="submit" name="page" value="BookManager">
     </div>
     <div class="container" style="width: 20vw">
-        <form action="userManager/userMain.jsp">
-            <input type="submit" value="회원관리">
+            <input type="submit" name="page" value="UserManager">
         </form>
     </div>
 </div>

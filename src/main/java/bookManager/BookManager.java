@@ -6,13 +6,13 @@ import bookManager.bookRepo.BookRepo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
 
 public class BookManager implements BM{
     BookRepo bookList = new BookArrayList();
+
     @Override
     public void addBook(HttpServletRequest req) {
         String classType = req.getParameter("classType");
@@ -24,15 +24,15 @@ public class BookManager implements BM{
         Book book;
 
         if(classType.equals("Book")){
-            book = new Book(id,name,author,isbn,publishDate);
+            book = new Book("Book",id,name,author,isbn,publishDate);
         } else if(classType.equals("Ebook")){
             int size = Integer.parseInt(req.getParameter("size"));
-            book = new Ebook(id,name,author,isbn,publishDate,size);
+            book = new Ebook("Ebook",id,name,author,isbn,publishDate,size);
         } else {
             int size = Integer.parseInt(req.getParameter("size"));
             String lang = req.getParameter("lang");
             int len = Integer.parseInt(req.getParameter("len"));
-            book = new AudioBook(id,name,author,isbn,publishDate,size,lang,len);
+            book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
         bookList.addBook(book);
     }
@@ -94,10 +94,21 @@ public class BookManager implements BM{
         try {
             PrintWriter out = resp.getWriter();
             List<Book> booklist = bookList.getBookList();
-            for(Book book : booklist){
-                out.println("<a>" + book.getId() + " / " + book.getName() + "</a><br>");
+            if(booklist.size() == 0){
+                out.println("<a>" + " - / - " + "</a><br>");
+            } else {
+                out.println("<form action=\"/bookManager/bookInfo.jsp\" method=\"post\">");
+                for (Book book : booklist) {
+                    out.println("<input type=\"submit\" name=\"id\" value=\"" + book.getId() + "\"><a> / " + book.getName() + " / " + book.getClassType() + "</a><br>");
+                }
+                out.println("</form>");
             }
         } catch (Exception e){}
+    }
+
+    @Override
+    public Book getBook(String id) {
+        return bookList.getBook(id);
     }
 
     @Override
