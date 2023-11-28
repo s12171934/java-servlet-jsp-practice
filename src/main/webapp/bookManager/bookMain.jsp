@@ -46,9 +46,10 @@
     <input type="date" name="searchStartTime">
     <input type="date" name="searchEndTime">
     <input type="submit" name ="feature" value="search">
+    <input type="submit" name ="feature" value="resetSearch">
 </form>
 <%
-        bm.printBook(response);
+        bm.printBook(request,response);
 %>
 </body>
 </html>

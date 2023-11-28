@@ -13,7 +13,7 @@ public interface BM {
     public List<Book> searchBook(HttpServletRequest req);
     public void editBook(HttpServletRequest req);
     public void removeBook(HttpServletRequest req);
-    public void printBook(HttpServletResponse resp);
+    public void printBook(HttpServletRequest req,HttpServletResponse resp);
     public void checkOutBook();
     public void checkInBook();
     public Book getBook(String id);

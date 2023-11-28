@@ -24,7 +24,13 @@ public class BMServlet extends HttpServlet {
             case "editBook": bm.editBook(req);break;
             case "removeBook": bm.removeBook(req);break;
             case "sort" : bm.sortBook(req);break;
-            case "search" : bm.searchBook(req);break;
+            case "search" :
+                sc.setAttribute("searchBook",bm.searchBook(req));
+                sc.setAttribute("search","true");
+                break;
+            case "resetSearch" :
+                sc.setAttribute("searchBook",null);
+                sc.setAttribute("search","false");
         }
         sc.setAttribute("BM",bm);
         resp.sendRedirect("/bookManager/bookMain.jsp");

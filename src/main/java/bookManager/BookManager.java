@@ -4,6 +4,7 @@ import bookManager.book.*;
 import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
@@ -90,15 +91,21 @@ public class BookManager implements BM{
         }
     }
 
-    public void printBook(HttpServletResponse resp){
+    public void printBook(HttpServletRequest req,HttpServletResponse resp){
         try {
             PrintWriter out = resp.getWriter();
-            List<Book> booklist = bookList.getBookList();
-            if(booklist.size() == 0){
+            List<Book> bookList1;
+            ServletContext sc = req.getServletContext();
+            if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
+                bookList1 = (List<Book>)req.getServletContext().getAttribute("searchBook");
+            } else{
+                bookList1 = bookList.getBookList();
+            }
+            if(bookList1.isEmpty()){
                 out.println("<a>" + " - / - " + "</a><br>");
             } else {
                 out.println("<form action=\"/bookManager/bookInfo.jsp\" method=\"post\">");
-                for (Book book : booklist) {
+                for (Book book : bookList1) {
                     out.println("<input type=\"submit\" name=\"id\" value=\"" + book.getId() + "\"><a> / " + book.getName() + " / " + book.getClassType() + "</a><br>");
                 }
                 out.println("</form>");
