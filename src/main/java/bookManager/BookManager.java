@@ -3,6 +3,7 @@ package bookManager;
 import bookManager.book.*;
 import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
+import function.RW;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,30 @@ public class BookManager implements BM{
             int size = Integer.parseInt(req.getParameter("size"));
             String lang = req.getParameter("lang");
             int len = Integer.parseInt(req.getParameter("len"));
+            book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
+        }
+        bookList.addBook(book);
+        RW.writeBook(book);
+    }
+    @Override
+    public void addBook(String[] bookInfo) {
+        String classType = bookInfo[0];
+        String id = bookInfo[1];
+        String name = bookInfo[2];
+        String author = bookInfo[3];
+        long isbn = Long.parseLong(bookInfo[4]);
+        LocalDate publishDate = LocalDate.parse(bookInfo[5]);
+        Book book;
+
+        if(classType.equals("Book")){
+            book = new Book("Book",id,name,author,isbn,publishDate);
+        } else if(classType.equals("Ebook")){
+            int size = Integer.parseInt(bookInfo[6]);
+            book = new Ebook("Ebook",id,name,author,isbn,publishDate,size);
+        } else {
+            int size = Integer.parseInt(bookInfo[6]);
+            String lang = bookInfo[7];
+            int len = Integer.parseInt(bookInfo[8]);
             book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
         bookList.addBook(book);
@@ -115,11 +140,13 @@ public class BookManager implements BM{
             ((AudioBook)book).setLang(lang);
             ((AudioBook)book).setLen(len);
         }
+        RW.writeBook(book);
     }
     @Override
     public void removeBook(HttpServletRequest req) {
         String[] ids = req.getParameterValues("ids");
         for(String sId : ids) {
+            RW.deleteBook(bookList.getBook(sId));
             bookList.removeBook(sId);
         }
     }

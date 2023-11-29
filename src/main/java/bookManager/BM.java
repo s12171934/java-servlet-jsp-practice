@@ -5,10 +5,12 @@ import bookManager.book.Book;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface BM {
     public void addBook(HttpServletRequest req);
+    public void addBook(String[] bookInfo);
     public void sortBook(HttpServletRequest req);
     public List<Book> searchBook(HttpServletRequest req);
     public void editBook(HttpServletRequest req);
