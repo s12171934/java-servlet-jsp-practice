@@ -128,6 +128,12 @@ public class BookManager implements BM{
             PrintWriter out = resp.getWriter();
             List<Book> bookList1;
             ServletContext sc = req.getServletContext();
+            String url = "/bookManager/bookInfo.jsp";
+            boolean remove = false;
+            if(sc.getAttribute("remove")!=null && sc.getAttribute("remove").equals("true")){
+                url = "/book-manager";
+                remove = true;
+            }
             if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
                 bookList1 = (List<Book>)req.getServletContext().getAttribute("searchBook");
             } else{
@@ -136,9 +142,12 @@ public class BookManager implements BM{
             if(bookList1.isEmpty()){
                 out.println("<a>" + " - / - " + "</a><br>");
             } else {
-                out.println("<form action=\"/bookManager/bookInfo.jsp\" method=\"post\">");
+                out.println("<form action=\"" + url + "\" method=\"post\">");
                 for (Book book : bookList1) {
-                    out.println("<input type=\"submit\" name=\"id\" value=\"" + book.getId() + "\"><a> / " + book.getName() + " / " + book.getClassType() + "</a><br>");
+                    out.println("<input type=\"" + (remove?"checkbox":"submit") + "\" name=\"" + (remove?"ids":"id") + "\" value=\"" + book.getId() + "\"><a>" + (remove?book.getId():"") + " / " + book.getName() + " / " + book.getClassType() + "</a><br>");
+                }
+                if(remove){
+                    out.println("<input type=\"submit\" name=\"feature\" value=\"removeBook\">");
                 }
                 out.println("</form>");
             }

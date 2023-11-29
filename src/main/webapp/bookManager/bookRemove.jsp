@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     BM bm = (BookManager)application.getAttribute("BM");
-
+    application.setAttribute("remove","true");
 %>
 <html>
 <head>
@@ -13,8 +13,5 @@
 <%
     bm.printBook(request,response);
 %>
-<form action="/book-manager">
-    <input type="submit" value="removeBook">
-</form>
 </body>
 </html>
