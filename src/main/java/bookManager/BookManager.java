@@ -36,6 +36,7 @@ public class BookManager implements BM{
             book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
         bookList.addBook(book);
+        RW.addBook(book);
         RW.writeBook(book);
     }
     @Override

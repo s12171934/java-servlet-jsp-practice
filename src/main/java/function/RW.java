@@ -27,7 +27,7 @@ public class RW {
         } catch (Exception e) {
         }
     }
-    public static void writeBook(Book book){
+    public static void addBook(Book book){
         try {
             String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\books\\bookIds.txt", StandardCharsets.UTF_8));
@@ -35,8 +35,12 @@ public class RW {
             writer.write(bookId);
             writer.flush();
             writer.close();
-
-            writer = new BufferedWriter(new FileWriter(path + "\\books\\book_" + book.getId() + ".txt", StandardCharsets.UTF_8));
+        } catch (Exception e){}
+    }
+    public static void writeBook(Book book){
+        try{
+            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\books\\book_" + book.getId() + ".txt", StandardCharsets.UTF_8));
 
             String classType = book.getClassType();
             String id = book.getId();
