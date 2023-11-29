@@ -48,6 +48,9 @@
     <input type="submit" name ="feature" value="search">
     <input type="submit" name ="feature" value="resetSearch">
 </form>
+<form action="/bookManager/bookRemove.jsp">
+    <input type="submit" value="remove">
+</form>
 <%
         bm.printBook(request,response);
 %>

@@ -33,6 +33,10 @@
         }
     %>
 </p>
+<form action="/book-manager">
+    <input type="text" style="display: none" name="ids" value=<%=book.getId()%>>
+    <input type="submit" name="feature" value="removeBook">
+</form>
 <form action="/bookManager/bookMain.jsp">
     <input type="submit" value="목록으로">
 </form>

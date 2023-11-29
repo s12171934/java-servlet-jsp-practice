@@ -20,9 +20,21 @@ public class BMServlet extends HttpServlet {
         BM bm = (BookManager)sc.getAttribute("BM");
 
         switch (feature){
-            case "addBook": bm.addBook(req);break;
-            case "editBook": bm.editBook(req);break;
-            case "removeBook": bm.removeBook(req);break;
+            case "addBook":
+                bm.addBook(req);
+                sc.setAttribute("searchBook",null);
+                sc.setAttribute("search","false");
+                break;
+            case "editBook":
+                bm.editBook(req);
+                sc.setAttribute("searchBook",null);
+                sc.setAttribute("search","false");
+                break;
+            case "removeBook":
+                bm.removeBook(req);
+                sc.setAttribute("searchBook",null);
+                sc.setAttribute("search","false");
+                break;
             case "sort" : bm.sortBook(req);break;
             case "search" :
                 sc.setAttribute("searchBook",bm.searchBook(req));
@@ -31,6 +43,7 @@ public class BMServlet extends HttpServlet {
             case "resetSearch" :
                 sc.setAttribute("searchBook",null);
                 sc.setAttribute("search","false");
+                break;
         }
         sc.setAttribute("BM",bm);
         resp.sendRedirect("/bookManager/bookMain.jsp");

@@ -13,7 +13,6 @@ import java.util.List;
 
 public class BookManager implements BM{
     BookRepo bookList = new BookArrayList();
-
     @Override
     public void addBook(HttpServletRequest req) {
         String classType = req.getParameter("classType");
@@ -37,14 +36,13 @@ public class BookManager implements BM{
         }
         bookList.addBook(book);
     }
-
     @Override
     public void sortBook(HttpServletRequest req) {
         String type = req.getParameter("type");
         boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
         bookList.sortBookList(type,asc);
+        sortSearchBookList(req,type,asc);
     }
-
     @Override
     public List<Book> searchBook(HttpServletRequest req) {
         String type = req.getParameter("type");
@@ -54,7 +52,43 @@ public class BookManager implements BM{
         }
         return bookList.searchBook(type,search);
     }
-
+    public void sortSearchBookList(HttpServletRequest req, String type, boolean asc) {
+        ServletContext sc = req.getServletContext();
+        try {
+            List<Book> bookList2 = (List<Book>) sc.getAttribute("searchBook");
+            int ascInt = asc ? 1 : -1;
+            switch (type) {
+                case "id":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getId().compareTo(book2.getId()), 0));
+                    break;
+                case "name":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getName().compareTo(book2.getName()), 0));
+                    break;
+                case "author":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getAuthor().compareTo(book2.getAuthor()), 0));
+                    break;
+                case "isbn":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Long.compare(book1.getIsbn(), book2.getIsbn()), 0));
+                    break;
+                case "publishDate":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getPublishDate().compareTo(book2.getPublishDate()), 0));
+                    break;
+                case "size":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((Ebook) book1).getSize(), ((Ebook) book2).getSize()), 0));
+                    break;
+                case "lang":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * ((AudioBook) book1).getLang().compareTo(((AudioBook) book2).getLang()), 0));
+                    break;
+                case "len":
+                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((AudioBook) book1).getLen(), ((AudioBook) book2).getLen()), 0));
+                    break;
+                default:
+                    break;
+            }
+            sc.setAttribute("searchBook",bookList2);
+        } catch (Exception e){
+        }
+    }
     @Override
     public void editBook(HttpServletRequest req) {
         String classType = req.getParameter("classType");
@@ -82,15 +116,13 @@ public class BookManager implements BM{
             ((AudioBook)book).setLen(len);
         }
     }
-
     @Override
     public void removeBook(HttpServletRequest req) {
         String[] ids = req.getParameterValues("ids");
-        for(String id : ids) {
-            bookList.removeBook(id);
+        for(String sId : ids) {
+            bookList.removeBook(sId);
         }
     }
-
     public void printBook(HttpServletRequest req,HttpServletResponse resp){
         try {
             PrintWriter out = resp.getWriter();
@@ -112,19 +144,15 @@ public class BookManager implements BM{
             }
         } catch (Exception e){}
     }
-
     @Override
     public Book getBook(String id) {
         return bookList.getBook(id);
     }
-
     @Override
     public void checkOutBook() {
-
     }
 
     @Override
     public void checkInBook() {
-
     }
 }
