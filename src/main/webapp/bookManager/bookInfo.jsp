@@ -43,5 +43,8 @@
 <form action="/bookManager/bookEdit.jsp">
     <input type="submit" name="sel" value="editBook">
 </form>
+<form action="/checkOut/checkOutMain.jsp">
+    <input type="submit" name="feature" value="checkOut">
+</form>
 </body>
 </html>

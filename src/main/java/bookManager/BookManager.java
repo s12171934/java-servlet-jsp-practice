@@ -4,6 +4,8 @@ import bookManager.book.*;
 import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
 import function.RWBook;
+import function.RWUser;
+import userManager.UserManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -197,10 +199,24 @@ public class BookManager implements BM{
         return bookList.getBook(id);
     }
     @Override
-    public void checkOutBook() {
+    public void checkOutBook(HttpServletRequest req) {
+        ServletContext sc = req.getServletContext();
+        Book book = (Book)sc.getAttribute("Book");
+        book.setCheckOut(true);
+        book.setCheckOutUserId(req.getParameter("checkOutUserId"));
+        book.setCheckOutStart(LocalDate.now());
+        book.setCheckOutEnd(LocalDate.now().plusWeeks(1));
+        RWBook.writeBook(book);
     }
 
     @Override
-    public void checkInBook() {
+    public void checkInBook(HttpServletRequest req) {
+        ServletContext sc = req.getServletContext();
+        Book book = (Book)sc.getAttribute("Book");
+        book.setCheckOut(false);
+        book.setCheckOutUserId(null);
+        book.setCheckOutStart(null);
+        book.setCheckOutEnd(null);
+        RWBook.writeBook(book);
     }
 }

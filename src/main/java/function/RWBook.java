@@ -22,8 +22,8 @@ public class RWBook {
             for(String id : bookIds){
                reader = new BufferedReader(new FileReader(path + "book_" + id + ".txt", StandardCharsets.UTF_8));
                String info = reader.readLine();
-               String[] bookInfo = info.split("\\|")[0].split(",");
-               String[] checkOutInfo = info.split("\\|")[1].split(",");
+               String[] bookInfo = info.split("#")[0].split(",");
+               String[] checkOutInfo = info.split("#")[1].split(",");
                bm.addBook(bookInfo,checkOutInfo);
             }
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class RWBook {
             String checkOutEnd = String.valueOf(book.getCheckOutEnd());
             String checkOutInfo = checkOut + "," + checkOutUserId + "," + checkOutStart + "," + checkOutEnd;
 
-            bookInfo += "\\|" + checkOutInfo;
+            bookInfo += "#" + checkOutInfo;
 
             writer.write(bookInfo);
             writer.flush();

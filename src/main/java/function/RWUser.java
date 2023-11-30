@@ -23,8 +23,8 @@ public class RWUser {
             for(String id : userIds){
                reader = new BufferedReader(new FileReader(path + "user_" + id + ".txt", StandardCharsets.UTF_8));
                String info = reader.readLine();
-               String[] userInfo = info.split("\\|")[0].split(",");
-               String[] books = info.split("\\|")[1].split(",");
+               String[] userInfo = info.split("#")[0].split(",");
+               String[] books = info.split("#")[1].split(",");
                ArrayList<String> bookInfo = new ArrayList<>(List.of(books));
                um.addUser(userInfo,bookInfo);
             }
@@ -57,7 +57,7 @@ public class RWUser {
             }
             if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-2);
 
-            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum + "\\|" + bookInfo;
+            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum + "#" + bookInfo;
             writer.write(userInfo);
             writer.flush();
             writer.close();
