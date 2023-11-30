@@ -160,7 +160,7 @@ public class BookManager implements BM{
             ServletContext sc = req.getServletContext();
             String url = "/bookManager/bookInfo.jsp";
             boolean remove = false;
-            if(sc.getAttribute("remove")!=null && sc.getAttribute("remove").equals("true")){
+            if(sc.getAttribute("removeBook")!=null && sc.getAttribute("removeBook").equals("true")){
                 url = "/book-manager";
                 remove = true;
             }

@@ -1,3 +1,5 @@
+package servlet;
+
 import bookManager.BM;
 import bookManager.BookManager;
 
@@ -34,7 +36,7 @@ public class BMServlet extends HttpServlet {
                 bm.removeBook(req);
                 sc.setAttribute("searchBook",null);
                 sc.setAttribute("search","false");
-                sc.setAttribute("remove","false");
+                sc.setAttribute("removeBook","false");
                 break;
             case "sort" : bm.sortBook(req);break;
             case "search" :

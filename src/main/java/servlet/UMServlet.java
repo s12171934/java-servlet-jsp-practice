@@ -1,3 +1,5 @@
+package servlet;
+
 import bookManager.BM;
 import bookManager.BookManager;
 import userManager.UM;
@@ -37,7 +39,7 @@ public class UMServlet extends HttpServlet {
                 um.removeUser(req);
                 sc.setAttribute("searchUser",null);
                 sc.setAttribute("search","false");
-                sc.setAttribute("remove","false");
+                sc.setAttribute("removeUser","false");
                 break;
             case "sort" : um.sortUser(req);break;
             case "search" :
