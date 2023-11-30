@@ -203,7 +203,7 @@ public class BookManager implements BM{
         ServletContext sc = req.getServletContext();
         Book book = (Book)sc.getAttribute("Book");
         book.setCheckOut(true);
-        book.setCheckOutUserId(req.getParameter("checkOutUserId"));
+        book.setCheckOutUserId(req.getParameter("id"));
         book.setCheckOutStart(LocalDate.now());
         book.setCheckOutEnd(LocalDate.now().plusWeeks(1));
         RWBook.writeBook(book);

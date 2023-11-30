@@ -24,7 +24,12 @@ public class RWUser {
                reader = new BufferedReader(new FileReader(path + "user_" + id + ".txt", StandardCharsets.UTF_8));
                String info = reader.readLine();
                String[] userInfo = info.split("#")[0].split(",");
-               String[] books = info.split("#")[1].split(",");
+               String[] books;
+               try {
+                   books = info.split("#")[1].split(",");
+               } catch (Exception e){
+                   books = new String[]{""};
+               }
                ArrayList<String> bookInfo = new ArrayList<>(List.of(books));
                um.addUser(userInfo,bookInfo);
             }
@@ -55,7 +60,8 @@ public class RWUser {
             for(String book : books){
                 bookInfo += book + ",";
             }
-            if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-2);
+            if(bookInfo.charAt(0)==',')bookInfo = bookInfo.substring(1);
+            if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-1);
 
             String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum + "#" + bookInfo;
             writer.write(userInfo);
@@ -70,7 +76,7 @@ public class RWUser {
             userId = userId.replace(user.getId(),"");
             userId = userId.replace(",,",",");
             if(userId.charAt(0)==',')userId = userId.substring(1);
-            if(userId.charAt(userId.length()-1)==',')userId = userId.substring(0,userId.length()-2);
+            if(userId.charAt(userId.length()-1)==',')userId = userId.substring(0,userId.length()-1);
             writer.write(userId);
             writer.flush();
             writer.close();

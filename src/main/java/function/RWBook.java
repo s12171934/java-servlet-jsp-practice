@@ -79,7 +79,7 @@ public class RWBook {
             bookId = bookId.replace(book.getId(),"");
             bookId = bookId.replace(",,",",");
             if(bookId.charAt(0)==',')bookId = bookId.substring(1);
-            if(bookId.charAt(bookId.length()-1)==',')bookId = bookId.substring(0,bookId.length()-2);
+            if(bookId.charAt(bookId.length()-1)==',')bookId = bookId.substring(0,bookId.length()-1);
             writer.write(bookId);
             writer.flush();
             writer.close();
