@@ -53,7 +53,7 @@ public class RWUser {
             String pw = user.getPw();
             String name = user.getName();
             String sex = user.getSex();
-            String phonNum = user.getPhoneNum();
+            String phoneNum = user.getPhoneNum();
             String bookInfo = "";
 
             ArrayList<String> books = user.getCheckOutBook();
@@ -63,7 +63,7 @@ public class RWUser {
             if(bookInfo.charAt(0)==',')bookInfo = bookInfo.substring(1);
             if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-1);
 
-            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum + "#" + bookInfo;
+            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phoneNum + "#" + bookInfo;
             writer.write(userInfo);
             writer.flush();
             writer.close();

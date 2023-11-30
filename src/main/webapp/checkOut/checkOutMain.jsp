@@ -16,5 +16,12 @@
     <input type="text" name="pw" id="pw"><br>
     <input type="submit" name="feature" value="checkOut">
 </form>
+<form action="/checkOut/checkOutInfo.jsp" method="post">
+    <label for="ids">ID</label>
+    <input type="text" name="id" id="ids"><br>
+    <label for="pws">PW</label>
+    <input type="text" name="pw" id="pws"><br>
+    <input type="submit" name="feature" value="checkIn">
+</form>
 </body>
 </html>

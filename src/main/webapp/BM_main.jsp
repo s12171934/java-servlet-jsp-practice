@@ -15,7 +15,7 @@
 <div class="container" style="height: 40vh">
     <div class="container" style="width: 20vw">
         <form action="/main">
-            <input type="submit" name="page" value="CheckOut">
+            <input type="submit" name="page" value="CheckIn">
     </div>
     <div class="container" style="width: 20vw">
             <input type="submit" name="page" value="BookManager">
