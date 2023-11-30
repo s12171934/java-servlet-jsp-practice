@@ -1,11 +1,16 @@
 package userManager.user;
 
+import bookManager.book.Book;
+
+import java.util.ArrayList;
+
 public class User {
     private String id;
     private String pw;
     private String name;
     private String sex;
     private String phoneNum;
+    private ArrayList<String> checkOutBook;
 
     public User(String id, String pw, String name, String sex, String phoneNum) {
         this.id = id;
@@ -53,5 +58,13 @@ public class User {
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public ArrayList<String> getCheckOutBook() {
+        return checkOutBook;
+    }
+
+    public void setCheckOutBook(ArrayList<String> checkOutBook) {
+        this.checkOutBook = checkOutBook;
     }
 }

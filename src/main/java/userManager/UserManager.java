@@ -1,5 +1,6 @@
 package userManager;
 
+import bookManager.book.Book;
 import function.RWUser;
 import userManager.user.User;
 import userManager.userRepo.UserArrayList;
@@ -9,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager implements UM{
@@ -33,14 +35,16 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void addUser(String[] userInfo) {
+    public void addUser(String[] userInfo, ArrayList<String> bookInfo) {
         String id = userInfo[0];
         String pw = userInfo[1];
         String name = userInfo[2];
         String sex = userInfo[3];
         String phoneNum = userInfo[4];
         User user = new User(id,pw,name,sex,phoneNum);
+        user.setCheckOutBook(bookInfo);
         userList.addUser(user);
+
     }
 
     @Override

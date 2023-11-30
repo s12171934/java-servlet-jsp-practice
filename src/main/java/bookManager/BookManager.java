@@ -42,7 +42,7 @@ public class BookManager implements BM{
         RWBook.writeBook(book);
     }
     @Override
-    public void addBook(String[] bookInfo) {
+    public void addBook(String[] bookInfo,String[] checkOutInfo) {
         String classType = bookInfo[0];
         String id = bookInfo[1];
         String name = bookInfo[2];
@@ -62,6 +62,15 @@ public class BookManager implements BM{
             int len = Integer.parseInt(bookInfo[8]);
             book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
+
+        boolean checkOut = Boolean.parseBoolean(checkOutInfo[0]);
+        book.setCheckOut(checkOut);
+        if(checkOut){
+            book.setCheckOutUserId(checkOutInfo[1]);
+            book.setCheckOutStart(LocalDate.parse(checkOutInfo[2]));
+            book.setCheckOutEnd(LocalDate.parse(checkOutInfo[3]));
+        }
+
         bookList.addBook(book);
     }
     @Override

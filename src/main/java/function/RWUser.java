@@ -1,10 +1,14 @@
 package function;
 
+import bookManager.BookManager;
+import bookManager.book.Book;
 import userManager.UM;
 import userManager.user.User;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RWUser {
     static String userId;
@@ -18,8 +22,11 @@ public class RWUser {
 
             for(String id : userIds){
                reader = new BufferedReader(new FileReader(path + "user_" + id + ".txt", StandardCharsets.UTF_8));
-               String[] userInfo = reader.readLine().split(",");
-               um.addUser(userInfo);
+               String info = reader.readLine();
+               String[] userInfo = info.split("\\|")[0].split(",");
+               String[] books = info.split("\\|")[1].split(",");
+               ArrayList<String> bookInfo = new ArrayList<>(List.of(books));
+               um.addUser(userInfo,bookInfo);
             }
         } catch (Exception e) {
         }
@@ -42,7 +49,15 @@ public class RWUser {
             String name = user.getName();
             String sex = user.getSex();
             String phonNum = user.getPhoneNum();
-            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum;
+            String bookInfo = "";
+
+            ArrayList<String> books = user.getCheckOutBook();
+            for(String book : books){
+                bookInfo += book + ",";
+            }
+            if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-2);
+
+            String userInfo = id + "," + pw + "," + name + "," + sex + "," + phonNum + "\\|" + bookInfo;
             writer.write(userInfo);
             writer.flush();
             writer.close();
@@ -55,7 +70,7 @@ public class RWUser {
             userId = userId.replace(user.getId(),"");
             userId = userId.replace(",,",",");
             if(userId.charAt(0)==',')userId = userId.substring(1);
-            if(userId.charAt(userId.length()-1)==',')userId = userId.substring(0,userId.length()-1);
+            if(userId.charAt(userId.length()-1)==',')userId = userId.substring(0,userId.length()-2);
             writer.write(userId);
             writer.flush();
             writer.close();

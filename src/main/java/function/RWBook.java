@@ -21,8 +21,10 @@ public class RWBook {
 
             for(String id : bookIds){
                reader = new BufferedReader(new FileReader(path + "book_" + id + ".txt", StandardCharsets.UTF_8));
-               String[] bookInfo = reader.readLine().split(",");
-               bm.addBook(bookInfo);
+               String info = reader.readLine();
+               String[] bookInfo = info.split("\\|")[0].split(",");
+               String[] checkOutInfo = info.split("\\|")[1].split(",");
+               bm.addBook(bookInfo,checkOutInfo);
             }
         } catch (Exception e) {
         }
@@ -56,6 +58,15 @@ public class RWBook {
                     bookInfo += "," + lang + "," + len;
                 }
             }
+
+            String checkOut = book.isCheckOut()? "true":"false";
+            String checkOutUserId = book.getCheckOutUserId();
+            String checkOutStart = String.valueOf(book.getCheckOutStart());
+            String checkOutEnd = String.valueOf(book.getCheckOutEnd());
+            String checkOutInfo = checkOut + "," + checkOutUserId + "," + checkOutStart + "," + checkOutEnd;
+
+            bookInfo += "\\|" + checkOutInfo;
+
             writer.write(bookInfo);
             writer.flush();
             writer.close();
@@ -68,7 +79,7 @@ public class RWBook {
             bookId = bookId.replace(book.getId(),"");
             bookId = bookId.replace(",,",",");
             if(bookId.charAt(0)==',')bookId = bookId.substring(1);
-            if(bookId.charAt(bookId.length()-1)==',')bookId = bookId.substring(0,bookId.length()-1);
+            if(bookId.charAt(bookId.length()-1)==',')bookId = bookId.substring(0,bookId.length()-2);
             writer.write(bookId);
             writer.flush();
             writer.close();

@@ -10,6 +10,7 @@ public class Book {
     private long isbn;
     private LocalDate publishDate;
     private boolean checkOut = false;
+    private String checkOutUserId;
     private LocalDate checkOutStart;
     private LocalDate checkOutEnd;
 
@@ -71,7 +72,13 @@ public class Book {
     public void setCheckOut(boolean checkOut) {
         this.checkOut = checkOut;
     }
+    public String getCheckOutUserId() {
+        return checkOutUserId;
+    }
 
+    public void setCheckOutUserId(String id) {
+        this.checkOutUserId = id;
+    }
     public LocalDate getCheckOutStart() {
         return checkOutStart;
     }

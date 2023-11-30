@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BM {
     public void addBook(HttpServletRequest req);
-    public void addBook(String[] bookInfo);
+    public void addBook(String[] bookInfo,String[] checkOutInfo);
     public void sortBook(HttpServletRequest req);
     public List<Book> searchBook(HttpServletRequest req);
     public void editBook(HttpServletRequest req);
