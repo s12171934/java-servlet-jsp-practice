@@ -9,17 +9,18 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class RWBook {
-    static  String bookId;
+    static String bookId;
+    static String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\data\\books\\";
     public static void readBooks(BM bm){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
-            BufferedReader reader = new BufferedReader(new FileReader(path + "\\books\\bookIds.txt", StandardCharsets.UTF_8));
+
+            BufferedReader reader = new BufferedReader(new FileReader(path + "bookIds.txt", StandardCharsets.UTF_8));
             bookId = reader.readLine();
             if(bookId == null)bookId = "";
             String[] bookIds = bookId.split(",");
 
             for(String id : bookIds){
-               reader = new BufferedReader(new FileReader(path + "\\books\\book_" + id + ".txt", StandardCharsets.UTF_8));
+               reader = new BufferedReader(new FileReader(path + "book_" + id + ".txt", StandardCharsets.UTF_8));
                String[] bookInfo = reader.readLine().split(",");
                bm.addBook(bookInfo);
             }
@@ -28,8 +29,7 @@ public class RWBook {
     }
     public static void addBook(Book book){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\books\\bookIds.txt", StandardCharsets.UTF_8));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "bookIds.txt", StandardCharsets.UTF_8));
             bookId += "," + book.getId();
             writer.write(bookId);
             writer.flush();
@@ -38,8 +38,7 @@ public class RWBook {
     }
     public static void writeBook(Book book){
         try{
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\books\\book_" + book.getId() + ".txt", StandardCharsets.UTF_8));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "book_" + book.getId() + ".txt", StandardCharsets.UTF_8));
 
             String classType = book.getClassType();
             String id = book.getId();
@@ -65,8 +64,7 @@ public class RWBook {
     }
     public static void deleteBook(Book book){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\books\\bookIds.txt", StandardCharsets.UTF_8));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path + "bookIds.txt", StandardCharsets.UTF_8));
             bookId = bookId.replace(book.getId(),"");
             bookId = bookId.replace(",,",",");
             if(bookId.charAt(0)==',')bookId = bookId.substring(1);
@@ -75,7 +73,7 @@ public class RWBook {
             writer.flush();
             writer.close();
 
-            File file = new File(path + "\\books\\book_" + book.getId() + ".txt");
+            File file = new File(path + "book_" + book.getId() + ".txt");
             if(file.exists())file.delete();
 
         } catch (Exception e) {

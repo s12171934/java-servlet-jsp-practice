@@ -18,12 +18,14 @@ public class UserManager implements UM{
     public void addUser(HttpServletRequest req) {
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
+        String pwCheck = req.getParameter("pwCheck");
         String name = req.getParameter("name");
         String sex = req.getParameter("sex");
         String phoneNum = req.getParameter("phoneNum");
         for(User user : userList.getUserList()){
             if(id.equals(user.getId()))return;
         }
+        if(!pw.equals(pwCheck))return;
         User user = new User(id,pw,name,sex,phoneNum);
         userList.addUser(user);
         RWUser.addUser(user);
@@ -92,7 +94,7 @@ public class UserManager implements UM{
         String sex = req.getParameter("sex");
         String phoneNum = req.getParameter("phoneNum");
         User user = userList.getUser(id);
-
+        if(!pw.equals(user.getPw()))return;
         user.setId(id);
         user.setPw(pw);
         user.setName(name);
@@ -103,12 +105,27 @@ public class UserManager implements UM{
     }
 
     @Override
+    public void changePassWord(HttpServletRequest req) {
+        String id = req.getParameter("id");
+        String pw = req.getParameter("pw");
+        String newPw = req.getParameter("newPw");
+        String newPwCheck = req.getParameter("newPwCheck");
+        User user = userList.getUser(id);
+        if(!pw.equals(user.getPw()))return;
+        if(!newPw.equals(newPwCheck))return;
+        user.setPw(newPw);
+
+        RWUser.writeUser(user);
+    }
+
+    @Override
     public void removeUser(HttpServletRequest req) {
-        String[] ids = req.getParameterValues("ids");
-        for(String sId : ids) {
-            RWUser.deleteUser(userList.getUser(sId));
-            userList.removeUser(sId);
-        }
+        String id = req.getParameter("id");
+        String pw = req.getParameter("pw");
+        User user = userList.getUser(id);
+        if(!pw.equals(user.getPw()))return;
+        RWUser.deleteUser(user);
+        userList.removeUser(id);
     }
 
     @Override

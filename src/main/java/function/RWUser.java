@@ -7,10 +7,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class RWUser {
-    static  String userId;
+    static String userId;
+    static String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\data\\users\\";
     public static void readUsers(UM um){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\users\\";
             BufferedReader reader = new BufferedReader(new FileReader(path + "userIds.txt", StandardCharsets.UTF_8));
             userId = reader.readLine();
             if(userId == null)userId = "";
@@ -26,7 +26,6 @@ public class RWUser {
     }
     public static void addUser(User user){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\users\\";
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "userIds.txt", StandardCharsets.UTF_8));
             userId += "," + user.getId();
             writer.write(userId);
@@ -36,7 +35,6 @@ public class RWUser {
     }
     public static void writeUser(User user){
         try{
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\users\\";
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "user_" + user.getId() + ".txt", StandardCharsets.UTF_8));
 
             String id = user.getId();
@@ -53,7 +51,6 @@ public class RWUser {
     }
     public static void deleteUser(User user){
         try {
-            String path = "C:\\Users\\ast08\\IdeaProjects\\bookManager\\users\\";
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "userIds.txt", StandardCharsets.UTF_8));
             userId = userId.replace(user.getId(),"");
             userId = userId.replace(",,",",");

@@ -14,8 +14,6 @@
     <input type="text" name="id" id="id" value=<%=user.getId()%> readOnly><br>
     <label for="pw">PW</label>
     <input type="text" name="pw" id="pw"><br>
-    <label for="pw_check">PW-CHECK</label>
-    <input type="text" name="pw_check" id="pw_check"><br>
     <label for="name">NAME</label>
     <input type="text" name="name" id="name" value=<%=user.getName()%> readOnly><br>
     <label for="sex">SEX</label>

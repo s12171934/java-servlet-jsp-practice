@@ -29,5 +29,8 @@
 <form action="/userManager/userEdit.jsp">
     <input type="submit" name="sel" value="editUser">
 </form>
+<form action="/userManager/userChangePW.jsp">
+    <input type="submit" name="sel" value="changePassWord">
+</form>
 </body>
 </html>

@@ -35,6 +35,11 @@ public class UMServlet extends HttpServlet {
                 sc.setAttribute("searchUser",null);
                 sc.setAttribute("search","false");
                 break;
+            case "changePassWord":
+                um.changePassWord(req);
+                sc.setAttribute("searchUser",null);
+                sc.setAttribute("search","false");
+                break;
             case "removeUser":
                 um.removeUser(req);
                 sc.setAttribute("searchUser",null);

@@ -12,6 +12,7 @@ public interface UM {
     public void sortUser(HttpServletRequest req);
     public List<User> searchUser(HttpServletRequest req);
     public void editUser(HttpServletRequest req);
+    public void changePassWord(HttpServletRequest req);
     public void removeUser(HttpServletRequest req);
     public void printUser(HttpServletRequest req, HttpServletResponse resp);
     public User getUser(String id);

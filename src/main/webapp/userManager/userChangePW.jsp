@@ -14,7 +14,11 @@
     <input type="text" name="id" id="id" value=<%=user.getId()%> readOnly><br>
     <label for="pw">PW</label>
     <input type="text" name="pw" id="pw"><br>
-    <input type="submit" name="feature" value="removeUser">
+    <label for="newPw">NEW PW</label>
+    <input type="text" name="newPw" id="newPw"><br>
+    <label for="newPwCheck">NEW PW CHECK</label>
+    <input type="text" name="newPwCheck" id="newPwCheck"><br>
+    <input type="submit" name="feature" value="changePassWord">
 </form>
 </body>
 </html>
