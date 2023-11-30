@@ -3,7 +3,7 @@ package bookManager;
 import bookManager.book.*;
 import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
-import function.RW;
+import function.RWBook;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +22,10 @@ public class BookManager implements BM{
         String author = req.getParameter("author");
         long isbn = Long.parseLong(req.getParameter("isbn"));
         LocalDate publishDate = LocalDate.parse(req.getParameter("publishDate"));
+        for(Book book : bookList.getBookList()){
+            if(id.equals(book.getId()))return;
+        }
         Book book;
-
         if(classType.equals("Book")){
             book = new Book("Book",id,name,author,isbn,publishDate);
         } else if(classType.equals("Ebook")){
@@ -36,8 +38,8 @@ public class BookManager implements BM{
             book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
         bookList.addBook(book);
-        RW.addBook(book);
-        RW.writeBook(book);
+        RWBook.addBook(book);
+        RWBook.writeBook(book);
     }
     @Override
     public void addBook(String[] bookInfo) {
@@ -141,13 +143,13 @@ public class BookManager implements BM{
             ((AudioBook)book).setLang(lang);
             ((AudioBook)book).setLen(len);
         }
-        RW.writeBook(book);
+        RWBook.writeBook(book);
     }
     @Override
     public void removeBook(HttpServletRequest req) {
         String[] ids = req.getParameterValues("ids");
         for(String sId : ids) {
-            RW.deleteBook(bookList.getBook(sId));
+            RWBook.deleteBook(bookList.getBook(sId));
             bookList.removeBook(sId);
         }
     }

@@ -7,9 +7,8 @@ import bookManager.book.Ebook;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
-public class RW {
+public class RWBook {
     static  String bookId;
     public static void readBooks(BM bm){
         try {
