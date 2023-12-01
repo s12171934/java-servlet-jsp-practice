@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     UM um = (UserManager)application.getAttribute("UM");
-
+    String print = um.printUser(request);
 %>
 <html>
 <head>
@@ -36,8 +36,6 @@
     <input type="submit" name ="feature" value="search">
     <input type="submit" name ="feature" value="resetSearch">
 </form>
-<%
-    um.printUser(request,response);
-%>
+<%=print%>
 </body>
 </html>

@@ -15,7 +15,7 @@ public interface BM {
     public List<Book> searchBook(HttpServletRequest req);
     public void editBook(HttpServletRequest req);
     public void removeBook(HttpServletRequest req);
-    public void printBook(HttpServletRequest req,HttpServletResponse resp);
+    public String printBook(HttpServletRequest req);
     public void checkOutBook(HttpServletRequest req);
 
     public void checkInBook(HttpServletRequest req);

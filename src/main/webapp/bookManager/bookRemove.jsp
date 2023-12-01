@@ -4,14 +4,13 @@
 <%
     BM bm = (BookManager)application.getAttribute("BM");
     application.setAttribute("remove","true");
+    String print = bm.printBook(request);
 %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<%
-    bm.printBook(request,response);
-%>
+<%=print%>
 </body>
 </html>

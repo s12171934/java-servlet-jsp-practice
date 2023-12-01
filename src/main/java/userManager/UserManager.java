@@ -133,9 +133,8 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void printUser(HttpServletRequest req, HttpServletResponse resp) {
-        try {
-            PrintWriter out = resp.getWriter();
+    public String printUser(HttpServletRequest req) {
+            String data = "";
             List<User> userList1;
             ServletContext sc = req.getServletContext();
             String url = "/userManager/userInfo.jsp";
@@ -150,18 +149,19 @@ public class UserManager implements UM{
                 userList1 = userList.getUserList();
             }
             if(userList1.isEmpty()){
-                out.println("<a>" + " - / - " + "</a><br>");
+                data += "<a>" + " - / - " + "</a><br>";
             } else {
-                out.println("<form action=\"" + url + "\" method=\"post\">");
+                data += "<form action=\"" + url + "\" method=\"post\">";
                 for (User user : userList1) {
-                    out.println("<input type=\"" + (remove?"checkbox":"submit") + "\" name=\"" + (remove?"ids":"id") + "\" value=\"" + user.getId() + "\"><a>" + (remove?user.getId():"") + " / " + user.getName() + "</a><br>");
+                    data += "<input type=\"" + (remove?"checkbox":"submit") + "\" name=\"" + (remove?"ids":"id") + "\" value=\"" + user.getId() + "\"><a>"
+                            + (remove?user.getId():"") + " / " + user.getName() + "</a><br>";
                 }
                 if(remove){
-                    out.println("<input type=\"submit\" name=\"feature\" value=\"removeUser\">");
+                    data += "<input type=\"submit\" name=\"feature\" value=\"removeUser\">";
                 }
-                out.println("</form>");
+                data += "</form>";
             }
-        } catch (Exception e){}
+            return data;
     }
 
     @Override

@@ -21,17 +21,17 @@
     AUTHOR: <%=book.getAuthor()%><br>
     ISBN: <%=book.getIsbn()%><br>
     PUBLISH DATE: <%=book.getPublishDate()%><br>
-</p>
-<p>
     <%
+        String more = "";
         if(!book.getClassType().equals("Book")){
-            response.getWriter().println("SIZE: " + ((Ebook)book).getSize() + "<br>");
+            more += "SIZE: " + ((Ebook)book).getSize() + "<br>";
             if(book.getClassType().equals("AudioBook")){
-                response.getWriter().println("LANGUAGE: " + ((AudioBook)book).getLang() + "<br>");
-                response.getWriter().println("LENGTH: " + ((AudioBook)book).getLen() + "<br>");
+                more += "LANGUAGE: " + ((AudioBook)book).getLang() + "<br>";
+                more += "LENGTH: " + ((AudioBook)book).getLen() + "<br>";
             }
         }
     %>
+    <%=more%>
 </p>
 <form action="/book-manager">
     <input type="text" style="display: none" name="ids" value=<%=book.getId()%>>

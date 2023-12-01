@@ -3,25 +3,28 @@
 <%
     request.setCharacterEncoding("UTF-8");
     User user = (User)application.getAttribute("User");
+    String feature = request.getParameter("feature");
+    String url;
+    String value;
+    if(feature != null && feature.equals("checkOut")){
+        url = "/check-out-in";
+        value = "checkOut";
+    } else{
+        url = "/checkOut/checkOutInfo.jsp";
+        value = "checkIn";
+    }
 %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<form action="/check-out-in" method="post">
+<form method="post" action=<%=url%>>
     <label for="id">ID</label>
     <input type="text" name="id" id="id"><br>
     <label for="pw">PW</label>
     <input type="text" name="pw" id="pw"><br>
-    <input type="submit" name="feature" value="checkOut">
-</form>
-<form action="/checkOut/checkOutInfo.jsp" method="post">
-    <label for="ids">ID</label>
-    <input type="text" name="id" id="ids"><br>
-    <label for="pws">PW</label>
-    <input type="text" name="pw" id="pws"><br>
-    <input type="submit" name="feature" value="checkIn">
+    <input type="submit" name="feature" value=<%=value%>>
 </form>
 </body>
 </html>

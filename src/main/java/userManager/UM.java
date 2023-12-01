@@ -16,6 +16,6 @@ public interface UM {
     public void editUser(HttpServletRequest req);
     public void changePassWord(HttpServletRequest req);
     public void removeUser(HttpServletRequest req);
-    public void printUser(HttpServletRequest req, HttpServletResponse resp);
+    public String printUser(HttpServletRequest req);
     public User getUser(String id);
 }
