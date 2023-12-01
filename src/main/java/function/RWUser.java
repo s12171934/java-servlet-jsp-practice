@@ -45,8 +45,8 @@ public class RWUser {
             writer.close();
         } catch (Exception e){}
     }
-    public static void writeUser(User user){
-        try{
+    public static void writeUser(User user) {
+        try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path + "user_" + user.getId() + ".txt", StandardCharsets.UTF_8));
 
             String id = user.getId();
@@ -57,11 +57,16 @@ public class RWUser {
             String bookInfo = "";
 
             ArrayList<String> books = user.getCheckOutBook();
-            for(String book : books){
+
+            for (String book : books) {
                 bookInfo += book + ",";
             }
-            if(bookInfo.charAt(0)==',')bookInfo = bookInfo.substring(1);
-            if(bookInfo.charAt(bookInfo.length()-1)==',')bookInfo = bookInfo.substring(0,bookInfo.length()-1);
+            if(!bookInfo.isEmpty()) {
+                if (bookInfo.charAt(0) == ',') bookInfo = bookInfo.substring(1);
+                if (bookInfo.charAt(bookInfo.length() - 1) == ',')
+                    bookInfo = bookInfo.substring(0, bookInfo.length() - 1);
+            }
+
 
             String userInfo = id + "," + pw + "," + name + "," + sex + "," + phoneNum + "#" + bookInfo;
             writer.write(userInfo);
