@@ -1,7 +1,5 @@
 package servlet;
 
-import bookManager.BM;
-import bookManager.BookManager;
 import userManager.UM;
 import userManager.UserManager;
 

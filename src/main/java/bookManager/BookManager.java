@@ -4,13 +4,9 @@ import bookManager.book.*;
 import bookManager.bookRepo.BookArrayList;
 import bookManager.bookRepo.BookRepo;
 import function.RWBook;
-import function.RWUser;
-import userManager.UserManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,10 +20,12 @@ public class BookManager implements BM{
         String author = req.getParameter("author");
         long isbn = Long.parseLong(req.getParameter("isbn"));
         LocalDate publishDate = LocalDate.parse(req.getParameter("publishDate"));
-        for(Book book : bookList.getBookList()){
-            if(id.equals(book.getId()))return;
-        }
         Book book;
+
+        for(Book bookCheck : bookList.getBookList()){
+            if(id.equals(bookCheck.getId()))return;
+        }
+
         if(classType.equals("Book")){
             book = new Book("Book",id,name,author,isbn,publishDate);
         } else if(classType.equals("Ebook")){
@@ -39,6 +37,7 @@ public class BookManager implements BM{
             int len = Integer.parseInt(req.getParameter("len"));
             book = new AudioBook("AudioBook",id,name,author,isbn,publishDate,size,lang,len);
         }
+
         bookList.addBook(book);
         RWBook.addBook(book);
         RWBook.writeBook(book);
@@ -67,6 +66,7 @@ public class BookManager implements BM{
 
         boolean checkOut = Boolean.parseBoolean(checkOutInfo[0]);
         book.setCheckOut(checkOut);
+
         if(checkOut){
             book.setCheckOutUserId(checkOutInfo[1]);
             book.setCheckOutStart(LocalDate.parse(checkOutInfo[2]));
@@ -79,6 +79,7 @@ public class BookManager implements BM{
     public void sortBook(HttpServletRequest req) {
         String type = req.getParameter("type");
         boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
+
         bookList.sortBookList(type,asc);
         sortSearchBookList(req,type,asc);
     }
@@ -86,13 +87,16 @@ public class BookManager implements BM{
     public List<Book> searchBook(HttpServletRequest req) {
         String type = req.getParameter("type");
         String search = req.getParameter("search");
+
         if(search == null){
             search = req.getParameter("searchStartTime") + ":" + req.getParameter("searchEndTime");
         }
+
         return bookList.searchBook(type,search);
     }
     public void sortSearchBookList(HttpServletRequest req, String type, boolean asc) {
         ServletContext sc = req.getServletContext();
+
         try {
             List<Book> bookList2 = (List<Book>) sc.getAttribute("searchBook");
             int ascInt = asc ? 1 : -1;
@@ -124,6 +128,7 @@ public class BookManager implements BM{
                 default:
                     break;
             }
+
             sc.setAttribute("searchBook",bookList2);
         } catch (Exception e){
         }
@@ -159,6 +164,7 @@ public class BookManager implements BM{
     @Override
     public void removeBook(HttpServletRequest req) {
         String[] ids = req.getParameterValues("ids");
+
         for(String sId : ids) {
             RWBook.deleteBook(bookList.getBook(sId));
             bookList.removeBook(sId);
@@ -166,33 +172,37 @@ public class BookManager implements BM{
     }
     public String printBook(HttpServletRequest req){
         String data = "";
-            List<Book> bookList1;
-            ServletContext sc = req.getServletContext();
-            String url = "/bookManager/bookInfo.jsp";
-            boolean remove = false;
-            if(sc.getAttribute("removeBook")!=null && sc.getAttribute("removeBook").equals("true")){
-                url = "/book-manager";
-                remove = true;
+        List<Book> bookList1;
+        ServletContext sc = req.getServletContext();
+        String url = "/bookManager/bookInfo.jsp";
+        boolean remove = false;
+        if(sc.getAttribute("removeBook")!=null && sc.getAttribute("removeBook").equals("true")){
+            url = "/book-manager";
+            remove = true;
+        }
+        if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
+            bookList1 = (List<Book>)req.getServletContext().getAttribute("searchBook");
+        } else{
+            bookList1 = bookList.getBookList();
+        }
+        if(bookList1.isEmpty()){
+            data += "<a>" + " - / - " + "</a><br>";
+        } else {
+            data += "<form action=\"" + url + "\" method=\"post\">";
+            for (Book book : bookList1) {
+                data += "<input type=\""
+                        + (remove?"checkbox":"submit")
+                        + "\" name=\"" + (remove?"ids":"id")
+                        + "\" value=\"" + book.getId() + "\"><a>"
+                        + (remove?book.getId():"") + " / " + book.getName() + " / " + book.getClassType()
+                        + "</a><br>";
             }
-            if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
-                bookList1 = (List<Book>)req.getServletContext().getAttribute("searchBook");
-            } else{
-                bookList1 = bookList.getBookList();
+            if(remove){
+                data += "<input type=\"submit\" name=\"feature\" value=\"removeBook\">";
             }
-            if(bookList1.isEmpty()){
-                data += "<a>" + " - / - " + "</a><br>";
-            } else {
-                data += "<form action=\"" + url + "\" method=\"post\">";
-                for (Book book : bookList1) {
-                    data += "<input type=\"" + (remove?"checkbox":"submit") + "\" name=\"" + (remove?"ids":"id") + "\" value=\"" + book.getId() + "\"><a>"
-                            + (remove?book.getId():"") + " / " + book.getName() + " / " + book.getClassType() + "</a><br>";
-                }
-                if(remove){
-                    data += "<input type=\"submit\" name=\"feature\" value=\"removeBook\">";
-                }
-                data += "</form>";
-            }
-            return data;
+            data += "</form>";
+        }
+        return data;
     }
     @Override
     public Book getBook(String id) {

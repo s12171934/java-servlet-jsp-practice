@@ -1,6 +1,5 @@
 package userManager;
 
-import bookManager.book.Book;
 import function.RWUser;
 import userManager.user.User;
 import userManager.userRepo.UserArrayList;
@@ -8,8 +7,6 @@ import userManager.userRepo.UserRepo;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +21,12 @@ public class UserManager implements UM{
         String name = req.getParameter("name");
         String sex = req.getParameter("sex");
         String phoneNum = req.getParameter("phoneNum");
+
         for(User user : userList.getUserList()){
             if(id.equals(user.getId()))return;
         }
         if(!pw.equals(pwCheck))return;
+
         User user = new User(id,pw,name,sex,phoneNum);
         userList.addUser(user);
         RWUser.addUser(user);
@@ -41,6 +40,7 @@ public class UserManager implements UM{
         String name = userInfo[2];
         String sex = userInfo[3];
         String phoneNum = userInfo[4];
+
         User user = new User(id,pw,name,sex,phoneNum);
         user.setCheckOutBook(bookInfo);
         userList.addUser(user);
@@ -51,6 +51,7 @@ public class UserManager implements UM{
     public void sortUser(HttpServletRequest req) {
         String type = req.getParameter("type");
         boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
+
         userList.sortUserList(type,asc);
         sortSearchUserList(req,type,asc);
     }
@@ -59,10 +60,12 @@ public class UserManager implements UM{
     public List<User> searchUser(HttpServletRequest req) {
         String type = req.getParameter("type");
         String search = req.getParameter("search");
+
         return userList.searchUser(type,search);
     }
     public void sortSearchUserList(HttpServletRequest req, String type, boolean asc) {
         ServletContext sc = req.getServletContext();
+
         try {
             List<User> userList2 = (List<User>) sc.getAttribute("searchUser");
             int ascInt = asc ? 1 : -1;
@@ -85,6 +88,7 @@ public class UserManager implements UM{
                 default:
                     break;
             }
+
             sc.setAttribute("searchUser",userList2);
         } catch (Exception e){
         }
@@ -98,13 +102,14 @@ public class UserManager implements UM{
         String sex = req.getParameter("sex");
         String phoneNum = req.getParameter("phoneNum");
         User user = userList.getUser(id);
+
         if(!pw.equals(user.getPw()))return;
+
         user.setId(id);
         user.setPw(pw);
         user.setName(name);
         user.setSex(sex);
         user.setPhoneNum(phoneNum);
-
         RWUser.writeUser(user);
     }
 
@@ -115,10 +120,11 @@ public class UserManager implements UM{
         String newPw = req.getParameter("newPw");
         String newPwCheck = req.getParameter("newPwCheck");
         User user = userList.getUser(id);
+
         if(!pw.equals(user.getPw()))return;
         if(!newPw.equals(newPwCheck))return;
-        user.setPw(newPw);
 
+        user.setPw(newPw);
         RWUser.writeUser(user);
     }
 
@@ -127,41 +133,50 @@ public class UserManager implements UM{
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
         User user = userList.getUser(id);
+
         if(!pw.equals(user.getPw()))return;
+
         RWUser.deleteUser(user);
         userList.removeUser(id);
     }
 
     @Override
     public String printUser(HttpServletRequest req) {
-            String data = "";
-            List<User> userList1;
-            ServletContext sc = req.getServletContext();
-            String url = "/userManager/userInfo.jsp";
-            boolean remove = false;
-            if(sc.getAttribute("removeUser")!=null && sc.getAttribute("removeUser").equals("true")){
-                url = "/user-manager";
-                remove = true;
+        String data = "";
+        List<User> userList1;
+        ServletContext sc = req.getServletContext();
+        String url = "/userManager/userInfo.jsp";
+        boolean remove = false;
+
+        if(sc.getAttribute("removeUser")!=null && sc.getAttribute("removeUser").equals("true")){
+            url = "/user-manager";
+            remove = true;
+        }
+
+        if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
+            userList1 = (List<User>)req.getServletContext().getAttribute("searchBook");
+        } else{
+            userList1 = userList.getUserList();
+        }
+
+        if(userList1.isEmpty()){
+            data += "<a>" + " - / - " + "</a><br>";
+        } else {
+            data += "<form action=\"" + url + "\" method=\"post\">";
+            for (User user : userList1) {
+                data += "<input type=\""
+                        + (remove?"checkbox":"submit")
+                        + "\" name=\"" + (remove?"ids":"id")
+                        + "\" value=\"" + user.getId() + "\"><a>"
+                        + (remove?user.getId() + " / ":"") + user.getName()
+                        + "</a><br>";
             }
-            if(sc.getAttribute("search") != null && sc.getAttribute("search").equals("true")){
-                userList1 = (List<User>)req.getServletContext().getAttribute("searchBook");
-            } else{
-                userList1 = userList.getUserList();
+            if(remove){
+                data += "<input type=\"submit\" name=\"feature\" value=\"removeUser\">";
             }
-            if(userList1.isEmpty()){
-                data += "<a>" + " - / - " + "</a><br>";
-            } else {
-                data += "<form action=\"" + url + "\" method=\"post\">";
-                for (User user : userList1) {
-                    data += "<input type=\"" + (remove?"checkbox":"submit") + "\" name=\"" + (remove?"ids":"id") + "\" value=\"" + user.getId() + "\"><a>"
-                            + (remove?user.getId():"") + " / " + user.getName() + "</a><br>";
-                }
-                if(remove){
-                    data += "<input type=\"submit\" name=\"feature\" value=\"removeUser\">";
-                }
-                data += "</form>";
-            }
-            return data;
+            data += "</form>";
+        }
+        return data;
     }
 
     @Override
