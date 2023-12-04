@@ -14,7 +14,7 @@ public class UserManager implements UM{
 
     UserRepo userList = new UserArrayList();
     @Override
-    public void addUser(HttpServletRequest req) {
+    public void addUser(HttpServletRequest req) throws Exception{
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
         String pwCheck = req.getParameter("pwCheck");
@@ -34,7 +34,7 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void addUser(String[] userInfo, ArrayList<String> bookInfo) {
+    public void addUser(String[] userInfo, ArrayList<String> bookInfo) throws Exception{
         String id = userInfo[0];
         String pw = userInfo[1];
         String name = userInfo[2];
@@ -48,7 +48,7 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void sortUser(HttpServletRequest req) {
+    public void sortUser(HttpServletRequest req) throws Exception{
         String type = req.getParameter("type");
         boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
 
@@ -57,45 +57,40 @@ public class UserManager implements UM{
     }
 
     @Override
-    public List<User> searchUser(HttpServletRequest req) {
+    public List<User> searchUser(HttpServletRequest req) throws Exception{
         String type = req.getParameter("type");
         String search = req.getParameter("search");
 
         return userList.searchUser(type,search);
     }
-    public void sortSearchUserList(HttpServletRequest req, String type, boolean asc) {
+    public void sortSearchUserList(HttpServletRequest req, String type, boolean asc) throws Exception{
         ServletContext sc = req.getServletContext();
 
-        try {
-            List<User> userList2 = (List<User>) sc.getAttribute("searchUser");
-            int ascInt = asc ? 1 : -1;
-            switch (type) {
-                case "id":
-                    userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getId().compareTo(user2.getId()), 0));
-                    break;
-                case "pw":
-                    userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getPw().compareTo(user2.getPw()), 0));
-                    break;
-                case "name":
-                    userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getName().compareTo(user2.getName()), 0));
-                    break;
-                case "sex":
-                    userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getSex().compareTo(user2.getSex()), 0));
-                    break;
-                case "phoneNum":
-                    userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getPhoneNum().compareTo(user2.getPhoneNum()), 0));
-                    break;
-                default:
-                    break;
-            }
-
-            sc.setAttribute("searchUser",userList2);
-        } catch (Exception e){
+        List<User> userList2 = (List<User>) sc.getAttribute("searchUser");
+        int ascInt = asc ? 1 : -1;
+        switch (type) {
+            case "id":
+                userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getId().compareTo(user2.getId()), 0));
+                break;
+            case "pw":
+                userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getPw().compareTo(user2.getPw()), 0));
+                break;
+            case "name":
+                userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getName().compareTo(user2.getName()), 0));
+                break;
+            case "sex":
+                userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getSex().compareTo(user2.getSex()), 0));
+                break;
+            case "phoneNum":
+                userList2.sort((user1, user2) -> Integer.compare(ascInt * user1.getPhoneNum().compareTo(user2.getPhoneNum()), 0));break;
+            default:
+                break;
         }
+        sc.setAttribute("searchUser",userList2);
     }
 
     @Override
-    public void editUser(HttpServletRequest req) {
+    public void editUser(HttpServletRequest req) throws Exception{
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
         String name = req.getParameter("name");
@@ -114,7 +109,7 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void changePassWord(HttpServletRequest req) {
+    public void changePassWord(HttpServletRequest req) throws Exception{
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
         String newPw = req.getParameter("newPw");
@@ -129,7 +124,7 @@ public class UserManager implements UM{
     }
 
     @Override
-    public void removeUser(HttpServletRequest req) {
+    public void removeUser(HttpServletRequest req) throws Exception{
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
         User user = userList.getUser(id);
