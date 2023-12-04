@@ -6,10 +6,10 @@
     String url;
     String value;
     if(feature != null && feature.equals("checkOut")){
-        url = "/check-out-in";
+        url = "/rent";
         value = "checkOut";
     } else{
-        url = "/checkOut/checkOutInfo.jsp";
+        url = "/rentManager/rentBook.jsp";
         value = "checkIn";
     }
 %>

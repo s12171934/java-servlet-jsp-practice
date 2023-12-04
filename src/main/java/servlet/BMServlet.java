@@ -20,35 +20,48 @@ public class BMServlet extends HttpServlet {
         String feature = req.getParameter("feature");
         ServletContext sc = getServletContext();
         BM bm = (BookManager)sc.getAttribute("BM");
-
-        switch (feature){
-            case "addBook":
-                bm.addBook(req);
-                sc.setAttribute("searchBook",null);
-                sc.setAttribute("search","false");
-                break;
-            case "editBook":
-                bm.editBook(req);
-                sc.setAttribute("searchBook",null);
-                sc.setAttribute("search","false");
-                break;
-            case "removeBook":
-                bm.removeBook(req);
-                sc.setAttribute("searchBook",null);
-                sc.setAttribute("search","false");
-                sc.setAttribute("removeBook","false");
-                break;
-            case "sort" : bm.sortBook(req);break;
-            case "search" :
-                sc.setAttribute("searchBook",bm.searchBook(req));
-                sc.setAttribute("search","true");
-                break;
-            case "resetSearch" :
-                sc.setAttribute("searchBook",null);
-                sc.setAttribute("search","false");
-                break;
+        try {
+            switch (feature) {
+                case "addBook":
+                    bm.addBook(req);
+                    sc.setAttribute("searchBook", null);
+                    sc.setAttribute("search", "false");
+                    break;
+                case "editBook":
+                    bm.editBook(req);
+                    sc.setAttribute("searchBook", null);
+                    sc.setAttribute("search", "false");
+                    break;
+                case "removeBook":
+                    bm.removeBook(req);
+                    sc.setAttribute("searchBook", null);
+                    sc.setAttribute("search", "false");
+                    sc.setAttribute("removeBook", "false");
+                    break;
+                case "sort":
+                    bm.sortBook(req);
+                    break;
+                case "search":
+                    sc.setAttribute("searchBook", bm.searchBook(req));
+                    sc.setAttribute("search", "true");
+                    break;
+                case "resetSearch":
+                    sc.setAttribute("searchBook", null);
+                    sc.setAttribute("search", "false");
+                    break;
+            }
+            sc.setAttribute("BM",bm);
+            resp.sendRedirect("/bookManager/bookMain.jsp");
+        } catch (Exception e){
+            String errorUrl ="/bookManager/bookMain.jsp";
+            switch (feature) {
+                case "addBook": errorUrl = "/bookManager/bookAdd.jsp"; break;
+                case "editBook": errorUrl = "/bookManager/bookEdit.jsp"; break;
+                case "removeBook": errorUrl = "/bookManager/bookRemove.jsp"; break;
+                default: break;
+            }
+            sc.setAttribute("error",errorUrl);
+            resp.sendRedirect("/error.jsp");
         }
-        sc.setAttribute("BM",bm);
-        resp.sendRedirect("/bookManager/bookMain.jsp");
     }
 }

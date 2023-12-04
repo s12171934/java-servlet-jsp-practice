@@ -13,7 +13,7 @@ import java.util.List;
 public class BookManager implements BM{
     BookRepo bookList = new BookArrayList();
     @Override
-    public void addBook(HttpServletRequest req) {
+    public void addBook(HttpServletRequest req) throws Exception{
         String classType = req.getParameter("classType");
         String id = req.getParameter("id");
         String name = req.getParameter("name");
@@ -43,7 +43,7 @@ public class BookManager implements BM{
         RWBook.writeBook(book);
     }
     @Override
-    public void addBook(String[] bookInfo,String[] checkOutInfo) {
+    public void addBook(String[] bookInfo,String[] checkOutInfo) throws Exception {
         String classType = bookInfo[0];
         String id = bookInfo[1];
         String name = bookInfo[2];
@@ -76,7 +76,7 @@ public class BookManager implements BM{
         bookList.addBook(book);
     }
     @Override
-    public void sortBook(HttpServletRequest req) {
+    public void sortBook(HttpServletRequest req) throws Exception {
         String type = req.getParameter("type");
         boolean asc = Boolean.parseBoolean(req.getParameter("asc"));
 
@@ -84,7 +84,7 @@ public class BookManager implements BM{
         sortSearchBookList(req,type,asc);
     }
     @Override
-    public List<Book> searchBook(HttpServletRequest req) {
+    public List<Book> searchBook(HttpServletRequest req) throws Exception {
         String type = req.getParameter("type");
         String search = req.getParameter("search");
 
@@ -94,47 +94,44 @@ public class BookManager implements BM{
 
         return bookList.searchBook(type,search);
     }
-    public void sortSearchBookList(HttpServletRequest req, String type, boolean asc) {
+    public void sortSearchBookList(HttpServletRequest req, String type, boolean asc) throws Exception{
         ServletContext sc = req.getServletContext();
 
-        try {
-            List<Book> bookList2 = (List<Book>) sc.getAttribute("searchBook");
-            int ascInt = asc ? 1 : -1;
-            switch (type) {
-                case "id":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getId().compareTo(book2.getId()), 0));
-                    break;
-                case "name":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getName().compareTo(book2.getName()), 0));
-                    break;
-                case "author":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getAuthor().compareTo(book2.getAuthor()), 0));
-                    break;
-                case "isbn":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Long.compare(book1.getIsbn(), book2.getIsbn()), 0));
-                    break;
-                case "publishDate":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getPublishDate().compareTo(book2.getPublishDate()), 0));
-                    break;
-                case "size":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((Ebook) book1).getSize(), ((Ebook) book2).getSize()), 0));
-                    break;
-                case "lang":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * ((AudioBook) book1).getLang().compareTo(((AudioBook) book2).getLang()), 0));
-                    break;
-                case "len":
-                    bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((AudioBook) book1).getLen(), ((AudioBook) book2).getLen()), 0));
-                    break;
-                default:
-                    break;
-            }
-
-            sc.setAttribute("searchBook",bookList2);
-        } catch (Exception e){
+        List<Book> bookList2 = (List<Book>) sc.getAttribute("searchBook");
+        int ascInt = asc ? 1 : -1;
+        switch (type) {
+            case "id":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getId().compareTo(book2.getId()), 0));
+                break;
+            case "name":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getName().compareTo(book2.getName()), 0));
+                break;
+            case "author":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getAuthor().compareTo(book2.getAuthor()), 0));
+                break;
+            case "isbn":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * Long.compare(book1.getIsbn(), book2.getIsbn()), 0));
+                break;
+            case "publishDate":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * book1.getPublishDate().compareTo(book2.getPublishDate()), 0));
+                break;
+            case "size":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((Ebook) book1).getSize(), ((Ebook) book2).getSize()), 0));
+                break;
+            case "lang":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * ((AudioBook) book1).getLang().compareTo(((AudioBook) book2).getLang()), 0));
+                break;
+            case "len":
+                bookList2.sort((book1, book2) -> Integer.compare(ascInt * Integer.compare(((AudioBook) book1).getLen(), ((AudioBook) book2).getLen()), 0));
+                break;
+            default:
+                break;
         }
+
+        sc.setAttribute("searchBook",bookList2);
     }
     @Override
-    public void editBook(HttpServletRequest req) {
+    public void editBook(HttpServletRequest req) throws Exception {
         String classType = req.getParameter("classType");
         String id = req.getParameter("id");
         String name = req.getParameter("name");
@@ -162,7 +159,7 @@ public class BookManager implements BM{
         RWBook.writeBook(book);
     }
     @Override
-    public void removeBook(HttpServletRequest req) {
+    public void removeBook(HttpServletRequest req) throws Exception {
         String[] ids = req.getParameterValues("ids");
 
         for(String sId : ids) {
@@ -209,7 +206,7 @@ public class BookManager implements BM{
         return bookList.getBook(id);
     }
     @Override
-    public void checkOutBook(HttpServletRequest req) {
+    public void checkOutBook(HttpServletRequest req)  throws Exception{
         ServletContext sc = req.getServletContext();
         Book book = (Book)sc.getAttribute("Book");
         book.setCheckOut(true);
@@ -220,7 +217,7 @@ public class BookManager implements BM{
     }
 
     @Override
-    public void checkInBook(HttpServletRequest req) {
+    public void checkInBook(HttpServletRequest req) throws Exception{
         ServletContext sc = req.getServletContext();
         Book book = (Book)sc.getAttribute("Book");
         book.setCheckOut(false);

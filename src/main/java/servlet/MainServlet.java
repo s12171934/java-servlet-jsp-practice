@@ -36,8 +36,8 @@ public class MainServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String page = req.getParameter("page");
         switch (page) {
-            case "CheckIn":
-                resp.sendRedirect("/checkOut/checkOutMain.jsp");
+            case "RentManager":
+                resp.sendRedirect("/rentManager/rentUser.jsp");
                 break;
             case "BookManager":
                 resp.sendRedirect("/bookManager/bookMain.jsp");

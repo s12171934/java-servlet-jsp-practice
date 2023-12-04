@@ -19,7 +19,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/check-out-in" method="post">
+<form action="/rent" method="post">
     <label for="ids">ID</label>
     <input type="text" name="id" id="ids" value=<%=request.getParameter("id")%> readOnly><br>
     <label for="pws">PW</label>
