@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     BM bm = (BookManager)application.getAttribute("BM");
-    application.setAttribute("remove","true");
+    application.setAttribute("removeBook","true");
     String print = bm.printBook(request);
 %>
 <html>

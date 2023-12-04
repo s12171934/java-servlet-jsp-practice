@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     request.setCharacterEncoding("UTF-8");
-    User user = (User)application.getAttribute("User");
     String feature = request.getParameter("feature");
     String url;
     String value;
