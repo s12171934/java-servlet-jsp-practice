@@ -46,26 +46,26 @@ public class Calc2Servlet extends HttpServlet {
             for(String s : midArr){
                 if(isNumber(s)){
                     backArr.add(s);
-                } else{
-                    if(temp.isEmpty()){
-                        temp.push(s);
-                    } else{
-                        if(s.equals("(")){
-                            temp.push(s);
-                        } else if(s.equals(")")){
-                            while(!temp.peek().equals("(")){
-                                backArr.add(temp.peek());
-                                temp.pop();
-                            }
-                            temp.pop();
-                        } else{
-                            if(temp.peek().equals("*") || temp.peek().equals("/")){
-                                backArr.add(temp.peek());
-                                temp.pop();
-                            }
-                            temp.push(s);
-                        }
+                    continue;
+                }
+                if(temp.isEmpty()){
+                    temp.push(s);
+                    continue;
+                }
+                if(s.equals("(")){
+                    temp.push(s);
+                } else if(s.equals(")")){
+                    while(!temp.peek().equals("(")){
+                        backArr.add(temp.peek());
+                        temp.pop();
                     }
+                    temp.pop();
+                } else{
+                    if(temp.peek().equals("*") || temp.peek().equals("/")){
+                        backArr.add(temp.peek());
+                        temp.pop();
+                    }
+                    temp.push(s);
                 }
             }
             while(!temp.isEmpty()){
@@ -77,19 +77,19 @@ public class Calc2Servlet extends HttpServlet {
             for(String s : backArr){
                 if(isNumber(s)){
                     temp.push(s);
-                } else {
-                    //나누기를 위해 실수형으로 계산
-                    double num2 = Double.parseDouble(temp.peek());
-                    temp.pop();
-                    double num1 = Double.parseDouble(temp.peek());
-                    temp.pop();
+                    continue;
+                }
 
-                    switch (s){
-                        case "+":temp.push(String.valueOf(num1 + num2));break;
-                        case "-":temp.push(String.valueOf(num1 - num2));break;
-                        case "*":temp.push(String.valueOf(num1 * num2));break;
-                        case "/":temp.push(String.valueOf(num1 / num2));break;
-                    }
+                //나누기를 위해 실수형으로 계산
+                double num2 = Double.parseDouble(temp.peek());
+                temp.pop();
+                double num1 = Double.parseDouble(temp.peek());
+                temp.pop();
+                switch (s){
+                    case "+":temp.push(String.valueOf(num1 + num2));break;
+                    case "-":temp.push(String.valueOf(num1 - num2));break;
+                    case "*":temp.push(String.valueOf(num1 * num2));break;
+                    case "/":temp.push(String.valueOf(num1 / num2));break;
                 }
             }
             //실수 중 정수는 소숫점 제외하고 출력
@@ -101,8 +101,6 @@ public class Calc2Servlet extends HttpServlet {
             }
         } catch (Exception e){
             result = "올바른 표현식이 아닙니다.";
-            req.setAttribute("result",result);
-            rd.forward(req,resp);
         }
 
         req.setAttribute("result",result);
