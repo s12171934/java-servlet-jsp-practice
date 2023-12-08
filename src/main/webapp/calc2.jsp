@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%Object result = request.getAttribute("result");%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
             <input type="text" name="exp">
         </div>
         <div>
-            <input type="submit" value="=">&nbsp;<%=request.getAttribute("result")%>
+            <input type="submit" value="=">&nbsp;<%=result != null ? result:""%>
         </div>
     </form>
 </div>

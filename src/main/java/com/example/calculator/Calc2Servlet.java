@@ -28,14 +28,20 @@ public class Calc2Servlet extends HttpServlet {
         RequestDispatcher rd = sc.getRequestDispatcher("/calc2.jsp");
 
         //String 숫자와 기호 분리
+        boolean minus = true;
         for(String s : exp.split("")){
             if(isNumber(s)){
                 addList += s;
+                minus = false;
             } else {
                 if(!addList.isEmpty()){
                     midArr.add(addList);
                     addList = "";
+                } else if(minus && s.equals("-")){
+                    addList += s;
+                    continue;
                 }
+                if(s.equals("("))minus = true;
                 midArr.add(s);
             }
         }
