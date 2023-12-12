@@ -9,8 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="refactoring - 음수삽입가능">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="peek pop refactoring">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +166,7 @@
       <workItem from="1701995333766" duration="6697000" />
       <workItem from="1702253132712" duration="44000" />
       <workItem from="1702282335739" duration="550000" />
-      <workItem from="1702355754703" duration="2061000" />
+      <workItem from="1702355754703" duration="2379000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring - 중위표기법 -&gt; 후위표기법">
       <option name="closed" value="true" />
@@ -185,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701996666285</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="peek pop refactoring">
+      <option name="closed" value="true" />
+      <created>1702357931839</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702357931839</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +212,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring - 중위표기법 -&gt; 후위표기법" />
     <MESSAGE value="refactoring - 음수삽입가능" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring - 음수삽입가능" />
+    <MESSAGE value="peek pop refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="peek pop refactoring" />
   </component>
 </project>

@@ -51,14 +51,17 @@ public class Calc2Servlet extends HttpServlet {
         //중위 표기법 -> 후위 표기법
         try{
             for(String s : midArr){
+                //1.숫자 확인
                 if(isNumber(s)){
                     backArr.add(s);
                     continue;
                 }
+                //2.스택 초기값 확인
                 if(temp.isEmpty()){
                     temp.push(s);
                     continue;
                 }
+                //3.닫는 괄호 확인 시 여는 괄호 까지 출력
                 if(s.equals(")")){
                     while(!temp.peek().equals("(")){
                         backArr.add(temp.pop());
@@ -66,7 +69,8 @@ public class Calc2Servlet extends HttpServlet {
                     temp.pop();
                     continue;
                 }
-                if(temp.peek().equals("*") || temp.peek().equals("/")){
+                //4.스택 최상단 값이 *, / 일때 출력 후 스택삽입
+                if(!s.equals("(") && (temp.peek().equals("*") || temp.peek().equals("/"))){
                     backArr.add(temp.pop());
                 }
                 temp.push(s);
