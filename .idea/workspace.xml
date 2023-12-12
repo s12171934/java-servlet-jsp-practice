@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="refactoring - 중위표기법 -&gt; 후위표기법">
+    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="refactoring - 음수삽입가능">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/calc2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/calc2.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,10 @@
       <workItem from="1700231781363" duration="6371000" />
       <workItem from="1701838217856" duration="2504000" />
       <workItem from="1701924093465" duration="1306000" />
-      <workItem from="1701995333766" duration="994000" />
+      <workItem from="1701995333766" duration="6697000" />
+      <workItem from="1702253132712" duration="44000" />
+      <workItem from="1702282335739" duration="550000" />
+      <workItem from="1702355754703" duration="2061000" />
     </task>
     <task id="LOCAL-00001" summary="refactoring - 중위표기법 -&gt; 후위표기법">
       <option name="closed" value="true" />
@@ -175,25 +177,34 @@
       <option name="project" value="LOCAL" />
       <updated>1701838574364</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactoring - 음수삽입가능">
+      <option name="closed" value="true" />
+      <created>1701996666285</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701996666285</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactoring - 중위표기법 -&gt; 후위표기법" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring - 중위표기법 -&gt; 후위표기법" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="refactoring - 음수삽입가능" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring - 음수삽입가능" />
   </component>
 </project>

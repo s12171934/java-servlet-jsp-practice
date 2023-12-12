@@ -21,9 +21,10 @@ public class Calc2Servlet extends HttpServlet {
         exp = exp.replace(" ", "");
         ArrayList<String> midArr = new ArrayList<>();
         ArrayList<String> backArr = new ArrayList<>();
+
         Stack<String> temp = new Stack<>();
         String addList = "";
-        String result = "";
+        String result;
         ServletContext sc = req.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher("/calc2.jsp");
 
@@ -37,11 +38,11 @@ public class Calc2Servlet extends HttpServlet {
                 if(!addList.isEmpty()){
                     midArr.add(addList);
                     addList = "";
-                } else if(minus && s.equals("-")){
+                } else if(minus && s.equals("-")){ // 음수 처리
                     addList += s;
                     continue;
                 }
-                if(s.equals("("))minus = true;
+                if(s.equals("("))minus = true; // 음수 처리
                 midArr.add(s);
             }
         }
@@ -58,25 +59,20 @@ public class Calc2Servlet extends HttpServlet {
                     temp.push(s);
                     continue;
                 }
-                if(s.equals("(")){
-                    temp.push(s);
-                } else if(s.equals(")")){
+                if(s.equals(")")){
                     while(!temp.peek().equals("(")){
-                        backArr.add(temp.peek());
-                        temp.pop();
+                        backArr.add(temp.pop());
                     }
                     temp.pop();
-                } else{
-                    if(temp.peek().equals("*") || temp.peek().equals("/")){
-                        backArr.add(temp.peek());
-                        temp.pop();
-                    }
-                    temp.push(s);
+                    continue;
                 }
+                if(temp.peek().equals("*") || temp.peek().equals("/")){
+                    backArr.add(temp.pop());
+                }
+                temp.push(s);
             }
             while(!temp.isEmpty()){
-                backArr.add(temp.peek());
-                temp.pop();
+                backArr.add(temp.pop());
             }
 
             // 후위 표기법 계산
@@ -87,10 +83,8 @@ public class Calc2Servlet extends HttpServlet {
                 }
 
                 //나누기를 위해 실수형으로 계산
-                double num2 = Double.parseDouble(temp.peek());
-                temp.pop();
-                double num1 = Double.parseDouble(temp.peek());
-                temp.pop();
+                double num2 = Double.parseDouble(temp.pop());
+                double num1 = Double.parseDouble(temp.pop());
                 switch (s){
                     case "+":temp.push(String.valueOf(num1 + num2));break;
                     case "-":temp.push(String.valueOf(num1 - num2));break;
@@ -99,7 +93,7 @@ public class Calc2Servlet extends HttpServlet {
                 }
             }
             //실수 중 정수는 소숫점 제외하고 출력
-            double resultD = Double.parseDouble(temp.peek());
+            double resultD = Double.parseDouble(temp.pop());
             if(resultD % 1 == 0){
                 result = String.valueOf((int)resultD);
             } else{
