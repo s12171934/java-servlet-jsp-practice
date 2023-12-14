@@ -19,6 +19,7 @@ public class Calc2Servlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String exp = req.getParameter("exp");
         exp = exp.replace(" ", "");
+        exp = exp.replace("", "");
         ArrayList<String> midArr = new ArrayList<>();
         ArrayList<String> backArr = new ArrayList<>();
 
@@ -40,9 +41,12 @@ public class Calc2Servlet extends HttpServlet {
                     addList = "";
                 } else if(minus && s.equals("-")){ // 음수 처리
                     addList += s;
-                    continue;
                 }
                 if(s.equals("("))minus = true; // 음수 처리
+                if(s.equals("-")){
+                    addList += s;
+                    s = "+";
+                }
                 midArr.add(s);
             }
         }
