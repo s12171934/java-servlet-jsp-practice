@@ -28,9 +28,8 @@ public class Calc2Servlet extends HttpServlet {
         }
 
         ServletContext sc = req.getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher("/calc2.jsp");
-        req.setAttribute("result",result);
-        rd.forward(req,resp);
+        sc.setAttribute("result",result);
+        resp.sendRedirect("/calc2.jsp");
     }
 
     private boolean isNumber(String s){

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%Object result = request.getAttribute("result");%>
+<%Object result = application.getAttribute("result");%>
 <!doctype html>
 <html lang="en">
 <head>
