@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="+ 주석">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ast08.xml" afterDir="false" />
+    <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="refacotring method화">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +87,7 @@
       <deployment>
         <artifact name="calculator:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/calculator_war_exploded" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
@@ -224,7 +222,39 @@
       <option name="project" value="LOCAL" />
       <updated>1702358168212</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refacotring 후위표기식">
+      <option name="closed" value="true" />
+      <created>1702519572926</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702519572926</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refacotring method화">
+      <option name="closed" value="true" />
+      <created>1702520261557</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702520261557</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refacotring method화">
+      <option name="closed" value="true" />
+      <created>1702520369329</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702520369329</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refacotring method화">
+      <option name="closed" value="true" />
+      <created>1702520385643</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702520385643</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,17 +276,8 @@
     <MESSAGE value="refactoring - 음수삽입가능" />
     <MESSAGE value="peek pop refactoring" />
     <MESSAGE value="+ 주석" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ 주석" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="refacotring 후위표기식" />
+    <MESSAGE value="refacotring method화" />
+    <option name="LAST_COMMIT_MESSAGE" value="refacotring method화" />
   </component>
 </project>
