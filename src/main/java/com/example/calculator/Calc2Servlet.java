@@ -29,7 +29,7 @@ public class Calc2Servlet extends HttpServlet {
         ServletContext sc = req.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher("/calc2.jsp");
 
-        //String 숫자와 기호 분리
+        // String 숫자와 기호 분리
         boolean minus = true;
         for(String s : exp.split("")){
             if(isNumber(s)){
@@ -42,55 +42,52 @@ public class Calc2Servlet extends HttpServlet {
                 } else if(minus && s.equals("-")){ // 음수 처리
                     addList += s;
                 }
-                if(s.equals("("))minus = true; // 음수 처리
-                if(s.equals("-")){
-                    addList += s;
-                    s = "+";
-                }
+                if(s.equals("(")) minus = true; // 음수 처리
                 midArr.add(s);
             }
         }
         if(!addList.isEmpty())midArr.add(addList);
 
-        //중위 표기법 -> 후위 표기법
+        // 중위 표기법 -> 후위 표기법
         try{
             for(String s : midArr){
-                //1.숫자 확인
+                //1. 숫자 확인
                 if(isNumber(s)){
                     backArr.add(s);
                     continue;
                 }
-                //2.스택 초기값 확인
+                //2. 스택 초기값 확인
                 if(temp.isEmpty()){
                     temp.push(s);
                     continue;
                 }
-                //3.닫는 괄호 확인 시 여는 괄호 까지 출력
-                if(s.equals(")")){
-                    while(!temp.peek().equals("(")){
-                        backArr.add(temp.pop());
-                    }
-                    temp.pop();
-                    continue;
-                }
-                //4.스택 최상단 값이 *, / 일때 출력 후 스택삽입
+                //3. 스택 최상단 값이 *, / 일때 출력 후 스택삽입
                 if(!s.equals("(") && (temp.peek().equals("*") || temp.peek().equals("/"))){
                     backArr.add(temp.pop());
                 }
-                temp.push(s);
+                //4. 스택에 + / - 삽입 할때, ( 이전 모두 출력
+                if(!(temp.isEmpty() || temp.peek().equals("(")) && (s.equals("+") || s.equals("-") || s.equals(")"))){
+                    backArr.add(temp.pop());
+                }
+                //5. "(" 없애기
+                if(s.equals(")")){
+                    temp.pop();
+                } else{
+                    temp.push(s);
+                }
             }
-            while(!temp.isEmpty()){
-                backArr.add(temp.pop());
-            }
+            //6. 스택에 남아 있는지 연산자 확인
+            if(!temp.isEmpty()) backArr.add(temp.pop());
 
             // 후위 표기법 계산
             for(String s : backArr){
+                //1. 숫자 확인
                 if(isNumber(s)){
                     temp.push(s);
                     continue;
                 }
 
-                //나누기를 위해 실수형으로 계산
+                //2. 나누어 떨어지지 않는 경우를 위해 실수로 계산
                 double num2 = Double.parseDouble(temp.pop());
                 double num1 = Double.parseDouble(temp.pop());
                 switch (s){
@@ -100,7 +97,7 @@ public class Calc2Servlet extends HttpServlet {
                     case "/":temp.push(String.valueOf(num1 / num2));break;
                 }
             }
-            //실수 중 정수는 소숫점 제외하고 출력
+            //3. 실수 중 정수는 소숫점 제외하고 출력
             double resultD = Double.parseDouble(temp.pop());
             if(resultD % 1 == 0){
                 result = String.valueOf((int)resultD);

@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47b53068-687c-491f-900d-4a5b4bd52935" name="변경" comment="+ 주석">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ast08.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java" afterDir="false" />
     </list>
@@ -28,7 +29,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="94712dd45f705ea2637f01718a964d81eb8fddf4" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "s12171934"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="61dc1b51-441b-485c-93c9-0c63fa1f23dc" />
+        <option name="url" value="https://github.com/s12171934/find-and-smart-calculator.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -233,7 +253,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/calculator/Calc2Servlet.java</url>
-          <line>86</line>
+          <line>82</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
