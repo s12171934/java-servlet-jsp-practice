@@ -17,19 +17,36 @@ public class Calc2Servlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
-        String exp = req.getParameter("exp");
-        exp = exp.replace(" ", "");
-        exp = exp.replace("", "");
-        ArrayList<String> midArr = new ArrayList<>();
-        ArrayList<String> backArr = new ArrayList<>();
-
-        Stack<String> temp = new Stack<>();
-        String addList = "";
         String result;
+
+        try{
+            ArrayList<String> midArr = makeInorder(req.getParameter("exp"));
+            ArrayList<String> backArr = parsePostorder(midArr);
+            result = calculatePostorder(backArr);
+        } catch (Exception e){
+            result = "올바른 표현식이 아닙니다.";
+        }
+
         ServletContext sc = req.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher("/calc2.jsp");
+        req.setAttribute("result",result);
+        rd.forward(req,resp);
+    }
 
-        // String 숫자와 기호 분리
+    private boolean isNumber(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public ArrayList<String> makeInorder(String exp){
+        exp = exp.replace(" ", "");
+        ArrayList<String> midArr = new ArrayList<>();
+        String addList = "";
+
         boolean minus = true;
         for(String s : exp.split("")){
             if(isNumber(s)){
@@ -48,76 +65,74 @@ public class Calc2Servlet extends HttpServlet {
         }
         if(!addList.isEmpty())midArr.add(addList);
 
-        // 중위 표기법 -> 후위 표기법
-        try{
-            for(String s : midArr){
-                //1. 숫자 확인
-                if(isNumber(s)){
-                    backArr.add(s);
-                    continue;
-                }
-                //2. 스택 초기값 확인
-                if(temp.isEmpty()){
-                    temp.push(s);
-                    continue;
-                }
-                //3. 스택 최상단 값이 *, / 일때 출력 후 스택삽입
-                if(!s.equals("(") && (temp.peek().equals("*") || temp.peek().equals("/"))){
-                    backArr.add(temp.pop());
-                }
-                //4. 스택에 + / - 삽입 할때, ( 이전 모두 출력
-                if(!(temp.isEmpty() || temp.peek().equals("(")) && (s.equals("+") || s.equals("-") || s.equals(")"))){
-                    backArr.add(temp.pop());
-                }
-                //5. "(" 없애기
-                if(s.equals(")")){
-                    temp.pop();
-                } else{
-                    temp.push(s);
-                }
-            }
-            //6. 스택에 남아 있는지 연산자 확인
-            if(!temp.isEmpty()) backArr.add(temp.pop());
-
-            // 후위 표기법 계산
-            for(String s : backArr){
-                //1. 숫자 확인
-                if(isNumber(s)){
-                    temp.push(s);
-                    continue;
-                }
-
-                //2. 나누어 떨어지지 않는 경우를 위해 실수로 계산
-                double num2 = Double.parseDouble(temp.pop());
-                double num1 = Double.parseDouble(temp.pop());
-                switch (s){
-                    case "+":temp.push(String.valueOf(num1 + num2));break;
-                    case "-":temp.push(String.valueOf(num1 - num2));break;
-                    case "*":temp.push(String.valueOf(num1 * num2));break;
-                    case "/":temp.push(String.valueOf(num1 / num2));break;
-                }
-            }
-            //3. 실수 중 정수는 소숫점 제외하고 출력
-            double resultD = Double.parseDouble(temp.pop());
-            if(resultD % 1 == 0){
-                result = String.valueOf((int)resultD);
-            } else{
-                result = String.valueOf(resultD);
-            }
-        } catch (Exception e){
-            result = "올바른 표현식이 아닙니다.";
-        }
-
-        req.setAttribute("result",result);
-        rd.forward(req,resp);
+        return midArr;
     }
 
-    private boolean isNumber(String s){
-        try{
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+    public ArrayList<String> parsePostorder(ArrayList<String> midArr) throws Exception{
+        ArrayList<String> backArr = new ArrayList<>();
+        Stack<String> temp = new Stack<>();
+
+        for(String s : midArr){
+            //1. 숫자 확인
+            if(isNumber(s)){
+                backArr.add(s);
+                continue;
+            }
+            //2. 스택 초기값 확인
+            if(temp.isEmpty()){
+                temp.push(s);
+                continue;
+            }
+            //3. 스택 최상단 값이 *, / 일때 출력 후 스택삽입
+            if(!s.equals("(") && (temp.peek().equals("*") || temp.peek().equals("/"))){
+                backArr.add(temp.pop());
+            }
+            //4. 스택에 + / - 삽입 할때, ( 이전 모두 출력
+            if(!(temp.isEmpty() || temp.peek().equals("(")) && (s.equals("+") || s.equals("-") || s.equals(")"))){
+                backArr.add(temp.pop());
+            }
+            //5. "(" 없애기
+            if(s.equals(")")){
+                temp.pop();
+            } else{
+                temp.push(s);
+            }
         }
+        //6. 스택에 남아 있는지 연산자 확인
+        if(!temp.isEmpty()) backArr.add(temp.pop());
+
+        return backArr;
+    }
+
+    public String calculatePostorder(ArrayList<String> backArr) throws Exception{
+        String result;
+        Stack<String> temp = new Stack<>();
+
+        for(String s : backArr){
+            //1. 숫자 확인
+            if(isNumber(s)){
+                temp.push(s);
+                continue;
+            }
+
+            //2. 나누어 떨어지지 않는 경우를 위해 실수로 계산
+            double num2 = Double.parseDouble(temp.pop());
+            double num1 = Double.parseDouble(temp.pop());
+            switch (s){
+                case "+":temp.push(String.valueOf(num1 + num2));break;
+                case "-":temp.push(String.valueOf(num1 - num2));break;
+                case "*":temp.push(String.valueOf(num1 * num2));break;
+                case "/":temp.push(String.valueOf(num1 / num2));break;
+            }
+        }
+        //3. 실수 중 정수는 소숫점 제외하고 출력
+        double resultD = Double.parseDouble(temp.pop());
+        if(resultD % 1 == 0){
+            result = String.valueOf((int)resultD);
+        } else{
+            result = String.valueOf(resultD);
+        }
+
+        return result;
     }
 }
