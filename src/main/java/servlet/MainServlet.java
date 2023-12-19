@@ -36,13 +36,13 @@ public class MainServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String page = req.getParameter("page");
         switch (page) {
-            case "RentManager":
+            case "대출도서반납":
                 resp.sendRedirect("/rentManager/rentUser.jsp");
                 break;
-            case "BookManager":
+            case "도서관리":
                 resp.sendRedirect("/bookManager/bookMain.jsp");
                 break;
-            case "UserManager":
+            case "회원관리":
                 resp.sendRedirect("/userManager/userMain.jsp");
                 break;
         }
