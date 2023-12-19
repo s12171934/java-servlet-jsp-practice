@@ -15,26 +15,26 @@
     </div>
 </div>
 <div class="title-container">
-    <div style="background: gray; height: 100%; width: 70vw; display: flex; align-items: center; justify-content: center">
-        <h1 style="font-size: 5vw; letter-spacing: 3vw">도서관리프로그램</h1>
+    <div class="title-box">
+        <h1 class="title-box">도서관리프로그램</h1>
     </div>
 </div>
-<div style="height: 50vh; display:flex; justify-content: center">
-    <div style="width: 20vw; box-shadow: 0 0 0 1vh gray inset; display:flex; justify-content: center; align-items: center">
+<div class="container">
+    <div class="box">
         <form action="/main">
-            <input type="submit" name="page" value="대출도서반납" style="background: gray; border : none; width: 15vw; height: 40vh; font-size: 2vw">
+            <input type="submit" name="page" value="대출도서반납" class="box">
         </form>
     </div>
-    <div style="width: 5vw"></div>
-    <div style="width: 20vw; box-shadow: 0 0 0 1vh gray inset; display:flex; justify-content: center; align-items: center">
+    <div class="space"></div>
+    <div class="box">
         <form action="/main">
-            <input type="submit" name="page" value="도서관리" style="background: gray; border : none; width: 15vw; height: 40vh; font-size: 2vw">
+            <input type="submit" name="page" value="도서관리" class="box">
         </form>
     </div>
-    <div style="width: 5vw"></div>
-    <div style="width: 20vw; box-shadow: 0 0 0 1vh gray inset; display:flex; justify-content: center; align-items: center">
+    <div class="space"></div>
+    <div class="box">
         <form action="/main">
-            <input type="submit" name="page" value="회원관리" style="background: gray; border : none; width: 15vw; height: 40vh; font-size: 2vw">
+            <input type="submit" name="page" value="회원관리" class="box">
         </form>
     </div>
 </div>
@@ -65,6 +65,44 @@
         display:flex;
         justify-content: center;
         align-items: center
+    }
+    .title-box{
+        background: gray;
+        height: 100%;
+        width: 70vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    h1.title-box{
+        font-size: 5vw;
+        letter-spacing: 3vw;
+    }
+
+    .container{
+        height: 50vh;
+        display:flex;
+        justify-content: center;
+    }
+
+    .box{
+        width: 20vw;
+        box-shadow: 0 0 0 1vh gray inset;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input.box{
+        background: gray;
+        border : none;
+        width: 15vw;
+        height: 40vh;
+        font-size: 2vw;
+    }
+
+    space{
+        width: 5vw;
     }
 
 
