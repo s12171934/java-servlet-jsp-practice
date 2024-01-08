@@ -1,0 +1,42 @@
+.bg-color-1st{
+    background-color: #EDFFCA;
+}
+.bg-color-2nd{
+    background-color: #F6FFE3;
+}
+.bg-color-3rd{
+    background-color: #A0B27C;
+}
+.bg-color-4th{
+    background-color: #A06AB2;
+}
+.bg-color-5th{
+    background-color: #F2CAFF;
+}
+.border-color-3rd{
+    border-color: #A0B27C;
+}
+.text-color-3rd{
+    color: #A0B27C;
+}
+.text-color-4th{
+    color: #A06AB2;
+}
+.btn-outline-color-3rd{
+    border-color: #A0B27C;
+    color: #A0B27C;
+}
+.table-color-3rd {
+    --bs-table-color: #FFF;
+    --bs-table-bg: #A0B27C;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+.table-color-5th {
+    --bs-table-color: #000;
+    --bs-table-bg: #F6FFE3;
+    --bs-table-hover-bg: #F2CAFF;
+    --bs-table-hover-color: #fff;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
