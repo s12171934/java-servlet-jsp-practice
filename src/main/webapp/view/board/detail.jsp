@@ -70,10 +70,4 @@
     </div>
 </main>
 </body>
-<style>
-    .pd {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-</style>
 </html>

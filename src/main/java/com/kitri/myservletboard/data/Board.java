@@ -1,9 +1,10 @@
 package com.kitri.myservletboard.data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Board {
-    private long id;
+    private Long id;
     private String title;
     private String content;
     private String writer;
@@ -11,7 +12,7 @@ public class Board {
     private int viewCount;
     private int commentCount;
 
-    public Board(long id, String title, String content, String writer, LocalDateTime createdAt, int viewCount, int commentCount) {
+    public Board(Long id, String title, String content, String writer, LocalDateTime createdAt, int viewCount, int commentCount) {
         this.id = id;
         this.title = title;
         this.content = content;

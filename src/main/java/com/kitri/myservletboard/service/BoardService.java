@@ -19,11 +19,7 @@ public class BoardService {
     public Board getBoard(Long id){
         return boardDao.getById(id);
     }
-    public void addBoard(Board board){
-        long id = 1L + boardDao.getAll().size();
-        board.setId(id);
-        boardDao.save(board);
-    }
+    public void addBoard(Board board){boardDao.save(board);}
     public void updateBoard(Board board){
         boardDao.update(board);
     }

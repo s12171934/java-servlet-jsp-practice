@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class BoardMemory implements BoardDao{
     private static final BoardMemory instance = new BoardMemory();
     private ArrayList<Board> memoryBoardDB = new ArrayList<>();
+    private Long sequnece;
     private BoardMemory() {
         memoryBoardDB.add(new Board(1L,"첫 글","안녕","누1구", LocalDateTime.now(),10,1));
         memoryBoardDB.add(new Board(2L,"두 글","안녕","누2구", LocalDateTime.now(),9,3));
@@ -19,7 +20,7 @@ public class BoardMemory implements BoardDao{
         memoryBoardDB.add(new Board(8L,"여덟 글","안녕","누8구", LocalDateTime.now(),3,15));
         memoryBoardDB.add(new Board(9L,"아홉 글","안녕","누9구", LocalDateTime.now(),2,17));
         memoryBoardDB.add(new Board(10L,"열 글","안녕","누0구", LocalDateTime.now(),1,19));
-
+        sequnece = memoryBoardDB.stream().mapToLong(board -> board.getId()).max().getAsLong();
     }
     public static BoardMemory getInstance(){
         return instance;
@@ -37,6 +38,7 @@ public class BoardMemory implements BoardDao{
 
     @Override
     public void save(Board board) {
+        board.setId(++sequnece);
         memoryBoardDB.add(board);
 
     }
@@ -44,8 +46,8 @@ public class BoardMemory implements BoardDao{
     @Override
     public void update(Board board) {
         Board board_ = getById(board.getId());
-        memoryBoardDB.remove(board_);
-        memoryBoardDB.add(board);
+        board_.setTitle(board.getTitle());
+        board_.setContent(board.getContent());
     }
 
     @Override
