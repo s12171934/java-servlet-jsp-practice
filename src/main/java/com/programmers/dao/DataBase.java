@@ -3,9 +3,7 @@ package com.programmers.dao;
 import com.programmers.data.Data;
 import oracle.jdbc.datasource.impl.OracleDataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ public class DataBase implements Dao{
     public Connection conn() throws Exception{
 
         OracleDataSource ods = new OracleDataSource();
-        ods.setURL("jdbc:oracle:thin:programmers/1234@192.168.55.3:1521:DB19");
+        ods.setURL("jdbc:oracle:thin:programmers/1234@192.168.10.175:1521:DB19");
         Connection conn = ods.getConnection();
         return conn;
     }
@@ -58,7 +56,39 @@ public class DataBase implements Dao{
     }
 
     @Override
-    public ArrayList<Data> getDateData(String date) {
-        return quizDB.get(date);
+    public void updateNow(int no, String date, String now) {
+        try{
+            String sql = "UPDATE quiz SET now =? WHERE no =? AND quiz_date = TO_DATE(?,'YYYY-MM-DD')";
+            PreparedStatement pstmt = conn().prepareStatement(sql);
+            pstmt.setString(1,now);
+            pstmt.setInt(2,no);
+            pstmt.setString(3,date);
+            int a = pstmt.executeUpdate();
+            System.out.println(a);
+            conn().commit();
+
+            pstmt.close();
+            conn().close();
+        } catch (Exception e){}
+
+    }
+
+    @Override
+    public void insert(Data data) {
+        try{
+            String sql = "insert into quiz(no, quiz_date, title, quiz_level, url, now) values(?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn().prepareStatement(sql);
+            pstmt.setInt(1,data.getNo());
+            pstmt.setDate(2,java.sql.Date.valueOf(data.getDate()));
+            pstmt.setString(3, data.getTitle());
+            pstmt.setInt(4,data.getLevel());
+            pstmt.setString(5,data.getUrl());
+            pstmt.setString(6, data.getNow());
+
+            pstmt.executeUpdate();
+            conn().commit();
+            pstmt.close();
+            conn().close();
+        } catch (Exception e){}
     }
 }

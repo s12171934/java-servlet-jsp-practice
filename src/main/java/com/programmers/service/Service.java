@@ -2,7 +2,6 @@ package com.programmers.service;
 
 import com.programmers.dao.Dao;
 import com.programmers.dao.DataBase;
-import com.programmers.dao.Memory;
 import com.programmers.data.Data;
 
 import java.util.ArrayList;
@@ -25,11 +24,10 @@ public class Service {
     public void changeNow(String dateNo, String now){
         String date = dateNo.split(":")[0];
         int no = Integer.parseInt(dateNo.split(":")[1]);
-        ArrayList<Data> dateDatas = dao.getDateData(date);
-        for(Data data : dateDatas){
-            if(data.getNo() == no){
-                data.setNow(now);
-            }
-        }
+        dao.updateNow(no, date, now);
+    }
+
+    public void addData(Data data){
+        dao.insert(data);
     }
 }

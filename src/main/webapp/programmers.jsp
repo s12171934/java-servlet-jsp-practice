@@ -24,7 +24,7 @@
                         <a class="navbar-brand text-color-3rd" href="/one-day-three-quiz/list">Main</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navbar-brand text-color-3rd" href="/one-day-three-quiz/add">Add</a>
+                        <a class="navbar-brand text-color-3rd" href="/one-day-three-quiz/addForm">Add</a>
                     </li>
                     <li class="nav-item">
                         <a class="navbar-brand text-color-3rd" href="https://school.programmers.co.kr/learn/">Programmers</a>

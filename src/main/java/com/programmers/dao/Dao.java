@@ -7,5 +7,6 @@ import java.util.HashMap;
 
 public interface Dao {
     public HashMap<String, ArrayList<Data>> getAll();
-    public ArrayList<Data> getDateData(String date);
+    public void updateNow(int no, String date, String now);
+    public void insert(Data data);
 }
