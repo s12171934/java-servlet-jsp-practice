@@ -1,33 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 정보 수정 - Bootstrap</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/view/css/main.css" rel="stylesheet">
-</head>
-
+<jsp:include page="/view/common/head.jsp">
+    <jsp:param name="title" value="회원정보 수정"/>
+</jsp:include>
 <body>
-    <header>
-        <a class="logo" href="/board/list"><img src="https://poiemaweb.com/img/logo.png"></a>
-        <nav>
-            <ul class="nav-items">
-                <li><a href="/board/list">게시글목록</a></li>
-                <li><a href="/board/createForm">게시글등록</a></li>
-                <li><a href="/board/updateForm">게시글수정</a></li>
-                <li><a href="/view/member/join.jsp">회원가입</a></li>
-                <li><a href="/view/member/registration.jsp">회원정보수정</a></li>
-                <li><a href="/view/member/login.jsp">로그인</a></li>
-            </ul>
-        </nav>
-    </header>
+<jsp:include page="/view/common/header.jsp"/>
 
     <div class="container">
         <div class="input-form-backgroud row">
