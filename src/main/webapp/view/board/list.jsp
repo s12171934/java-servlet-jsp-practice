@@ -5,28 +5,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게시판목록</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link href="/view/css/main.css" rel="stylesheet">
-</head>
+
+<jsp:include page="/view/common/head.jsp">
+  <jsp:param name="title" value="게시물 목록"/>
+</jsp:include>
 <body>
-  <header>
-    <a class="logo" href="/board/list"><img src="https://poiemaweb.com/img/logo.png"></a>
-    <nav>
-      <ul class="nav-items">
-        <li><a href="/board/list">게시글목록</a></li>
-        <li><a href="/board/createForm">게시글등록</a></li>
-        <li><a href="/board/updateForm">게시글수정</a></li>
-        <li><a href="/view/member/join.jsp">회원가입</a></li>
-        <li><a href="/view/member/registration.jsp">회원정보수정</a></li>
-        <li><a href="/view/member/login.jsp">로그인</a></li>
-      </ul>
-    </nav>
-  </header>
+  <jsp:include page="/view/common/header.jsp"/>
 
   <div>
     <h2 style="text-align: center; margin-top: 100px;"><b>게시판 목록</b></h2>
