@@ -1,6 +1,7 @@
 package com.kitri.myservletboard.dao;
 
 import com.kitri.myservletboard.data.Board;
+import com.kitri.myservletboard.data.Pagination;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ public class BoardJdbc implements BoardDao{
     private BoardJdbc(){}
     private static BoardJdbc instance = new BoardJdbc();
     public static BoardJdbc getInstance(){return instance;}
+    private int rowNum = getRowNum();
     private Connection conn(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,11 +26,15 @@ public class BoardJdbc implements BoardDao{
 
     }
     @Override
-    public ArrayList<Board> getAll() {
+    public ArrayList<Board> getAll(Pagination pagination) {
         try {
-            String sql = "SELECT * FROM board";
-            Statement stmt = conn().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            int page = pagination.getPage();
+            int rows = pagination.getRows();
+            String sql = "SELECT * FROM board LIMIT ?, ?";
+            PreparedStatement pstmt = conn().prepareStatement(sql);
+            pstmt.setInt(1,(page - 1) * rows);
+            pstmt.setInt(2,rows);
+            ResultSet rs = pstmt.executeQuery();
             ArrayList<Board> boards = new ArrayList<>();
             while (rs.next()){
                 Long id = rs.getLong("id");
@@ -43,7 +49,7 @@ public class BoardJdbc implements BoardDao{
             }
 
             rs.close();
-            stmt.close();
+            pstmt.close();
             conn().close();
 
             return boards;
@@ -113,6 +119,7 @@ public class BoardJdbc implements BoardDao{
             pstmt.setLong(3,id);
             pstmt.executeUpdate();
             conn().commit();
+            this.rowNum++;
 
             pstmt.close();
             conn().close();
@@ -130,10 +137,35 @@ public class BoardJdbc implements BoardDao{
             pstmt.setLong(1,id);
             pstmt.executeUpdate();
             conn().commit();
+            this.rowNum--;
 
             pstmt.close();
             conn().close();
 
         } catch (Exception e){}
+    }
+
+    @Override
+    public int getRowNum() {
+        int rownum = 0;
+        try {
+            String sql = "SELECT COUNT(*) FROM board";
+            Statement pstmt = conn().createStatement();
+            ResultSet rs = pstmt.executeQuery(sql);
+            while (rs.next()){
+                rownum = rs.getInt(1);
+            }
+
+            rs.close();
+            pstmt.close();
+            conn().close();
+
+        } catch (Exception e){}
+        return rownum;
+    }
+
+    @Override
+    public int getTotal() {
+        return this.rowNum;
     }
 }

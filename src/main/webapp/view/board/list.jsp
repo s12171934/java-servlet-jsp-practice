@@ -1,11 +1,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.kitri.myservletboard.data.Board" %>
-<%@ page import="java.time.LocalDateTime" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="com.kitri.myservletboard.data.Pagination" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,15 +69,18 @@
       </div>
       <div class="d-flex justify-content-center">
       <nav aria-label="Page navigation example">
+        <%
+          Pagination pagination = (Pagination)request.getAttribute("pagination");
+        %>
         <ul class="pagination pagination-sm">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          <li class="page-item <%=pagination.isPrev()?"":"disabled"%>">
+            <a class="page-link" href="/board/list?page=<%=pagination.getStartInGroup() - 1%>" tabindex="-1" aria-disabled="true">&laquo;</a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+          <%for(int i = pagination.getStartInGroup(); i <= pagination.getEndInGroup(); i++){%>
+          <li class="page-item"><a class="page-link <%=pagination.getPage()==i?"active":""%>" href="/board/list?page=<%=i%>"><%=i%></a></li>
+          <%}%>
+          <li class="page-item <%=pagination.isNext()?"":"disabled"%>">
+            <a class="page-link" href="/board/list?page=<%=pagination.getEndInGroup() + 1%>">&raquo;</a>
           </li>
         </ul>
       </nav>

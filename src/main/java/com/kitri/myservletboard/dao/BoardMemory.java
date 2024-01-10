@@ -5,7 +5,7 @@ import com.kitri.myservletboard.data.Board;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class BoardMemory implements BoardDao{
+public class BoardMemory{
     private static final BoardMemory instance = new BoardMemory();
     private ArrayList<Board> memoryBoardDB = new ArrayList<>();
     private Long sequnece;
@@ -26,31 +26,31 @@ public class BoardMemory implements BoardDao{
         return instance;
     }
 
-    @Override
-    public ArrayList<Board> getAll() {
+    //@Override
+    public ArrayList<Board> getAll(int page, int rows) {
         return memoryBoardDB;
     }
 
-    @Override
+    //@Override
     public Board getById(Long id) {
         return memoryBoardDB.stream().filter(board -> board.getId() == id).findFirst().get();
     }
 
-    @Override
+    //@Override
     public void save(Board board) {
         board.setId(++sequnece);
         memoryBoardDB.add(board);
 
     }
 
-    @Override
+    //@Override
     public void update(Board board) {
         Board board_ = getById(board.getId());
         board_.setTitle(board.getTitle());
         board_.setContent(board.getContent());
     }
 
-    @Override
+    //@Override
     public void delete(Board board) {
         memoryBoardDB.remove(board);
     }

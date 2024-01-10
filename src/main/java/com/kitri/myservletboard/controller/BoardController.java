@@ -1,6 +1,7 @@
 package com.kitri.myservletboard.controller;
 
 import com.kitri.myservletboard.data.Board;
+import com.kitri.myservletboard.data.Pagination;
 import com.kitri.myservletboard.service.BoardService;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 public class BoardController extends HttpServlet {
 
     BoardService boardService = BoardService.getInstance();
+
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -24,9 +27,16 @@ public class BoardController extends HttpServlet {
         String command = req.getRequestURI();
         String view = "/view/board/";
 
+
         if(command.equals("/board/list")){
-            ArrayList<Board> boards = boardService.getBoards();
+            Pagination pagination = new Pagination(boardService.getTotalRow());
+            String page = req.getParameter("page");
+            if(page != null){
+                pagination.setPage(Integer.parseInt(page));
+            }
+            ArrayList<Board> boards = boardService.getBoards(pagination);
             req.setAttribute("boards",boards);
+            req.setAttribute("pagination",pagination);
             view += "list.jsp";
         }
 
