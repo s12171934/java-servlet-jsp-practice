@@ -1,8 +1,5 @@
 package com.kitri.myservletboard.data;
 
-import com.kitri.myservletboard.dao.BoardDao;
-import com.kitri.myservletboard.dao.BoardJdbc;
-
 public class Pagination {
     private int page;
     private int lastPages;
@@ -11,20 +8,13 @@ public class Pagination {
     private int startInGroup;
     private int endInGroup;
     private int groupNum;
-    private boolean prev;
-    private boolean next;
-    public Pagination(int totalRow){
+    public Pagination(){
         this.page = 1;
         this.rows = 10;
-        this.lastPages = (int)Math.ceil(totalRow/(double)rows);
-        calcPageField();
     }
 
     public int getPage() {
         return page;
-    }
-    public int getPagesInGroup() {
-        return pagesInGroup;
     }
 
     public int getRows() {
@@ -38,10 +28,13 @@ public class Pagination {
         return endInGroup;
     }
     public boolean isPrev() {
-        return prev;
+        return this.groupNum == 0;
     }
     public boolean isNext() {
-        return next;
+        return this.groupNum == (this.lastPages -1) / this.pagesInGroup;
+    }
+    public int getLastPages() {
+        return lastPages;
     }
     public void setPage(int page) {
         this.page = page;
@@ -53,20 +46,12 @@ public class Pagination {
     }
     public void setLastPages(int lastPages) {
         this.lastPages = lastPages;
+        calcPageField();
     }
+
     private void calcPageField(){
         this.groupNum = (this.page - 1) / this.pagesInGroup;
         this.startInGroup = this.groupNum * this.pagesInGroup + 1;
         this.endInGroup = Math.min((this.groupNum + 1) * this.pagesInGroup,this.lastPages);
-        if(this.groupNum == 0){
-            this.prev = false;
-        }else {
-            this.prev = true;
-        }
-        if(this.groupNum == (this.lastPages -1) / this.pagesInGroup){
-            this.next = false;
-        }else {
-            this.next = true;
-        }
     }
 }

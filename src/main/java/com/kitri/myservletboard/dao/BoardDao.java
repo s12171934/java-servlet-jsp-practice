@@ -6,11 +6,12 @@ import com.kitri.myservletboard.data.Pagination;
 import java.util.ArrayList;
 
 public interface BoardDao {
-    public ArrayList<Board> getAll(Pagination pagination);
+
+    public ArrayList<Board> getAll(Pagination pagination,String dateType, String type, String search);
+
     public Board getById(Long id);
     public void save(Board board);
     public void update(Board board);
     public void delete(Board board);
-    public int getRowNum();
-    public int getTotal();
+    public int getRowNum(String dateType, String type, String search);
 }

@@ -14,8 +14,8 @@ public class BoardService {
     public static BoardService getInstance(){
         return instance;
     }
-    public ArrayList<Board> getBoards(Pagination pagination){
-        return boardDao.getAll(pagination);
+    public ArrayList<Board> getBoards(Pagination pagination,String dateType, String type, String search){
+        return boardDao.getAll(pagination,dateType,type,search);
     }
     public Board getBoard(Long id){
         return boardDao.getById(id);
@@ -27,5 +27,4 @@ public class BoardService {
     public void deleteBoard(Board board){
         boardDao.delete(board);
     }
-    public int getTotalRow(){return boardDao.getTotal();}
 }

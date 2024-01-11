@@ -29,14 +29,29 @@ public class BoardController extends HttpServlet {
 
 
         if(command.equals("/board/list")){
-            Pagination pagination = new Pagination(boardService.getTotalRow());
+            Pagination pagination = new Pagination();
             String page = req.getParameter("page");
             if(page != null){
                 pagination.setPage(Integer.parseInt(page));
             }
-            ArrayList<Board> boards = boardService.getBoards(pagination);
+            String dateType = req.getParameter("dateType");
+            String type = req.getParameter("type");
+            String search = req.getParameter("search");
+            if(dateType == null){
+                dateType = "all";
+            }
+            if(type == null){
+                type = "title";
+            }
+            if(search == null){
+                search = "";
+            }
+            ArrayList<Board> boards = boardService.getBoards(pagination,dateType,type,search);
             req.setAttribute("boards",boards);
             req.setAttribute("pagination",pagination);
+            req.setAttribute("dateType",dateType);
+            req.setAttribute("type",type);
+            req.setAttribute("search",search);
             view += "list.jsp";
         }
 

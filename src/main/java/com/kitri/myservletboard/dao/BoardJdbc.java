@@ -11,7 +11,6 @@ public class BoardJdbc implements BoardDao{
     private BoardJdbc(){}
     private static BoardJdbc instance = new BoardJdbc();
     public static BoardJdbc getInstance(){return instance;}
-    private int rowNum = getRowNum();
     private Connection conn(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,14 +25,20 @@ public class BoardJdbc implements BoardDao{
 
     }
     @Override
-    public ArrayList<Board> getAll(Pagination pagination) {
+    public ArrayList<Board> getAll(Pagination pagination,String dateType, String type, String search) {
         try {
             int page = pagination.getPage();
             int rows = pagination.getRows();
-            String sql = "SELECT * FROM board LIMIT ?, ?";
+            pagination.setLastPages((int)Math.ceil((double)getRowNum(dateType,type,search)/rows));
+            String sql ="";
+            if(type.equals("title")){
+                search = "%" + search + "%";
+            }
+            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(dateType) + " LIMIT ?, ?";
             PreparedStatement pstmt = conn().prepareStatement(sql);
-            pstmt.setInt(1,(page - 1) * rows);
-            pstmt.setInt(2,rows);
+            pstmt.setString(1,search);
+            pstmt.setInt(2,(page - 1) * rows);
+            pstmt.setInt(3,rows);
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Board> boards = new ArrayList<>();
             while (rs.next()){
@@ -119,7 +124,6 @@ public class BoardJdbc implements BoardDao{
             pstmt.setLong(3,id);
             pstmt.executeUpdate();
             conn().commit();
-            this.rowNum++;
 
             pstmt.close();
             conn().close();
@@ -137,7 +141,6 @@ public class BoardJdbc implements BoardDao{
             pstmt.setLong(1,id);
             pstmt.executeUpdate();
             conn().commit();
-            this.rowNum--;
 
             pstmt.close();
             conn().close();
@@ -146,12 +149,18 @@ public class BoardJdbc implements BoardDao{
     }
 
     @Override
-    public int getRowNum() {
+    public int getRowNum(String dateType, String type,String search) {
         int rownum = 0;
         try {
-            String sql = "SELECT COUNT(*) FROM board";
-            Statement pstmt = conn().createStatement();
-            ResultSet rs = pstmt.executeQuery(sql);
+            String sql ="";
+            if(type.equals("title")){
+
+                search = "%" + search + "%";
+            }
+            sql = "SELECT COUNT(*) FROM board  WHERE " + type + " LIKE ? " + dateQuery(dateType);
+            PreparedStatement pstmt = conn().prepareStatement(sql);
+            pstmt.setString(1,search);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
                 rownum = rs.getInt(1);
             }
@@ -163,9 +172,26 @@ public class BoardJdbc implements BoardDao{
         } catch (Exception e){}
         return rownum;
     }
+    private String dateQuery(String dataType){
+        String sql = "";
 
-    @Override
-    public int getTotal() {
-        return this.rowNum;
+        switch (dataType){
+            case "all" :
+                break;
+            case "day" :
+                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 DAY)";
+                break;
+            case "week" :
+                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 7 DAY)";
+                break;
+            case "month" :
+                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 MONTH)";
+                break;
+            case "year" :
+                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 YEAR)";
+                break;
+        }
+
+        return sql;
     }
 }
