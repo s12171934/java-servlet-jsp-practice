@@ -2,11 +2,17 @@
 <%@ page import="com.kitri.myservletboard.data.Board" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="com.kitri.myservletboard.data.Pagination" %>
+<%@ page import="com.kitri.myservletboard.data.SearchBoard" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-  String dateType = (String)request.getAttribute("dateType");
-  String type = (String)request.getAttribute("type");
-  String search = (String)request.getAttribute("search");
+  SearchBoard searchBoard = (SearchBoard) request.getAttribute("searchBoard");
+  ArrayList<Board> boards = (ArrayList<Board>)request.getAttribute("boards");
+  Pagination pagination = (Pagination)request.getAttribute("pagination");
+  int rows = (int)request.getAttribute("rows");
+  String searchQuery = "";
+  if(!searchBoard.getSearchText().isEmpty() || !searchBoard.getPeriod().equals("all")){
+    searchQuery = "&period=" + searchBoard.getPeriod() + "&type=" + searchBoard.getType() + "&searchText=" + searchBoard.getSearchText();
+  }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,15 +22,28 @@
 </jsp:include>
 <body>
 <jsp:include page="/view/common/header.jsp">
-  <jsp:param name="dateType" value="<%=dateType%>"/>
-  <jsp:param name="type" value="<%=type%>"/>
-  <jsp:param name="search" value="<%=search%>"/>
+  <jsp:param name="period" value="<%=searchBoard.getPeriod()%>"/>
+  <jsp:param name="type" value="<%=searchBoard.getType()%>"/>
+  <jsp:param name="searchText" value="<%=searchBoard.getSearchText()%>"/>
 </jsp:include>
 
   <div>
     <h2 style="text-align: center; margin-top: 100px;"><b>게시판 목록</b></h2>
   </div>
-  <div class="container class=d-flex justify-content-center">
+  <div class="container">
+    <div class="d-flex justify-content-end">
+    <form action="/board/list?page=<%=pagination.getPage()%><%=searchQuery%>" class="d-flex w-25">
+      <select name="rows" class="form-control text-center me-2">
+        <option value="5" <%if(rows == 5){%>selected<%}%>>5개씩 보기</option>
+        <option value="10" <%if(rows == 10){%>selected<%}%>>10개씩 보기</option>
+        <option value="15" <%if(rows == 15){%>selected<%}%>>15개씩 보기</option>
+        <option value="20" <%if(rows == 20){%>selected<%}%>>20개씩 보기</option>
+        <option value="25" <%if(rows == 25){%>selected<%}%>>25개씩 보기</option>
+        <option value="30" <%if(rows == 30){%>selected<%}%>>30개씩 보기</option>
+      </select>
+      <button class="btn btn-secondary btn-block me-2" type="submit">설정</button>
+    </form>
+    </div>
     <div class="p-2 border-primary mb-3">
       <table class="table align-middle table-hover text-center">
         <thead class="table-dark">
@@ -37,9 +56,6 @@
             <th class="col-1" scope="col">댓글수</th>
           </tr>
         </thead>
-        <%
-          ArrayList<Board> boards = (ArrayList<Board>)request.getAttribute("boards");
-        %>
         <tbody class="table-group-divider">
         <%
           for(Board board : boards){
@@ -62,13 +78,6 @@
       </div>
       <div class="d-flex justify-content-center">
       <nav aria-label="Page navigation example">
-        <%
-          Pagination pagination = (Pagination)request.getAttribute("pagination");
-          String searchQuery = "";
-          if(!search.isEmpty() || !dateType.isEmpty()){
-            searchQuery = "&dateType=" + dateType + "&type=" + type + "&search=" + search;
-          }
-        %>
         <ul class="pagination pagination-sm">
           <li class="page-item <%=pagination.isPrev()?"disabled":""%>">
             <a class="page-link" href="/board/list?page=<%=pagination.getStartInGroup() - 1%><%=searchQuery%>" tabindex="-1" aria-disabled="true">&laquo;</a>

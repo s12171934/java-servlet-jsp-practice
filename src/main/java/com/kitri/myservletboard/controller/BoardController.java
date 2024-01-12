@@ -2,6 +2,7 @@ package com.kitri.myservletboard.controller;
 
 import com.kitri.myservletboard.data.Board;
 import com.kitri.myservletboard.data.Pagination;
+import com.kitri.myservletboard.data.SearchBoard;
 import com.kitri.myservletboard.service.BoardService;
 
 import javax.servlet.ServletException;
@@ -17,8 +18,7 @@ import java.util.ArrayList;
 public class BoardController extends HttpServlet {
 
     BoardService boardService = BoardService.getInstance();
-
-
+    int rows = 10;
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -27,31 +27,27 @@ public class BoardController extends HttpServlet {
         String command = req.getRequestURI();
         String view = "/view/board/";
 
+        if(req.getParameter("rows") != null){
+            rows = Integer.parseInt(req.getParameter("rows"));
+        }
 
         if(command.equals("/board/list")){
-            Pagination pagination = new Pagination();
+            Pagination pagination = new Pagination(rows);
             String page = req.getParameter("page");
             if(page != null){
                 pagination.setPage(Integer.parseInt(page));
             }
-            String dateType = req.getParameter("dateType");
+
+            String period = req.getParameter("period");
             String type = req.getParameter("type");
-            String search = req.getParameter("search");
-            if(dateType == null){
-                dateType = "all";
-            }
-            if(type == null){
-                type = "title";
-            }
-            if(search == null){
-                search = "";
-            }
-            ArrayList<Board> boards = boardService.getBoards(pagination,dateType,type,search);
+            String searchText = req.getParameter("searchText");
+            SearchBoard searchBoard = new SearchBoard(period,type,searchText);
+
+            ArrayList<Board> boards = boardService.getBoards(pagination,searchBoard);
+            req.setAttribute("rows",rows);
             req.setAttribute("boards",boards);
             req.setAttribute("pagination",pagination);
-            req.setAttribute("dateType",dateType);
-            req.setAttribute("type",type);
-            req.setAttribute("search",search);
+            req.setAttribute("searchBoard",searchBoard);
             view += "list.jsp";
         }
 

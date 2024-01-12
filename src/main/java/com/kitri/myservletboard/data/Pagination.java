@@ -8,9 +8,9 @@ public class Pagination {
     private int startInGroup;
     private int endInGroup;
     private int groupNum;
-    public Pagination(){
+    public Pagination(int rows){
         this.page = 1;
-        this.rows = 10;
+        this.rows = rows;
     }
 
     public int getPage() {

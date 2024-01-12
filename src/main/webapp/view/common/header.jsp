@@ -22,16 +22,17 @@
             </nav>
         </div>
         <form class="d-flex align-items-center w-50 me-5" action="/board/list">
-            <select name="dateType" class="form-control text-center me-2 col-2">
+            <select name="period" class="form-control text-center me-2 col-2">
                 <%
-                    String dateType = request.getParameter("dateType");
-                    if(dateType == null) dateType = "all";
+                    String period = request.getParameter("period");
+                    if(period == null) period = "all";
                 %>
-                <option value="all" <%if(dateType.equals("all")){%>selected<%}%>>기간 전체</option>
-                <option value="day" <%if(dateType.equals("day")){%>selected<%}%>>1일</option>
-                <option value="week" <%if(dateType.equals("week")){%>selected<%}%>>1주</option>
-                <option value="month" <%if(dateType.equals("month")){%>selected<%}%>>1개월</option>
-                <option value="year" <%if(dateType.equals("year")){%>selected<%}%>>1년</option>
+                <option value="all" <%if(period.equals("all")){%>selected<%}%>>전체 기간</option>
+                <option value="day" <%if(period.equals("day")){%>selected<%}%>>1일</option>
+                <option value="week" <%if(period.equals("week")){%>selected<%}%>>1주</option>
+                <option value="month" <%if(period.equals("month")){%>selected<%}%>>1개월</option>
+                <option value="half" <%if(period.equals("half")){%>selected<%}%>>6개월</option>
+                <option value="year" <%if(period.equals("year")){%>selected<%}%>>1년</option>
             </select>
             <select name="type" class="form-control text-center me-2 col-2">
                 <%
@@ -41,7 +42,7 @@
                 <option value="title" <%if(type.equals("title")){%>selected<%}%>>제목</option>
                 <option value="writer" <%if(type.equals("writer")){%>selected<%}%>>작성자</option>
             </select>
-            <input class="form-control me-2 col-6" type="search" name="search" value="${param.search}" placeholder="검색어를 입력하세요.">
+            <input class="form-control me-2 col-6" type="search" name="searchText" value="${param.searchText}" placeholder="검색어를 입력하세요.">
             <button class="btn btn-secondary btn-block me-2 col-2" type="submit">검색</button>
         </form>
     </header>

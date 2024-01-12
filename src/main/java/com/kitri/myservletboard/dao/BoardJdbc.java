@@ -2,6 +2,7 @@ package com.kitri.myservletboard.dao;
 
 import com.kitri.myservletboard.data.Board;
 import com.kitri.myservletboard.data.Pagination;
+import com.kitri.myservletboard.data.SearchBoard;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -25,18 +26,21 @@ public class BoardJdbc implements BoardDao{
 
     }
     @Override
-    public ArrayList<Board> getAll(Pagination pagination,String dateType, String type, String search) {
+    public ArrayList<Board> getAll(Pagination pagination, SearchBoard searchBoard) {
         try {
             int page = pagination.getPage();
             int rows = pagination.getRows();
-            pagination.setLastPages((int)Math.ceil((double)getRowNum(dateType,type,search)/rows));
+            String period = searchBoard.getPeriod();
+            String type = searchBoard.getType();
+            String searchText = searchBoard.getSearchText();
+            pagination.setLastPages((int)Math.ceil((double)getRowNum(searchBoard)/rows));
             String sql ="";
             if(type.equals("title")){
-                search = "%" + search + "%";
+                searchText = "%" + searchText + "%";
             }
-            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(dateType) + " LIMIT ?, ?";
+            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(period) + " LIMIT ?, ?";
             PreparedStatement pstmt = conn().prepareStatement(sql);
-            pstmt.setString(1,search);
+            pstmt.setString(1,searchText);
             pstmt.setInt(2,(page - 1) * rows);
             pstmt.setInt(3,rows);
             ResultSet rs = pstmt.executeQuery();
@@ -149,17 +153,20 @@ public class BoardJdbc implements BoardDao{
     }
 
     @Override
-    public int getRowNum(String dateType, String type,String search) {
+    public int getRowNum(SearchBoard searchBoard) {
         int rownum = 0;
+        String period = searchBoard.getPeriod();
+        String type = searchBoard.getType();
+        String searchText = searchBoard.getSearchText();
         try {
             String sql ="";
             if(type.equals("title")){
 
-                search = "%" + search + "%";
+                searchText = "%" + searchText + "%";
             }
-            sql = "SELECT COUNT(*) FROM board  WHERE " + type + " LIKE ? " + dateQuery(dateType);
+            sql = "SELECT COUNT(*) FROM board  WHERE " + type + " LIKE ? " + dateQuery(period);
             PreparedStatement pstmt = conn().prepareStatement(sql);
-            pstmt.setString(1,search);
+            pstmt.setString(1,searchText);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
                 rownum = rs.getInt(1);
@@ -172,26 +179,28 @@ public class BoardJdbc implements BoardDao{
         } catch (Exception e){}
         return rownum;
     }
-    private String dateQuery(String dataType){
-        String sql = "";
-
-        switch (dataType){
-            case "all" :
-                break;
+    private String dateQuery(String period){
+        if(period.equals("all")){
+            return "";
+        }
+        String date = "";
+        switch (period){
             case "day" :
-                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 DAY)";
+                date = "1 DAY";
                 break;
             case "week" :
-                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 7 DAY)";
+                date = "7 DAY";
                 break;
             case "month" :
-                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 MONTH)";
+                date = "1 MONTH";
+                break;
+            case "half" :
+                date = "6 MONTH";
                 break;
             case "year" :
-                sql = "AND createAt > DATE_SUB(SYSDATE(), INTERVAL 1 YEAR)";
+                date = "1 YEAR";
                 break;
         }
-
-        return sql;
+        return "AND createAt > DATE_SUB(SYSDATE(), INTERVAL " + date + ")";
     }
 }

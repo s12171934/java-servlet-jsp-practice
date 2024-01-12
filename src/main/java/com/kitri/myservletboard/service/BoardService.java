@@ -4,6 +4,7 @@ import com.kitri.myservletboard.dao.BoardDao;
 import com.kitri.myservletboard.dao.BoardJdbc;
 import com.kitri.myservletboard.data.Board;
 import com.kitri.myservletboard.data.Pagination;
+import com.kitri.myservletboard.data.SearchBoard;
 
 import java.util.ArrayList;
 
@@ -14,8 +15,8 @@ public class BoardService {
     public static BoardService getInstance(){
         return instance;
     }
-    public ArrayList<Board> getBoards(Pagination pagination,String dateType, String type, String search){
-        return boardDao.getAll(pagination,dateType,type,search);
+    public ArrayList<Board> getBoards(Pagination pagination, SearchBoard searchBoard){
+        return boardDao.getAll(pagination,searchBoard);
     }
     public Board getBoard(Long id){
         return boardDao.getById(id);
