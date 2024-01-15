@@ -4,11 +4,13 @@ public class SearchBoard {
     private String period;
     private String type;
     private String searchText;
+    private String orderBy;
 
-    public SearchBoard(String period, String type, String searchText) {
+    public SearchBoard(String period, String type, String searchText, String orderBy) {
         this.period = period;
         this.type = type;
         this.searchText = searchText;
+        this.orderBy = orderBy;
 
         if(this.period == null){
             this.period = "all";
@@ -29,5 +31,14 @@ public class SearchBoard {
     }
     public String getSearchText() {
         return searchText;
+    }
+    public String getOrderBy(){
+        return orderBy;
+    }
+    public String getOrderByQuery(){
+        if(orderBy.equals("title")){
+            return " ORDER BY (LENGTH(title) - LENGTH('" + searchText + "'))";
+        }
+        return " ORDER BY " + orderBy;
     }
 }

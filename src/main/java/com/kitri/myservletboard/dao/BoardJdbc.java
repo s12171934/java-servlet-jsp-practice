@@ -33,12 +33,13 @@ public class BoardJdbc implements BoardDao{
             String period = searchBoard.getPeriod();
             String type = searchBoard.getType();
             String searchText = searchBoard.getSearchText();
+            String orderByQuery = searchBoard.getOrderByQuery();
             pagination.setLastPages((int)Math.ceil((double)getRowNum(searchBoard)/rows));
             String sql ="";
             if(type.equals("title")){
                 searchText = "%" + searchText + "%";
             }
-            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(period) + " LIMIT ?, ?";
+            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(period) + orderByQuery + " LIMIT ?, ?";
             PreparedStatement pstmt = conn().prepareStatement(sql);
             pstmt.setString(1,searchText);
             pstmt.setInt(2,(page - 1) * rows);

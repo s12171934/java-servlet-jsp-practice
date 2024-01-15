@@ -19,6 +19,7 @@ public class BoardController extends HttpServlet {
 
     BoardService boardService = BoardService.getInstance();
     int rows = 10;
+    String orderBy = "createAt DESC";
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -29,6 +30,9 @@ public class BoardController extends HttpServlet {
 
         if(req.getParameter("rows") != null){
             rows = Integer.parseInt(req.getParameter("rows"));
+        }
+        if(req.getParameter("orderBy") != null){
+            orderBy = req.getParameter("orderBy");
         }
 
         if(command.equals("/board/list")){
@@ -41,7 +45,8 @@ public class BoardController extends HttpServlet {
             String period = req.getParameter("period");
             String type = req.getParameter("type");
             String searchText = req.getParameter("searchText");
-            SearchBoard searchBoard = new SearchBoard(period,type,searchText);
+
+            SearchBoard searchBoard = new SearchBoard(period,type,searchText,orderBy);
 
             ArrayList<Board> boards = boardService.getBoards(pagination,searchBoard);
             req.setAttribute("rows",rows);

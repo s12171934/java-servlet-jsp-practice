@@ -9,12 +9,12 @@
 
 
         <div class="login-form">
-            <form>
+            <form action="/member/login">
                 <h2><b>Bootstrap</b></h2>
                 <hr>
                 <br>
-                <input type="text" name="userId" class="text-field" placeholder="아이디를 입력해주세요">
-                <input type="password" name="userPassword" class="text-field" placeholder="비밀번호를 입력해주세요">
+                <input type="text" name="id" class="text-field" placeholder="아이디를 입력해주세요">
+                <input type="password" name="password" class="text-field" placeholder="비밀번호를 입력해주세요">
                 <input type="submit" value="로그인" class="submit-btn btn btn-secondary btn-block">
             </form>
 

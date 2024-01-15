@@ -15,9 +15,9 @@
             <nav>
                 <ul class="nav-items d-flex">
                     <li ><a href="/board/list">게시글목록</a></li>
-                    <li ><a href="/view/member/join.jsp">회원가입</a></li>
-                    <li ><a href="/view/member/registration.jsp">회원정보수정</a></li>
-                    <li ><a href="/view/member/login.jsp">로그인</a></li>
+                    <li ><a href="/member/joinForm">회원가입</a></li>
+                    <li ><a href="/member/registrationForm">회원정보수정</a></li>
+                    <li ><a href="/member/logInForm">로그인</a></li>
                 </ul>
             </nav>
         </div>
