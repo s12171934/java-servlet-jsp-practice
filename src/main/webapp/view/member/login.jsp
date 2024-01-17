@@ -6,15 +6,18 @@
 </jsp:include>
 <body>
 <jsp:include page="/view/common/header.jsp"/>
-
-
+        <%if(request.getAttribute("message") != null){%>
         <div class="login-form">
-            <form>
+            <h6 class="text-danger text-center"><b>${requestScope.message}</b></h6>
+        </div>
+        <%}%>
+        <div class="login-form">
+            <form action="/member/logIn" method="post">
                 <h2><b>Bootstrap</b></h2>
                 <hr>
                 <br>
-                <input type="text" name="userId" class="text-field" placeholder="아이디를 입력해주세요">
-                <input type="password" name="userPassword" class="text-field" placeholder="비밀번호를 입력해주세요">
+                <input type="text" name="id" class="text-field" placeholder="아이디를 입력해주세요">
+                <input type="password" name="password" class="text-field" placeholder="비밀번호를 입력해주세요">
                 <input type="submit" value="로그인" class="submit-btn btn btn-secondary btn-block">
             </form>
 
@@ -30,8 +33,6 @@
                 </footer>
             </div>
         </div>
-
-    </body>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

@@ -1,3 +1,5 @@
+<%@ page import="com.mysql.cj.Session" %>
+<%@ page import="com.kitri.myservletboard.data.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,10 +16,17 @@
             </div>
             <nav>
                 <ul class="nav-items d-flex">
+                    <%if(session.getAttribute("member") == null){%>
+                    <li ><a href="/member/joinForm">회원가입</a></li>
+                    <li ><a href="/member/logInForm">로그인</a></li>
+                    <%} else{
+                        Member member = (Member)session.getAttribute("member");
+                    %>
+                    <li ><a class="text-dark text-decoration-none fw-border" href="/member/info">환영합니다! <%=member.getName()%>님</a></li>
+                    <li ><a href="/member/registrationForm">회원정보수정</a></li>
+                    <li ><a href="/member/logOut">로그아웃</a></li>
+                    <%}%>
                     <li ><a href="/board/list">게시글목록</a></li>
-                    <li ><a href="/view/member/join.jsp">회원가입</a></li>
-                    <li ><a href="/view/member/registration.jsp">회원정보수정</a></li>
-                    <li ><a href="/view/member/login.jsp">로그인</a></li>
                 </ul>
             </nav>
         </div>

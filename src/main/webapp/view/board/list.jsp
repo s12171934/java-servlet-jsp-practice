@@ -8,6 +8,7 @@
   SearchBoard searchBoard = (SearchBoard) request.getAttribute("searchBoard");
   ArrayList<Board> boards = (ArrayList<Board>)request.getAttribute("boards");
   Pagination pagination = (Pagination)request.getAttribute("pagination");
+  String orderBy = searchBoard.getOrderBy();
   int rows = (int)request.getAttribute("rows");
   String searchQuery = "";
   if(!searchBoard.getSearchText().isEmpty() || !searchBoard.getPeriod().equals("all")){
@@ -27,22 +28,33 @@
   <jsp:param name="searchText" value="<%=searchBoard.getSearchText()%>"/>
 </jsp:include>
 
-  <div>
-    <h2 style="text-align: center; margin-top: 100px;"><b>게시판 목록</b></h2>
-  </div>
+
   <div class="container">
-    <div class="d-flex justify-content-end">
-    <form action="/board/list?page=<%=pagination.getPage()%><%=searchQuery%>" class="d-flex w-25">
-      <select name="rows" class="form-control text-center me-2">
-        <option value="5" <%if(rows == 5){%>selected<%}%>>5개씩 보기</option>
-        <option value="10" <%if(rows == 10){%>selected<%}%>>10개씩 보기</option>
-        <option value="15" <%if(rows == 15){%>selected<%}%>>15개씩 보기</option>
-        <option value="20" <%if(rows == 20){%>selected<%}%>>20개씩 보기</option>
-        <option value="25" <%if(rows == 25){%>selected<%}%>>25개씩 보기</option>
-        <option value="30" <%if(rows == 30){%>selected<%}%>>30개씩 보기</option>
-      </select>
-      <button class="btn btn-secondary btn-block me-2" type="submit">설정</button>
-    </form>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <h2 style="text-align: center; margin-top: 100px;"><b>게시판 목록</b></h2>
+      </div>
+      <form action="/board/list" class="d-flex align-items-end col-3" method="post">
+        <input type="text" name="period" value="<%=searchBoard.getPeriod()%>" hidden="hidden">
+        <input type="text" name="type" value="<%=searchBoard.getType()%>" hidden="hidden">
+        <input type="text" name="searchText" value="<%=searchBoard.getSearchText()%>" hidden="hidden">
+        <select name="orderBy" class="form-control text-center me-2" onchange="this.form.submit()">
+          <option value="createAt DESC" <%if(orderBy.equals("createAt DESC")){%>selected<%}%>>최신순</option>
+          <option value="createAt" <%if(orderBy.equals("createAt")){%>selected<%}%>>오래된순</option>
+          <option value="viewCount" <%if(orderBy.equals("viewCount")){%>selected<%}%>>조회순</option>
+          <option value="title" <%if(orderBy.equals("title")){%>selected<%}%>
+                  <%if(searchBoard.getSearchText().isEmpty()){%>disabled<%}%>>정확도순</option>
+        </select>
+        <select name="rows" class="form-control text-center me-2" onchange="this.form.submit()">
+          <option value="5" <%if(rows == 5){%>selected<%}%>>5개씩 보기</option>
+          <option value="10" <%if(rows == 10){%>selected<%}%>>10개씩 보기</option>
+          <option value="15" <%if(rows == 15){%>selected<%}%>>15개씩 보기</option>
+          <option value="20" <%if(rows == 20){%>selected<%}%>>20개씩 보기</option>
+          <option value="25" <%if(rows == 25){%>selected<%}%>>25개씩 보기</option>
+          <option value="30" <%if(rows == 30){%>selected<%}%>>30개씩 보기</option>
+        </select>
+      </form>
     </div>
     <div class="p-2 border-primary mb-3">
       <table class="table align-middle table-hover text-center">
@@ -73,9 +85,11 @@
           }
         %>
       </table>
+      <%if(session.getAttribute("member") != null){%>
       <div>
         <a href="/board/createForm" role="button" class="btn btn-outline-dark">글쓰기</a>
       </div>
+      <%}%>
       <div class="d-flex justify-content-center">
       <nav aria-label="Page navigation example">
         <ul class="pagination pagination-sm">

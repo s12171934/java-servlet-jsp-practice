@@ -1,6 +1,7 @@
 package com.kitri.myservletboard.controller;
 
 import com.kitri.myservletboard.data.Board;
+import com.kitri.myservletboard.data.Member;
 import com.kitri.myservletboard.data.Pagination;
 import com.kitri.myservletboard.data.SearchBoard;
 import com.kitri.myservletboard.service.BoardService;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class BoardController extends HttpServlet {
 
     BoardService boardService = BoardService.getInstance();
     int rows = 10;
+    String orderBy = "createAt DESC";
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -29,6 +32,9 @@ public class BoardController extends HttpServlet {
 
         if(req.getParameter("rows") != null){
             rows = Integer.parseInt(req.getParameter("rows"));
+        }
+        if(req.getParameter("orderBy") != null){
+            orderBy = req.getParameter("orderBy");
         }
 
         if(command.equals("/board/list")){
@@ -41,7 +47,8 @@ public class BoardController extends HttpServlet {
             String period = req.getParameter("period");
             String type = req.getParameter("type");
             String searchText = req.getParameter("searchText");
-            SearchBoard searchBoard = new SearchBoard(period,type,searchText);
+
+            SearchBoard searchBoard = new SearchBoard(period,type,searchText,orderBy);
 
             ArrayList<Board> boards = boardService.getBoards(pagination,searchBoard);
             req.setAttribute("rows",rows);
@@ -59,7 +66,9 @@ public class BoardController extends HttpServlet {
             String title = req.getParameter("title");
             String writer = req.getParameter("writer");
             String content = req.getParameter("contents");
+            Long writerSerialId = ((Member)req.getSession().getAttribute("member")).getSerialId();
             Board board = new Board(null,title,content,writer,LocalDateTime.now(),0,0);
+            board.setWriterSerialId(writerSerialId);
             boardService.addBoard(board);
             resp.sendRedirect("/board/list");
             return;

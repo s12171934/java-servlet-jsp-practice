@@ -1,3 +1,4 @@
+<%@ page import="com.kitri.myservletboard.data.Member" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -21,10 +22,12 @@
               제목을 입력해주세요.
             </div>
           </div>
-
+          <%
+            Member member = (Member)session.getAttribute("member");
+          %>
           <div class="mb-3">
             <label for="writer">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer" required>
+            <input type="text" class="form-control" id="writer" name="writer" value="<%=member.getName()%>" required>
             <div class="invalid-feedback">
               작성자를 입력해주세요.
             </div>

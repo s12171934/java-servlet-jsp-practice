@@ -33,12 +33,13 @@ public class BoardJdbc implements BoardDao{
             String period = searchBoard.getPeriod();
             String type = searchBoard.getType();
             String searchText = searchBoard.getSearchText();
+            String orderByQuery = searchBoard.getOrderByQuery();
             pagination.setLastPages((int)Math.ceil((double)getRowNum(searchBoard)/rows));
             String sql ="";
             if(type.equals("title")){
                 searchText = "%" + searchText + "%";
             }
-            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(period) + " LIMIT ?, ?";
+            sql = "SELECT * FROM board  WHERE " + type + " LIKE ? " + dateQuery(period) + orderByQuery + " LIMIT ?, ?";
             PreparedStatement pstmt = conn().prepareStatement(sql);
             pstmt.setString(1,searchText);
             pstmt.setInt(2,(page - 1) * rows);
@@ -82,7 +83,9 @@ public class BoardJdbc implements BoardDao{
                 LocalDateTime createAt = rs.getTimestamp("createAt").toLocalDateTime();
                 int viewCount = rs.getInt("viewCount");
                 int commentCount = rs.getInt("commentCount");
+                int writerSerialId = rs.getInt("memberId");
                 board = new Board(id,title,content,writer,createAt,viewCount,commentCount);
+                board.setWriterSerialId(writerSerialId);
             }
 
             rs.close();
@@ -98,14 +101,12 @@ public class BoardJdbc implements BoardDao{
     @Override
     public void save(Board board) {
         try {
-            String title = board.getTitle();
-            String writer = board.getWriter();
-            String content = board.getContent();
-            String sql = "INSERT INTO board (title,writer,content) VALUES (?,?,?)";
+            String sql = "INSERT INTO board (title,writer,content,memberId) VALUES (?,?,?,?)";
             PreparedStatement pstmt = conn().prepareStatement(sql);
-            pstmt.setString(1,title);
-            pstmt.setString(2,writer);
-            pstmt.setString(3,content);
+            pstmt.setString(1,board.getTitle());
+            pstmt.setString(2,board.getWriter());
+            pstmt.setString(3,board.getContent());
+            pstmt.setLong(4,board.getWriterSerialId());
             pstmt.executeUpdate();
             conn().commit();
 
