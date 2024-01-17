@@ -6,10 +6,13 @@
 </jsp:include>
 <body>
 <jsp:include page="/view/common/header.jsp"/>
-
-
+        <%if(request.getAttribute("message") != null){%>
         <div class="login-form">
-            <form action="/member/login">
+            <h6 class="text-danger text-center"><b>${requestScope.message}</b></h6>
+        </div>
+        <%}%>
+        <div class="login-form">
+            <form action="/member/logIn" method="post">
                 <h2><b>Bootstrap</b></h2>
                 <hr>
                 <br>
@@ -30,8 +33,6 @@
                 </footer>
             </div>
         </div>
-
-    </body>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

@@ -6,11 +6,14 @@
 </jsp:include>
 <body>
 <jsp:include page="/view/common/header.jsp"/>
-
-
-
-
     <div class="container">
+        <%if(request.getAttribute("message") != null){%>
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="text-danger"><b>${requestScope.message}</b></h4>
+            </div>
+        </div>
+        <%}%>
         <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto">
                 <h4 class="mb-3"><b>회원 가입</b></h4>
@@ -63,18 +66,6 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="address">주소</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="서울특별시 구로구" required>
-                        <div class="invalid-feedback">
-                            주소를 입력해주세요.
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력해주세요.">
-                    </div>
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="aggrement" required>

@@ -1,3 +1,4 @@
+<%@ page import="com.kitri.myservletboard.data.Member" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,8 +7,18 @@
 </jsp:include>
 <body>
 <jsp:include page="/view/common/header.jsp"/>
+<%
+    Member member = (Member)session.getAttribute("member");
+%>
 
     <div class="container">
+        <%if(request.getAttribute("message") != null){%>
+        <div class="input-form-backgroud row">
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="text-danger"><b>${requestScope.message}</b></h4>
+            </div>
+        </div>
+        <%}%>
         <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto">
                 <h4 class="mb-3"><b>회원 정보 수정</b></h4>
@@ -17,7 +28,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name">이름</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요" value=""
+                            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요" value="<%=member.getName()%>"
                                 required>
                             <div class="invalid-feedback">
                                 이름을 입력해주세요.
@@ -25,8 +36,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="name">아이디</label>
-                            <input type="text" class="form-control" id="userId" name="id" placeholder="아이디를 입력해주세요" value=""
-                                required>
+                            <input type="text" class="form-control" id="userId" name="id" placeholder="아이디를 입력해주세요" value="<%=member.getId()%>"
+                                required readonly>
                             <div class="invalid-feedback">
                                 아이디를 입력해주세요.
                             </div>
@@ -53,26 +64,12 @@
 
                     <div class="mb-3">
                         <label for="email">이메일</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Bootstrap@example.com"
+                        <input type="email" class="form-control" id="email" name="email" value="<%=member.getEmail()%>"
                             required>
                         <div class="invalid-feedback">
                             이메일을 입력해주세요.
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="address">주소</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="서울특별시 구로구" required>
-                        <div class="invalid-feedback">
-                            주소를 입력해주세요.
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
-                        <input type="text" class="form-control" id="address2" name="address2" placeholder="상세주소를 입력해주세요.">
-                    </div>
-
 
                     <hr class="mb-4">
                     <br>
@@ -81,7 +78,7 @@
                             <button class="btn btn-secondary btn-block" type="submit">회원 정보 수정</button>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <button class="btn btn-secondary btn-block" type="submit">취소</button>
+                            <a href="/board/list"><button class="btn btn-secondary btn-block">취소</button></a>
                         </div>
                     </div>
                 </form>

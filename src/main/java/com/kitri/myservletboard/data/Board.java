@@ -7,6 +7,7 @@ public class Board {
     private String title;
     private String content;
     private String writer;
+    private Long writerSerialId;
     private LocalDateTime createdAt;
     private int viewCount;
     private int commentCount;
@@ -76,5 +77,13 @@ public class Board {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public long getWriterSerialId() {
+        return writerSerialId;
+    }
+
+    public void setWriterSerialId(long writerSerialId) {
+        this.writerSerialId = writerSerialId;
     }
 }

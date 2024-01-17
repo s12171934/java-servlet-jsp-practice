@@ -83,7 +83,9 @@ public class BoardJdbc implements BoardDao{
                 LocalDateTime createAt = rs.getTimestamp("createAt").toLocalDateTime();
                 int viewCount = rs.getInt("viewCount");
                 int commentCount = rs.getInt("commentCount");
+                int writerSerialId = rs.getInt("memberId");
                 board = new Board(id,title,content,writer,createAt,viewCount,commentCount);
+                board.setWriterSerialId(writerSerialId);
             }
 
             rs.close();
@@ -99,14 +101,12 @@ public class BoardJdbc implements BoardDao{
     @Override
     public void save(Board board) {
         try {
-            String title = board.getTitle();
-            String writer = board.getWriter();
-            String content = board.getContent();
-            String sql = "INSERT INTO board (title,writer,content) VALUES (?,?,?)";
+            String sql = "INSERT INTO board (title,writer,content,memberId) VALUES (?,?,?,?)";
             PreparedStatement pstmt = conn().prepareStatement(sql);
-            pstmt.setString(1,title);
-            pstmt.setString(2,writer);
-            pstmt.setString(3,content);
+            pstmt.setString(1,board.getTitle());
+            pstmt.setString(2,board.getWriter());
+            pstmt.setString(3,board.getContent());
+            pstmt.setLong(4,board.getWriterSerialId());
             pstmt.executeUpdate();
             conn().commit();
 
