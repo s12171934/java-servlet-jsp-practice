@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="logIn.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper" style="min-height: 30vh; display: flex">
+    <div class="item">
+        <h1>로그인 시스템</h1>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="item" style="padding: 50px">
+    <form  action="/logIn/signIn" method="post">
+        <label for="id">I D:</label>
+        <input type="text" name="id" id="id">
+        <br><br>
+        <label for="pw">P W:</label>
+        <input type="password" name="pw" id= "pw">
+        <br><br><br><br>
+        <input style="background-color: #29303f; color: #edeff5" type="submit" value="로그인">
+        <br>
+        <br>
+        <a href="/logIn/signUp.html">회원가입</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/logIn/logOut">로그아웃</a>
+    </form>
+    </div>
+</div>
+</body>
+</html>
